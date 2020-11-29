@@ -5,11 +5,11 @@ const morgan = require('morgan');
 const { connect } = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const Projects = require('./src/models/projectsModel');
-const Collaborators = require('./src/models/collaboratorsModel');
-const projectsRouter = require('./src/routes/projectsRouter')(Projects);
-const collaboratorsRouter = require('./src/routes/collaboratorsRouter')(Collaborators);
-const userRouter = require('./src/routes/userRouter')();
+const AdminUsers = require('./src/models/adminUsers');
+const AdminUsersEstablishments = require('./src/models/adminUsersEstablishments');
+const AdminUsersPromotions = require('./src/models/adminUsersPromotions');
+const CustomerUsers = require('./src/models/customerUsers');
+const CustomerUsersFavorites = require('./src/models/customerUsersFavorites');
 
 const app = express();
 app.use(cors());
@@ -21,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 connect(dataBaseURL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
-app.use('/projects', projectsRouter);
-app.use('/collaborators', collaboratorsRouter);
-app.use('/user', userRouter);
+// app.use('/projects', projectsRouter);
+// app.use('/collaborators', collaboratorsRouter);
+// app.use('/user', userRouter);
 
 app.listen(port, () => (
   debug(`Server is running on port ${chalk.blue(port)}`)));
