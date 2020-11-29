@@ -7,9 +7,9 @@ const PromotionController = require('../controllers/PromotionController');
 function adminRouter(AdminUsers, AdminUsersEstablishments, AdminUsersPromotions) {
   const router = express.Router();
   const admin = AdminController(AdminUsers, AdminUsersEstablishments, AdminUsersPromotions);
-  const establishment = EstablishmentController(AdminUsersEstablishments);
-  const promotions = PromotionsController(AdminUsersPromotions);
-  const promotion = PromotionController(AdminUsersPromotions);
+  const establishment = EstablishmentController(AdminUsers, AdminUsersEstablishments);
+  const promotions = PromotionsController(AdminUsers, AdminUsersPromotions);
+  const promotion = PromotionController(AdminUsers, AdminUsersPromotions);
 
   router.route('/')
     .get(admin.getMethod)
