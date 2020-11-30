@@ -1,13 +1,14 @@
 const express = require('express');
 const customerController = require('../controllers/CustomerController');
 
-function customerRouter(Users, Favorites) {
+function customerRouter(Users, Establishments) {
   const router = express.Router();
-  const customer = customerController(Users, Favorites);
+  const customer = customerController(Users, Establishments);
 
   router.route('/')
     .get(customer.getMethod)
     .post(customer.postMethod)
+    .put(customer.putMethod)
     .delete(customer.deleteMethod);
 
   return router;

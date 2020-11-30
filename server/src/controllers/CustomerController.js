@@ -1,4 +1,4 @@
-function CustomerController(Users, Favorites) {
+function CustomerController(Users, Establishments) {
   function getMethod(req, res) {
     Users.find({})
       .populate({ path: 'favorites' })
@@ -7,14 +7,22 @@ function CustomerController(Users, Favorites) {
         : res.json(customer)));
   }
 
-  async function postMethod(req, res) {
+  function postMethod(req, res) {
+    const { _id } = req.body;
+    Establishments.findOneAndRemove(_id,
+      (errorUpdateFavorite, favoriteUpdated) => (errorUpdateFavorite
+        ? res.send(errorUpdateFavorite)
+        : res.json(favoriteUpdated._id)));
+  }
+
+  async function putMethod(req, res) {
     const { user: { favorites, ...userInfo } } = req.body;
     try {
-      const favoritesResponse = await Favorites.create(favorites);
+      const favoritesResponse = await Establishments.create(favorites);
       const UsersResponse = await Users.create(
         {
           ...userInfo,
-          favorites: favoritesResponse.map((collaborator) => collaborator._id),
+          favorites: favoritesResponse.map((local) => local._id),
         },
       );
       res.json(UsersResponse);
@@ -25,13 +33,13 @@ function CustomerController(Users, Favorites) {
 
   function deleteMethod(req, res) {
     const { _id } = req.body;
-    Users.findOneAndRemove(_id,
-      (errorDeleteProject, projectDeleted) => (errorDeleteProject
-        ? res.send(errorDeleteProject)
-        : res.json(projectDeleted._id)));
+    Establishments.findOneAndRemove(_id,
+      (errorDeleteFavorite, favoriteDeleted) => (errorDeleteFavorite
+        ? res.send(errorDeleteFavorite)
+        : res.json(favoriteDeleted._id)));
   }
   return {
-    getMethod, postMethod, deleteMethod,
+    getMethod, postMethod, putMethod, deleteMethod,
   };
 }
 
