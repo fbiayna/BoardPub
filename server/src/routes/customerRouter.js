@@ -1,19 +1,14 @@
 const express = require('express');
 const customerController = require('../controllers/CustomerController');
-const favoritesController = require('../controllers/FavoritesController');
 
-function customerRouter(CustomerUsers, CustomerUsersFavorites) {
+function customerRouter(Users, Favorites) {
   const router = express.Router();
-  const customer = customerController(CustomerUsers, CustomerUsersFavorites);
-  const favorites = favoritesController(CustomerUsers, CustomerUsersFavorites);
+  const customer = customerController(Users, Favorites);
 
   router.route('/')
-    .get(customer.getMethod);
-
-  router.route('/favorites')
-    .get(favorites.getMethod)
-    .post(favorites.postMethod)
-    .delete(favorites.putMethod);
+    .get(customer.getMethod)
+    .post(customer.postMethod)
+    .delete(customer.deleteMethod);
 
   return router;
 }

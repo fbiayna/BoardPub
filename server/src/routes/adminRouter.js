@@ -4,12 +4,12 @@ const EstablishmentController = require('../controllers/EstablishmentController'
 const PromotionsController = require('../controllers/PromotionsController');
 const PromotionController = require('../controllers/PromotionController');
 
-function adminRouter(AdminUsers, AdminUsersEstablishments, AdminUsersPromotions) {
+function adminRouter(Users, Establishments, Promotions) {
   const router = express.Router();
-  const admin = AdminController(AdminUsers, AdminUsersEstablishments, AdminUsersPromotions);
-  const establishment = EstablishmentController(AdminUsers, AdminUsersEstablishments);
-  const promotions = PromotionsController(AdminUsers, AdminUsersPromotions);
-  const promotion = PromotionController(AdminUsers, AdminUsersPromotions);
+  const admin = AdminController(Users, Establishments, Promotions);
+  const establishment = EstablishmentController(Users, Establishments);
+  const promotions = PromotionsController(Users, Promotions);
+  const promotion = PromotionController(Users, Promotions);
 
   router.route('/')
     .get(admin.getMethod)

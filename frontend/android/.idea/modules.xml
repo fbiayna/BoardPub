@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/frontend.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/frontend.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2132358259/frontend.expo-constants.iml" filepath="$PROJECT_DIR$/.idea/modules/-2132358259/frontend.expo-constants.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/844204028/frontend.expo-error-recovery.iml" filepath="$PROJECT_DIR$/.idea/modules/844204028/frontend.expo-error-recovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1083810466/frontend.expo-file-system.iml" filepath="$PROJECT_DIR$/.idea/modules/-1083810466/frontend.expo-file-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2018801647/frontend.expo-font.iml" filepath="$PROJECT_DIR$/.idea/modules/-2018801647/frontend.expo-font.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-121116537/frontend.expo-image-loader.iml" filepath="$PROJECT_DIR$/.idea/modules/-121116537/frontend.expo-image-loader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-323789441/frontend.expo-keep-awake.iml" filepath="$PROJECT_DIR$/.idea/modules/-323789441/frontend.expo-keep-awake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1077581930/frontend.expo-linear-gradient.iml" filepath="$PROJECT_DIR$/.idea/modules/-1077581930/frontend.expo-linear-gradient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2047486857/frontend.expo-location.iml" filepath="$PROJECT_DIR$/.idea/modules/-2047486857/frontend.expo-location.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-109893054/frontend.expo-permissions.iml" filepath="$PROJECT_DIR$/.idea/modules/-109893054/frontend.expo-permissions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-724175152/frontend.expo-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/-724175152/frontend.expo-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/491945550/frontend.expo-sqlite.iml" filepath="$PROJECT_DIR$/.idea/modules/491945550/frontend.expo-sqlite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/637489032/frontend.expo-updates.iml" filepath="$PROJECT_DIR$/.idea/modules/637489032/frontend.expo-updates.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/4066231/frontend.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/4066231/frontend.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2115886085/frontend.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/2115886085/frontend.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/475654776/frontend.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/475654776/frontend.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1466030972/frontend.unimodules-app-loader.iml" filepath="$PROJECT_DIR$/.idea/modules/1466030972/frontend.unimodules-app-loader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2003277056/frontend.unimodules-barcode-scanner-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/-2003277056/frontend.unimodules-barcode-scanner-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1607618318/frontend.unimodules-camera-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/1607618318/frontend.unimodules-camera-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1799531870/frontend.unimodules-constants-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/1799531870/frontend.unimodules-constants-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2119499536/frontend.unimodules-core.iml" filepath="$PROJECT_DIR$/.idea/modules/-2119499536/frontend.unimodules-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-565177339/frontend.unimodules-face-detector-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/-565177339/frontend.unimodules-face-detector-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1243343023/frontend.unimodules-file-system-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/1243343023/frontend.unimodules-file-system-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/562873592/frontend.unimodules-font-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/562873592/frontend.unimodules-font-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1390747922/frontend.unimodules-image-loader-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/-1390747922/frontend.unimodules-image-loader-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1061742739/frontend.unimodules-permissions-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/1061742739/frontend.unimodules-permissions-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1997447944/frontend.unimodules-react-native-adapter.iml" filepath="$PROJECT_DIR$/.idea/modules/-1997447944/frontend.unimodules-react-native-adapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1737129544/frontend.unimodules-sensors-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/1737129544/frontend.unimodules-sensors-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1154450830/frontend.unimodules-task-manager-interface.iml" filepath="$PROJECT_DIR$/.idea/modules/1154450830/frontend.unimodules-task-manager-interface.iml" />
+    </modules>
+  </component>
+</project>

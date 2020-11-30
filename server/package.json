@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "set PORT=5000 && set DEBUG=app && set dbURL=mongodb+srv://fbiayna:Board_59!73@cluster0.bsyq9.mongodb.net/productDBv1?retryWrites=true&w=majority && nodemon index.js",
-    "test": "jest --collect-coverage --watch"
+    "test": "jest --collect-coverage --watch",
+    "android-dev": "adb reverse tcp:8081 tcp:8081 && react-native run-android"
   },
   "keywords": [],
   "author": "",
