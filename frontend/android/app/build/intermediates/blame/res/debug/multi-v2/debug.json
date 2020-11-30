@@ -2778,10 +2778,10 @@
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "2,2",
-                        "startOffsets": "49,219",
+                        "startOffsets": "51,225",
                         "endLines": "5,10",
                         "endColumns": "10,10",
-                        "endOffsets": "216,556"
+                        "endOffsets": "221,566"
                     },
                     "to": {
                         "startLines": "834,3276",
@@ -2943,9 +2943,9 @@
                     "from": {
                         "startLines": "3",
                         "startColumns": "2",
-                        "startOffsets": "172",
+                        "startOffsets": "175",
                         "endColumns": "55",
-                        "endOffsets": "225"
+                        "endOffsets": "228"
                     },
                     "to": {
                         "startLines": "203",
@@ -3034,9 +3034,9 @@
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
-                        "startOffsets": "16",
+                        "startOffsets": "17",
                         "endColumns": "45",
-                        "endOffsets": "57"
+                        "endOffsets": "58"
                     },
                     "to": {
                         "startLines": "687",
