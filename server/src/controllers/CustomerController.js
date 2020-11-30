@@ -1,4 +1,4 @@
-function CustomerController(Users, Establishments) {
+function CustomerController(Users) {
   function getMethod(req, res) {
     Users.find({})
       .populate({ path: 'favorites' })
@@ -8,36 +8,30 @@ function CustomerController(Users, Establishments) {
   }
 
   function postMethod(req, res) {
-    const { _id } = req.body;
-    Establishments.findOneAndRemove(_id,
-      (errorUpdateFavorite, favoriteUpdated) => (errorUpdateFavorite
-        ? res.send(errorUpdateFavorite)
-        : res.json(favoriteUpdated._id)));
+    const { user } = req.body;
+    Users.create(user, (errorNewUser, newUser) => (errorNewUser
+      ? res.send(errorNewUser)
+      : res.json(newUser)));
   }
 
-  async function putMethod(req, res) {
-    const { user: { favorites, ...userInfo } } = req.body;
-    try {
-      const favoritesResponse = await Establishments.create(favorites);
-      const UsersResponse = await Users.create(
-        {
-          ...userInfo,
-          favorites: favoritesResponse.map((local) => local._id),
-        },
-      );
-      res.json(UsersResponse);
-    } catch (error) {
-      res.send(error);
-    }
+  function putMethod(req, res) {
+    const { user: { _id, favorites }, establishment } = req.body;
+    Users.findOneAndUpdate(_id, { favorites: [establishment._id, ...favorites] },
+      { new: true }, (errorNewFavorite, newFavorite) => (errorNewFavorite
+        ? res.send(errorNewFavorite) : res.json(newFavorite)));
   }
 
   function deleteMethod(req, res) {
-    const { _id } = req.body;
-    Establishments.findOneAndRemove(_id,
-      (errorDeleteFavorite, favoriteDeleted) => (errorDeleteFavorite
-        ? res.send(errorDeleteFavorite)
-        : res.json(favoriteDeleted._id)));
+    const { user: { _id, favorites }, deleteFavorite } = req.body;
+    Users.findOneAndUpdate(_id, {
+      favorites: favorites.filter(
+        (establishment) => establishment._id !== deleteFavorite._id,
+      ),
+    },
+    { new: true }, (errorDeleteFavorite, deleteTheFavorite) => (errorDeleteFavorite
+      ? res.send(errorDeleteFavorite) : res.json(deleteTheFavorite)));
   }
+
   return {
     getMethod, postMethod, putMethod, deleteMethod,
   };
