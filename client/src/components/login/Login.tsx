@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   backimage: {
-    opacity: 0.8,
+    opacity: 0.85,
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
@@ -66,16 +66,17 @@ const styles = StyleSheet.create({
   },
   textSlogan: {
     flex: 2,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   textAction: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   text: {
+    width: 250,
     fontWeight: 'bold',
-    paddingLeft: 40,
     alignItems: 'center',
-    paddingRight: 40,
     fontSize: 20,
     lineHeight: 30,
     textAlign: 'center',
