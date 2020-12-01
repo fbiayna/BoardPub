@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component should be defined 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Object {
+        "height": "100%",
+        "justifyContent": "center",
+        "opacity": 0.8,
+        "resizeMode": "cover",
+        "width": "100%",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://trello-attachments.s3.amazonaws.com/5ec457ae0da99b76dcdba46b/5ec457af3dca9f5428a9f179/b713ff3791a65ab0ca93ae3e5f76f476/menu-609364_1280.jpg",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": "100%",
+            "width": "100%",
+          },
+          undefined,
+        ]
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "#000",
+          "height": "100%",
+          "opacity": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2.5,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "uri": "https://trello-attachments.s3.amazonaws.com/5ec457ae0da99b76dcdba46b/5ec457af3dca9f5428a9f179/263e7f5a2d4e919205f4745afbf1a032/logo-boardpub.png",
+            }
+          }
+          style={
+            Object {
+              "height": 100,
+              "width": 320,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "alignItems": "center",
+              "color": "#fff",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "lineHeight": 30,
+              "textAlign": "center",
+              "width": 250,
+            }
+          }
+        >
+          Las mejores promociones de tus locales hosteleros, en una sola app.
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "alignItems": "center",
+              "color": "#fff",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "lineHeight": 30,
+              "textAlign": "center",
+              "width": 250,
+            }
+          }
+        >
+          ¿Qué estás buscando?
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#92000A",
+              "borderRadius": 50,
+              "elevation": 4,
+              "height": 60,
+              "justifyContent": "center",
+              "width": 260,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#fff",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "lineHeight": 22,
+                "textAlign": "center",
+              }
+            }
+          >
+            ¡HE VENIDO A COMER/BEBER!
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 2,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#1565C0",
+              "borderRadius": 50,
+              "elevation": 4,
+              "height": 60,
+              "justifyContent": "center",
+              "width": 260,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#fff",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "lineHeight": 22,
+                "textAlign": "center",
+              }
+            }
+          >
+            ¡QUIERO PROMOCIONAR MI LOCAL!
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
