@@ -3,7 +3,7 @@ import Action from '../actions/actionsInterface'
 
 const initialState = {}
 
-export default function boardPubReducer (state: Object = initialState, action: Action) {
+export default function boardPubReducer (state: object = initialState, action: Action) {
   let answer = state
   switch (action.type) {
     case actionTypes.LOAD_PROMOTIONS:
@@ -14,6 +14,7 @@ export default function boardPubReducer (state: Object = initialState, action: A
       break
     default:
       answer = state
+      break
   }
   return answer
 }

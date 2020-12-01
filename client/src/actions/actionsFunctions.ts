@@ -3,7 +3,7 @@ import actionTypes from './actionTypes'
 
 const backURL = 'http://localhost:5000'
 
-function requestPromotionsSuccess (promotions: Object) {
+function requestPromotionsSuccess (promotions: object) {
   return {
     type: actionTypes.LOAD_PROMOTIONS,
     promotions
@@ -20,8 +20,10 @@ function requestPromotionsError (error: any) {
 function requestPromotions () {
   return async (dispatch: Function) => {
     try {
-      const promotions = await axios.get(`${backURL}/admin`)
+      debugger
+      const promotions = await axios.get(`${backURL}/admin/promotions`)
       dispatch(requestPromotionsSuccess(promotions.data))
+      debugger
     } catch (error) {
       dispatch(requestPromotionsError(error))
     }
