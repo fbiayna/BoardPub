@@ -129,7 +129,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFD7DB',
     borderRadius: 10,
-    width: 320,
+    width: 310,
     height: 55,
     marginTop: 15,
     marginBottom: 15,
@@ -144,7 +144,7 @@ const style = StyleSheet.create({
   promotion: {
     borderRadius: 10,
     backgroundColor: '#fff',
-    width: 320,
+    width: 310,
     height: 200,
     elevation: 10
   },
