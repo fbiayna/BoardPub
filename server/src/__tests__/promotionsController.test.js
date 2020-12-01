@@ -1,5 +1,5 @@
 const Promotions = require('../models/promotionsModel');
-const Users = require('../models/usersModel')
+const Users = require('../models/usersModel');
 const PromotionsController = require('../controllers/PromotionsController')(Users, Promotions);
 
 jest.mock('../models/usersModel');
