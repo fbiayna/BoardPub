@@ -26,7 +26,7 @@ describe('toDoActions', () => {
 
   describe('requestPromotions - promise rejected', () => {
     beforeEach(async () => {
-      axios.get.mockImplementationOnce(() => Promise.rejected({ data: ['Skylab mola!'] }))
+      axios.get.mockImplementationOnce(() => Promise.reject(Error))
       await store.dispatch(requestPromotions())
     })
 

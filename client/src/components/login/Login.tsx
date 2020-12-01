@@ -10,7 +10,9 @@ export default function Login () {
     <View style={styles.container}>
       <ImageBackground source={background} style={styles.backimage}>
         <View style={styles.shadow}>
-          <Image source={logo} style={styles.image} />
+          <View style={styles.logo}>
+            <Image source={logo} style={styles.image} />
+          </View>
           <View style={styles.textSlogan}>
             <Text style={styles.text}>Las mejores promociones de tus locales hosteleros, en una sola app.</Text>
           </View>
@@ -53,23 +55,28 @@ const styles = StyleSheet.create({
     opacity: 1,
     backgroundColor: '#000'
   },
+  logo: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 2.5
+  },
   image: {
-    flex: 2.5,
-    width: '100%',
-    height: '100%'
+    width: 320,
+    height: 100
   },
   textSlogan: {
     flex: 2,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   textAction: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   text: {
+    width: 250,
     fontWeight: 'bold',
-    paddingLeft: 40,
     alignItems: 'center',
-    paddingRight: 40,
     fontSize: 20,
     lineHeight: 30,
     textAlign: 'center',
@@ -89,14 +96,15 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonUser: {
-    width: 280,
+    width: 260,
     height: 60,
     backgroundColor: '#92000A',
     justifyContent: 'center',
-    borderRadius: 50
+    borderRadius: 50,
+    elevation: 4
   },
   textUser: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
     lineHeight: 22,
     textAlign: 'center',
@@ -107,14 +115,15 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonAdmin: {
-    width: 280,
+    width: 260,
     height: 60,
     backgroundColor: '#1565C0',
     justifyContent: 'center',
-    borderRadius: 50
+    borderRadius: 50,
+    elevation: 4
   },
   textAdmin: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
     lineHeight: 22,
     textAlign: 'center',
