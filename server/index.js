@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const Users = require('./src/models/usersModel');
-// const Establishments = require('./src/models/establishmentsModel');
-// const Promotions = require('./src/models/promotionsModel');
-// const adminRouter = require('./src/routes/adminRouter')(Users, Establishments, Promotions);
+const Establishments = require('./src/models/establishmentsModel');
+const Promotions = require('./src/models/promotionsModel');
+const adminRouter = require('./src/routes/adminRouter')(Users, Establishments, Promotions);
 const customerRouter = require('./src/routes/customerRouter')(Users);
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/customer', customerRouter);
-// app.use('/admin', adminRouter);
+app.use('/admin', adminRouter);
 
 app.listen(port, () => (
   debug(`Server is running on port ${chalk.blue(port)}`)));
