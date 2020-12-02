@@ -3,6 +3,7 @@ import React from 'react'
 import { Reducer } from '../../utils/interfaces'
 import { Text } from 'react-native'
 import { connect } from 'react-redux'
+import Loading from '../loading/LoadingGif'
 import { requestPromotion } from '../../actions/actionsFunctions'
 
 function DetailPromotion ({ promotion, dispatch }: Reducer) {
@@ -12,9 +13,11 @@ function DetailPromotion ({ promotion, dispatch }: Reducer) {
     dispatch(requestPromotion(promotionId))
   }
 
-  return (
-    <Text>Hola</Text>
-  )
+  return (<>
+    {!promotion
+      ? <Loading />
+      : <Text>{promotion.name}</Text>}
+  </>)
 }
 
 function mapStateToProps ({ boardPubReducer }: any) {

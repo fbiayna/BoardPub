@@ -12,7 +12,7 @@ describe('PromotionController', () => {
     const res = {
       json: jest.fn()
     }
-    Promotions.find = jest.fn().mockImplementationOnce((query, callback) => {
+    Promotions.findById = jest.fn().mockImplementationOnce((query, callback) => {
       callback(false, 'Promotion')
     })
 
@@ -26,8 +26,8 @@ describe('PromotionController', () => {
     const res = {
       send: jest.fn()
     }
-    Promotions.find = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(true, 'errorFindPromotion')
+    Promotions.findById = jest.fn().mockImplementationOnce((query, callback) => {
+      callback(true, 'errorfindByIdPromotion')
     })
 
     PromotionController.getMethod(req, res)

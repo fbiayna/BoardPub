@@ -44,8 +44,7 @@ export function requestPromotions (type: string) {
 export function requestPromotion (id: string) {
   return async (dispatch: Function) => {
     try {
-      const promotions = await axios.get(`${hostUrl()}/admin/promotion
-      `, { params: { id } })
+      const promotions = await axios.get(`${hostUrl()}/admin/promotion`, { params: { id } })
       dispatch(requestPromotionSuccess(promotions.data))
     } catch (error) {
       dispatch(requestPromotionError(error))
