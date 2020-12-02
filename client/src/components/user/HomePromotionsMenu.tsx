@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ImageBackground, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { connect } from 'react-redux'
@@ -14,6 +14,7 @@ interface Promotion {
   name: string,
   date: string,
   description: string,
+  establishment: string,
   price: string
   type: string
 }
@@ -21,11 +22,12 @@ interface Promotion {
 const meal = { uri: 'https://i1.wp.com/catalinacevedomejia.com/wp-content/uploads/2015/10/salmon-518032_1280.jpg' }
 
 function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
+  const [typeState, setType] = useState('menu')
   useEffect(() => {
     if (!promotions || !promotions?.length) {
-      dispatch(requestPromotions())
+      dispatch(requestPromotions('menu'))
     }
-  }, [promotions?.length])
+  }, [promotions])
 
   return (
     <View style={style.container}>
@@ -40,10 +42,10 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
       </View>
       <View style={style.menuContainer}>
         <View style={style.menu}>
-          <Text style={style.menuText}>Menús</Text>
-          <Text style={style.menuTextNot}>Bebidas</Text>
-          <Text style={style.menuTextNot}>Packs</Text>
-          <Text style={style.menuTextNot}>Otros</Text>
+          <Icon name="restaurant" style={typeState === 'menu' ? style.active : style.noActive} size={25} onPress={() => dispatch(requestPromotions('menu')) && setType('menu')} />
+          <Icon name="local-bar" style={typeState === 'drink' ? style.active : style.noActive} size={25} onPress={() => dispatch(requestPromotions('drink')) && setType('drink')} />
+          <Icon name="local-offer" style={typeState === 'pack' ? style.active : style.noActive} size={25} onPress={() => dispatch(requestPromotions('pack')) && setType('pack')} />
+          <Icon name="local-activity" style={typeState === 'other' ? style.active : style.noActive} size={25} onPress={() => dispatch(requestPromotions('other')) && setType('other')} />
         </View>
       </View>
       <View style={style.promotionsContainer}>
@@ -60,7 +62,7 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
             <View style={style.infoContainer}>
               <View style={style.titleContainer}>
                 <Text style={style.title}>{item.name}</Text>
-                <Text style={style.establishment}>Skylab Coders Academy</Text>
+                <Text style={style.establishment}>{item.establishment}</Text>
               </View>
               <View style={style.otherInfoContainer}>
                 <Text style={style.otherInfo}>{item.date}</Text>
@@ -72,7 +74,7 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
       </View>
       <View style={style.headerDown}>
         <View style={style.headerOptions}>
-          <Icon name="restaurant" size={25} color="#000" />
+          <Icon name="style" size={25} color="#000" />
           <Text style={style.headerDownText}>Promociones</Text>
         </View>
         <View style={style.headerOptions}>
@@ -132,14 +134,17 @@ const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFD7DB',
     borderRadius: 10,
-    width: 310,
+    width: 300,
     height: 55,
     marginTop: 15,
     marginBottom: 15,
     elevation: 10
   },
-  menuText: {
-    fontWeight: 'bold'
+  noActive: {
+    color: '#7C7C7C'
+  },
+  active: {
+    color: '#000'
   },
   promotionsContainer: {
     flexGrow: 1,
@@ -153,8 +158,8 @@ const style = StyleSheet.create({
   promotion: {
     borderRadius: 10,
     backgroundColor: '#fff',
-    width: 310,
-    height: 200,
+    width: 300,
+    height: 180,
     elevation: 10
   },
   imageContainer: {
@@ -192,7 +197,8 @@ const style = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 17,
-    marginBottom: 4
+    marginTop: 4,
+    marginBottom: 3
   },
   establishment: {
     fontWeight: 'bold',

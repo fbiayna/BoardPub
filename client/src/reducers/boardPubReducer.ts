@@ -7,11 +7,9 @@ export default function boardPubReducer (state: object = initialState, action: A
   let answer = state
   switch (action.type) {
     case actionTypes.LOAD_PROMOTIONS:
-      debugger
       answer = { ...state, promotions: action.promotions }
       break
     case actionTypes.LOAD_PROMOTIONS_ERROR:
-      debugger
       answer = { ...state, error: action.error }
       break
     default:

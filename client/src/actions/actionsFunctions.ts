@@ -17,14 +17,12 @@ function requestPromotionsError (error: any) {
   }
 }
 
-function requestPromotions () {
+function requestPromotions (type: string) {
   return async (dispatch: Function) => {
     try {
-      debugger
-      const promotions = await axios.get(`${backURL}/admin/promotions`)
+      const promotions = await axios.get(`${backURL}/admin/promotions`, { params: { type } })
       dispatch(requestPromotionsSuccess(promotions.data))
     } catch (error) {
-      debugger
       dispatch(requestPromotionsError(error))
     }
   }
