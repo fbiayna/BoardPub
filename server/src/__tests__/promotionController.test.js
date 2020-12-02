@@ -1,36 +1,36 @@
 /* eslint-disable node/no-callback-literal */
 const Promotions = require('../models/promotionsModel')
 const Users = require('../models/usersModel')
-const PromotionsController = require('../controllers/PromotionsController')(Users, Promotions)
+const PromotionController = require('../controllers/PromotionController')(Users, Promotions)
 
 jest.mock('../models/usersModel')
 jest.mock('../models/promotionsModel')
 
-describe('PromotionsController', () => {
+describe('PromotionController', () => {
   test('should call response json on getMethod', () => {
-    const req = { query: { type: 'menu' } }
+    const req = { query: { id: '1' } }
     const res = {
       json: jest.fn()
     }
     Promotions.find = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(false, 'PromotionsList')
+      callback(false, 'Promotion')
     })
 
-    PromotionsController.getMethod(req, res)
+    PromotionController.getMethod(req, res)
 
     expect(res.json).toHaveBeenCalled()
   })
 
   test('should call response error on getMethod', () => {
-    const req = { query: { type: 'menu' } }
+    const req = { query: { id: '1' } }
     const res = {
       send: jest.fn()
     }
     Promotions.find = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(true, 'errorFindPromotions')
+      callback(true, 'errorFindPromotion')
     })
 
-    PromotionsController.getMethod(req, res)
+    PromotionController.getMethod(req, res)
 
     expect(res.send).toHaveBeenCalled()
   })
