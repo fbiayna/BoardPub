@@ -1,7 +1,7 @@
 import axios from 'axios'
 import actionTypes from './actionTypes'
 
-const backURL = 'http://localhost:5000'
+const backURL = 'http://192.168.0.96:5000'
 
 function requestPromotionsSuccess (promotions: object) {
   return {
@@ -23,8 +23,8 @@ function requestPromotions () {
       debugger
       const promotions = await axios.get(`${backURL}/admin/promotions`)
       dispatch(requestPromotionsSuccess(promotions.data))
-      debugger
     } catch (error) {
+      debugger
       dispatch(requestPromotionsError(error))
     }
   }

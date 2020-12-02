@@ -46,26 +46,29 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
           <Text style={style.menuTextNot}>Otros</Text>
         </View>
       </View>
-      <View style={style.promotionContainer}>
-        <View style={style.promotion}>
-          <View style={style.imageContainer}>
-            <ImageBackground source={meal} imageStyle={{ borderRadius: 10 }} style={style.promotionImage}>
-              <View style={style.priceContainer}>
-                <Text style={style.price}>10,50€</Text>
+      <View style={style.promotionsContainer}>
+      {promotions?.map((promotion: Promotion) =>
+      <View key={promotion.name} style={style.promotionContainer}>
+          <View style={style.promotion}>
+            <View style={style.imageContainer}>
+              <ImageBackground source={meal} imageStyle={{ borderRadius: 10 }} style={style.promotionImage}>
+                <View style={style.priceContainer}>
+                  <Text style={style.price}>{promotion.price}</Text>
+                </View>
+              </ImageBackground>
+            </View>
+            <View style={style.infoContainer}>
+              <View style={style.titleContainer}>
+                <Text style={style.title}>{promotion.name}</Text>
+                <Text style={style.establishment}>Skylab Coders Academy</Text>
               </View>
-            </ImageBackground>
-          </View>
-          <View style={style.infoContainer}>
-            <View style={style.titleContainer}>
-              <Text style={style.title}>¡Pizzas para todos!</Text>
-              <Text style={style.establishment}>Skylab Coders Academy</Text>
-            </View>
-            <View style={style.otherInfoContainer}>
-              <Text style={style.otherInfo}>Hoy 13:40 - 15:00</Text>
-              <Text style={style.otherInfo}>4km</Text>
+              <View style={style.otherInfoContainer}>
+                <Text style={style.otherInfo}>{promotion.date}</Text>
+                <Text style={style.otherInfo}>4km</Text>
+              </View>
             </View>
           </View>
-        </View>
+        </View>)}
       </View>
       <View style={style.headerDown}>
         <View style={style.headerOptions}>
@@ -138,8 +141,12 @@ const style = StyleSheet.create({
   menuText: {
     fontWeight: 'bold'
   },
+  promotionsContainer: {
+    flex: 4
+  },
   promotionContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 15
   },
   promotion: {
     borderRadius: 10,
@@ -204,8 +211,11 @@ const style = StyleSheet.create({
     fontWeight: 'bold'
   },
   headerDown: {
+    zIndex: 1000,
     position: 'absolute',
     backgroundColor: '#fff',
+    left: 0,
+    right: 0,
     bottom: 0,
     width: '100%',
     height: 71,
@@ -230,7 +240,8 @@ const style = StyleSheet.create({
   }
 })
 
-function mapStateToProps (boardPubReducer: any) {
+function mapStateToProps ({ boardPubReducer }: any) {
+  debugger
   return {
     promotions: boardPubReducer.promotions
   }
