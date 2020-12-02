@@ -2,11 +2,13 @@
 export interface Action {
   type: string,
   promotions?: object,
-  error: any
+  promotion?: object,
+  error?: any
 }
 
 export interface Reducer {
     promotions: Promotion[],
+    promotion: Promotion,
     dispatch: Function,
   }
 
