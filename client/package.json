@@ -8,6 +8,7 @@
     "test": "jest --collect-coverage --watchAll"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.12.7",
     "@types/jest": "^26.0.15",
     "@types/react-redux": "^7.1.11",
     "@types/react-test-renderer": "^17.0.0",
@@ -35,11 +36,13 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@babel/preset-env": "^7.12.7",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
+    "babel-jest": "^25.5.1",
     "babel-preset-expo": "~8.3.0",
     "eslint": "^7.14.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -50,11 +53,31 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^25.5.4",
     "jest-expo": "~39.0.0",
     "typescript": "~3.9.5"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.tsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|react-native-vector-icons)/)"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-runtime"
+        ]
+      }
+    }
   },
   "private": true
 }
