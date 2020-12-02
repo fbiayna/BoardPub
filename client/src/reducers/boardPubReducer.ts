@@ -1,5 +1,5 @@
 import actionTypes from '../actions/actionTypes'
-import Action from '../actions/actionsInterface'
+import { Action } from '../utils/interfaces'
 
 const initialState = {}
 
