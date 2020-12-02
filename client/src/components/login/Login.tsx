@@ -4,7 +4,7 @@ import { ImageBackground, Text, View, Image } from 'react-native'
 import styles from '../styles/Login'
 import { logoBoardPub, loginBackground } from '../../utils/images'
 
-export default function Login () {
+export default function Login ():any {
   return (
     <View style={styles.container}>
       <ImageBackground source={loginBackground()} style={styles.backimage}>
