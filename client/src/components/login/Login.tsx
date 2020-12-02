@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 import { ImageBackground, Text, View, Image } from 'react-native'
-import styles from '../style/Login'
+import styles from '../styles/Login'
 import { logoBoardPub, loginBackground } from '../../utils/images'
 
 export default function Login () {

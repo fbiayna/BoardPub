@@ -1,8 +1,8 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 import { View, Image } from 'react-native'
-import style from './style/Loading'
-import { loading } from '../utils/images'
+import style from '../styles/Loading'
+import { loading } from '../../utils/images'
 
 export default function Loading ():any {
   return (

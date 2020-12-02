@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect, useState } from 'react'
-import style from '../style/HomePromotionsMenu'
+import style from '../styles/HomePromotionsMenu'
 import { Reducer, Promotion } from '../../utils/interfaces'
 import { View, Text, ImageBackground, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { meal } from '../../utils/images'
 import { connect } from 'react-redux'
 import { requestPromotions } from '../../actions/actionsFunctions'
-import Loading from '../LoadingGif'
+import Loading from '../loading/LoadingGif'
 
 function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
   const [typeState, setType] = useState('menu')
