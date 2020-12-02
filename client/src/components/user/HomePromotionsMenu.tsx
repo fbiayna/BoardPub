@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, ImageBackground } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { connect } from 'react-redux'
 import requestPromotions from '../../actions/actionsFunctions'
@@ -47,28 +47,28 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
         </View>
       </View>
       <View style={style.promotionsContainer}>
-      {promotions?.map((promotion: Promotion) =>
-      <View key={promotion.name} style={style.promotionContainer}>
+        {promotions && promotions.length && <FlatList data={promotions} keyExtractor={(item: Promotion) => item.name}
+        renderItem={({ item }) => (<View key={item.name} style={style.promotionContainer}>
           <View style={style.promotion}>
             <View style={style.imageContainer}>
               <ImageBackground source={meal} imageStyle={{ borderRadius: 10 }} style={style.promotionImage}>
                 <View style={style.priceContainer}>
-                  <Text style={style.price}>{promotion.price}</Text>
+                  <Text style={style.price}>{item.price}</Text>
                 </View>
               </ImageBackground>
             </View>
             <View style={style.infoContainer}>
               <View style={style.titleContainer}>
-                <Text style={style.title}>{promotion.name}</Text>
+                <Text style={style.title}>{item.name}</Text>
                 <Text style={style.establishment}>Skylab Coders Academy</Text>
               </View>
               <View style={style.otherInfoContainer}>
-                <Text style={style.otherInfo}>{promotion.date}</Text>
+                <Text style={style.otherInfo}>{item.date}</Text>
                 <Text style={style.otherInfo}>4km</Text>
               </View>
             </View>
           </View>
-        </View>)}
+        </View>)} />}
       </View>
       <View style={style.headerDown}>
         <View style={style.headerOptions}>
@@ -142,7 +142,9 @@ const style = StyleSheet.create({
     fontWeight: 'bold'
   },
   promotionsContainer: {
-    flex: 4
+    flexGrow: 1,
+    flex: 1,
+    height: '100%'
   },
   promotionContainer: {
     alignItems: 'center',
@@ -211,8 +213,6 @@ const style = StyleSheet.create({
     fontWeight: 'bold'
   },
   headerDown: {
-    zIndex: 1000,
-    position: 'absolute',
     backgroundColor: '#fff',
     left: 0,
     right: 0,
