@@ -16,5 +16,6 @@ export default function boardPubReducer (state: object = initialState, action: A
       answer = state
       break
   }
+
   return answer
 }
