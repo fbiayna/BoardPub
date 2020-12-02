@@ -1,9 +1,12 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 import { Reducer } from '../../utils/interfaces'
-import { Text } from 'react-native'
+import { View, Text, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
+import { meal } from '../../utils/images'
+import Loading from '../loading/LoadingGif'
 import { requestPromotion } from '../../actions/actionsFunctions'
+import style from '../styles/DetailPromotion'
 
 function DetailPromotion ({ promotion, dispatch }: Reducer) {
   const promotionId = '5fc76396b20116bdfc9c80df'
@@ -13,7 +16,26 @@ function DetailPromotion ({ promotion, dispatch }: Reducer) {
   }
 
   return (
-    <Text>Hola</Text>
+    <View style={style.container}>
+      {!promotion
+        ? <Loading />
+        : <>
+            <View style={style.imageContainer}>
+              <ImageBackground source={meal()} style={style.promotionImage} >
+                <View style={style.priceContainer}>
+                  <Text style={style.price}>{promotion.price}</Text>
+                </View>
+              </ImageBackground>
+            </View>
+            <View style={style.infoContainer}>
+              <View style={style.titleContainer}>
+                <Text style={style.title}>{promotion.name}</Text>
+                <Text style={style.establishment}>{promotion.establishment}</Text>
+              </View>
+            </View>
+          </>
+      }
+    </View>
   )
 }
 
