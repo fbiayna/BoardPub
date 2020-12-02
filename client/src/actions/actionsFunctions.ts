@@ -16,6 +16,20 @@ function requestPromotionsError (error: any) {
   }
 }
 
+function requestPromotionSuccess (promotion: object) {
+  return {
+    type: actionTypes.LOAD_PROMOTION,
+    promotion
+  }
+}
+
+function requestPromotionError (error: any) {
+  return {
+    type: actionTypes.LOAD_PROMOTION_ERROR,
+    error
+  }
+}
+
 export function requestPromotions (type: string) {
   return async (dispatch: Function) => {
     try {
@@ -23,6 +37,18 @@ export function requestPromotions (type: string) {
       dispatch(requestPromotionsSuccess(promotions.data))
     } catch (error) {
       dispatch(requestPromotionsError(error))
+    }
+  }
+}
+
+export function requestPromotion (id: string) {
+  return async (dispatch: Function) => {
+    try {
+      const promotions = await axios.get(`${hostUrl()}/admin/promotion
+      `, { params: { id } })
+      dispatch(requestPromotionSuccess(promotions.data))
+    } catch (error) {
+      dispatch(requestPromotionError(error))
     }
   }
 }

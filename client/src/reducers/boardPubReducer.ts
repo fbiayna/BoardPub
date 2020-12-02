@@ -12,6 +12,12 @@ export default function boardPubReducer (state: object = initialState, action: A
     case actionTypes.LOAD_PROMOTIONS_ERROR:
       answer = { ...state, error: action.error }
       break
+    case actionTypes.LOAD_PROMOTION:
+      answer = { ...state, promotion: action.promotion }
+      break
+    case actionTypes.LOAD_PROMOTION_ERROR:
+      answer = { ...state, error: action.error }
+      break
     default:
       answer = state
       break
