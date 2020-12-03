@@ -29,7 +29,11 @@ const style = StyleSheet.create({
     fontWeight: 'bold'
   },
   infoContainer: {
-    height: 150
+    height: 75,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderBottomColor: '#C7C7C7',
+    borderBottomWidth: 1
   },
   titleContainer: {
     justifyContent: 'center',
@@ -38,17 +42,26 @@ const style = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 17,
-    marginTop: 4,
-    marginBottom: 3
+    fontSize: 20,
+    marginBottom: 4
   },
   establishment: {
     fontWeight: 'bold',
-    fontSize: 13,
+    fontSize: 15,
     color: '#7C7C7C',
     marginBottom: 8
+  },
+  otherInfoContainer: {
+    height: 75,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    elevation: 5
+  },
+  otherContainer: {
+    justifyContent: 'center',
+    marginLeft: 15,
+    marginRight: 15
   }
-
 })
 
 export default style

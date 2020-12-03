@@ -33,6 +33,12 @@ function DetailPromotion ({ promotion, dispatch }: Reducer) {
                 <Text style={style.establishment}>{promotion.establishment}</Text>
               </View>
             </View>
+            <View style={style.otherInfoContainer}>
+              <View style={style.otherContainer}>
+                <Text style={style.title}>{promotion.date}</Text>
+                <Text style={style.establishment}>{promotion.establishment}</Text>
+              </View>
+            </View>
           </>
       }
     </View>
