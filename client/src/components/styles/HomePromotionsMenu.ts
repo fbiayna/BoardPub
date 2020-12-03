@@ -6,6 +6,10 @@ const style = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
+  listContainer: {
+    width: '100%',
+    height: '100%'
+  },
   headerTop: {
     backgroundColor: '#92000A',
     height: 95.5,
@@ -48,7 +52,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFD7DB',
     borderRadius: 10,
-    width: 300,
+    width: '85%',
     height: 55,
     marginTop: 15,
     marginBottom: 15,
@@ -74,7 +78,7 @@ const style = StyleSheet.create({
   promotion: {
     borderRadius: 10,
     backgroundColor: '#fff',
-    width: 300,
+    width: '85%',
     height: 180,
     elevation: 10
   },
@@ -132,7 +136,7 @@ const style = StyleSheet.create({
     color: '#9E9E9E',
     fontSize: 12,
     fontWeight: 'bold'
-  },
+  }
 })
 
 export default style
