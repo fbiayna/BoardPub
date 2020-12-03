@@ -23,7 +23,7 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
   }
 
   return (
-    <View style={style.container}>
+    <View testID={'list-promotions'} style={style.container}>
       <View style={style.headerTop}>
         <View style={style.ubication}>
           <View style={style.town}>

@@ -7,8 +7,8 @@ export interface Action {
 }
 
 export interface Reducer {
-    promotions: Promotion[],
-    promotion: Promotion,
+    promotions?: Promotion[],
+    promotion?: Promotion,
     dispatch: Function,
   }
 

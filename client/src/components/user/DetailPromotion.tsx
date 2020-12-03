@@ -17,7 +17,7 @@ function DetailPromotion ({ promotion, dispatch }: Reducer) {
   }
 
   return (
-    <SafeAreaView style={style.container}>
+    <SafeAreaView testID={'detail'} style={style.container}>
       {!promotion
         ? <Loading />
         : <ScrollView>
