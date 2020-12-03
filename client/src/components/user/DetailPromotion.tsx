@@ -5,6 +5,7 @@ import { View, Text, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import { meal } from '../../utils/images'
 import Loading from '../loading/LoadingGif'
+import { Icon } from 'react-native-elements'
 import { requestPromotion } from '../../actions/actionsFunctions'
 import style from '../styles/DetailPromotion'
 
@@ -21,6 +22,7 @@ function DetailPromotion ({ promotion, dispatch }: Reducer) {
         ? <Loading />
         : <>
             <View style={style.imageContainer}>
+            <Icon name="restaurant" style={style.icon} type="materialicons" />
               <ImageBackground source={meal()} style={style.promotionImage} >
                 <View style={style.priceContainer}>
                   <Text style={style.price}>{promotion.price}</Text>

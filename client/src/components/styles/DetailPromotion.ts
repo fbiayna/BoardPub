@@ -61,6 +61,10 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 15,
     marginRight: 15
+  },
+  icon: {
+    fontSize: 25,
+    color: '#000'
   }
 })
 
