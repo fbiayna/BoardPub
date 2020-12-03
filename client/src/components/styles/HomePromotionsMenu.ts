@@ -133,37 +133,6 @@ const style = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold'
   },
-  headerDown: {
-    backgroundColor: '#fff',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    width: '100%',
-    height: 71,
-    elevation: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around'
-  },
-  headerOptions: {
-    alignItems: 'center'
-  },
-  iconHeaderActive: {
-    fontSize: 25,
-    color: '#000'
-  },
-  iconHeaderNotActive: {
-    fontSize: 25,
-    color: '#7C7C7C'
-  },
-  headerFooterActive: {
-    fontWeight: 'bold',
-    color: '#000'
-  },
-  headerFooterNotActive: {
-    fontWeight: 'bold',
-    color: '#7C7C7C'
-  }
 })
 
 export default style

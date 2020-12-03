@@ -8,6 +8,7 @@ import { meal } from '../../utils/images'
 import { connect } from 'react-redux'
 import { requestPromotions } from '../../actions/actionsFunctions'
 import Loading from '../loading/LoadingGif'
+import Navigation from './Navigation'
 
 function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
   const [typeState, setType] = useState('menu')
@@ -67,20 +68,7 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
           </View>
         </View>)} />
       </View> }
-      <View style={style.headerDown}>
-        <View style={style.headerOptions}>
-          <Icon name="style" style={style.iconHeaderActive} />
-          <Text style={style.headerFooterActive}>Promociones</Text>
-        </View>
-        <View style={style.headerOptions}>
-          <Icon name="explore" style={style.iconHeaderNotActive} />
-          <Text style={style.headerFooterNotActive}>Cerca de tí</Text>
-        </View>
-        <View style={style.headerOptions}>
-          <Icon name="bookmark" style={style.iconHeaderNotActive} />
-          <Text style={style.headerFooterNotActive}>Tus favoritos</Text>
-        </View>
-      </View>
+      <Navigation/>
     </View>
   )
 }
