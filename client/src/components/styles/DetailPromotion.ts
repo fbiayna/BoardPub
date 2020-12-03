@@ -20,7 +20,7 @@ const style = StyleSheet.create({
     height: 38,
     backgroundColor: '#660007',
     borderRadius: 10,
-    margin: 20,
+    margin: 15,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -29,7 +29,13 @@ const style = StyleSheet.create({
     fontWeight: 'bold'
   },
   infoContainer: {
-    height: 150
+    height: 75,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomColor: '#F1F1F1',
+    borderBottomWidth: 1
   },
   titleContainer: {
     justifyContent: 'center',
@@ -38,17 +44,125 @@ const style = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 17,
-    marginTop: 4,
-    marginBottom: 3
+    fontSize: 20,
+    marginBottom: 4
   },
   establishment: {
     fontWeight: 'bold',
-    fontSize: 13,
+    fontSize: 15,
     color: '#7C7C7C',
     marginBottom: 8
+  },
+  star: {
+    marginRight: 25,
+    color: '#C4C4C4'
+  },
+  otherInfoContainer: {
+    height: 75,
+    justifyContent: 'space-around',
+    backgroundColor: '#fff',
+    elevation: 5,
+    marginBottom: 10
+  },
+  otherContainer: {
+    justifyContent: 'center',
+    marginLeft: 15,
+    marginRight: 15
+  },
+  dateContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5
+  },
+  schedule: {
+    color: '#9E9E9E'
+  },
+  date: {
+    color: '#9E9E9E',
+    fontWeight: 'bold',
+    marginLeft: 5
+  },
+  ubicationIcon: {
+    color: '#9E9E9E'
+  },
+  ubication: {
+    color: '#9E9E9E',
+    fontWeight: 'bold',
+    marginLeft: 5
+  },
+  descriptionContainer: {
+    height: 80,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+    marginBottom: 10
+  },
+  infoPromo: {
+    fontWeight: 'bold',
+    fontSize: 13,
+    marginBottom: 5
+  },
+  description: {
+    color: '#9E9E9E',
+    fontWeight: 'bold'
+  },
+  valorationsContainer: {
+    height: 100,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    borderBottomColor: '#F1F1F1',
+    borderBottomWidth: 1
+  },
+  infoValoration: {
+    marginLeft: 15,
+    fontWeight: 'bold',
+    fontSize: 13,
+    marginBottom: 5
+  },
+  numbersContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  valContainer: {
+    flex: 1.1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  numbersValoration: {
+    fontWeight: 'bold',
+    color: '#000',
+    fontSize: 15
+  },
+  textValoration: {
+    flex: 2,
+    color: '#9E9E9E',
+    fontWeight: 'bold'
+  },
+  opinionContainer: {
+    height: 85,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5
+  },
+  opinionTextContainer: {
+    flex: 1.25,
+    marginLeft: 15
+  },
+  opinionStarContainer: {
+    flex: 1.5,
+    flexDirection: 'row'
+  },
+  opinionText: {
+    color: '#9E9E9E',
+    fontWeight: 'bold'
+  },
+  opinionStar: {
+    color: '#C4C4C4'
   }
-
 })
 
 export default style

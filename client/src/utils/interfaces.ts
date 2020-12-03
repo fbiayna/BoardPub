@@ -7,8 +7,8 @@ export interface Action {
 }
 
 export interface Reducer {
-    promotions: Promotion[],
-    promotion: Promotion,
+    promotions?: Promotion[],
+    promotion?: Promotion,
     dispatch: Function,
   }
 
@@ -17,6 +17,7 @@ export interface Promotion {
     date: string,
     description: string,
     establishment: string,
+    ubication: string,
     price: string
     type: string
   }

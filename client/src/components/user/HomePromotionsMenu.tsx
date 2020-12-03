@@ -23,11 +23,11 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
   }
 
   return (
-    <View style={style.container}>
+    <View testID={'list-promotions'} style={style.container}>
       <View style={style.headerTop}>
         <View style={style.ubication}>
           <View style={style.town}>
-            <Icon name="near-me" style={style.nearIcon} />
+            <Icon name="near-me" style={style.nearIcon}/>
             <Text style={style.ubicationText}>Badalona</Text>
           </View>
           <Text style={style.nearYouText}>A 10 km de ti</Text>
