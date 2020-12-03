@@ -17,6 +17,7 @@ export interface Promotion {
     date: string,
     description: string,
     establishment: string,
+    ubication: string,
     price: string
     type: string
   }

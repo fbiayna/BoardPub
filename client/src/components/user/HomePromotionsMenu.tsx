@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import style from '../styles/HomePromotionsMenu'
 import { Reducer, Promotion } from '../../utils/interfaces'
 import { View, Text, ImageBackground, FlatList } from 'react-native'
-import { Icon } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import { meal } from '../../utils/images'
 import { connect } from 'react-redux'
 import { requestPromotions } from '../../actions/actionsFunctions'
@@ -27,7 +27,7 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
       <View style={style.headerTop}>
         <View style={style.ubication}>
           <View style={style.town}>
-            <Icon name="near-me" type="materialIcons" style={style.nearIcon}/>
+            <Icon name="near-me" style={style.nearIcon}/>
             <Text style={style.ubicationText}>Badalona</Text>
           </View>
           <Text style={style.nearYouText}>A 10 km de ti</Text>
@@ -35,10 +35,10 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
       </View>
       <View style={style.menuContainer}>
         <View style={style.menu}>
-          <Icon name="restaurant" type="materialIcons" style={typeState === 'menu' ? style.active : style.noActive} onPress={() => handleOnPress('menu')} />
-          <Icon name="local-bar" type="materialIcons" style={typeState === 'drink' ? style.active : style.noActive} onPress={() => handleOnPress('drink')} />
-          <Icon name="local-offer" type="materialIcons" style={typeState === 'pack' ? style.active : style.noActive} onPress={() => handleOnPress('pack')} />
-          <Icon name="local-activity" type="materialIcons" style={typeState === 'other' ? style.active : style.noActive} onPress={() => handleOnPress('other')} />
+          <Icon name="restaurant" style={typeState === 'menu' ? style.active : style.noActive} onPress={() => handleOnPress('menu')} />
+          <Icon name="local-bar" style={typeState === 'drink' ? style.active : style.noActive} onPress={() => handleOnPress('drink')} />
+          <Icon name="local-offer" style={typeState === 'pack' ? style.active : style.noActive} onPress={() => handleOnPress('pack')} />
+          <Icon name="local-activity" style={typeState === 'other' ? style.active : style.noActive} onPress={() => handleOnPress('other')} />
         </View>
       </View>
       {!promotions
@@ -69,15 +69,15 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
       </View> }
       <View style={style.headerDown}>
         <View style={style.headerOptions}>
-          <Icon name="style" type="materialIcons" style={style.iconHeaderActive} />
+          <Icon name="style" style={style.iconHeaderActive} />
           <Text style={style.headerFooterActive}>Promociones</Text>
         </View>
         <View style={style.headerOptions}>
-          <Icon name="explore" type="materialIcons" style={style.iconHeaderNotActive} />
+          <Icon name="explore" style={style.iconHeaderNotActive} />
           <Text style={style.headerFooterNotActive}>Cerca de tí</Text>
         </View>
         <View style={style.headerOptions}>
-          <Icon name="bookmark" type="materialIcons" style={style.iconHeaderNotActive} />
+          <Icon name="bookmark" style={style.iconHeaderNotActive} />
           <Text style={style.headerFooterNotActive}>Tus favoritos</Text>
         </View>
       </View>

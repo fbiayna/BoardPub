@@ -50,14 +50,14 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "jest": "^25.5.4",
-    "jest-expo": "~39.0.0",
+    "jest-expo": "^39.0.0",
     "typescript": "~3.9.5"
   },
   "jest": {
-    "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|react-native-elements|react-native-vector-icons)/)"]
+    "preset": "jest-expo",
+    "transform": {
+      "\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   },
   "private": true
 }
