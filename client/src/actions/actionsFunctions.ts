@@ -30,10 +30,10 @@ function requestPromotionError (error: any) {
   }
 }
 
-export function requestPromotions (type: string) {
+export function requestPromotions () {
   return async (dispatch: Function) => {
     try {
-      const promotions = await axios.get(`${hostUrl()}/admin/promotions`, { params: { type } })
+      const promotions = await axios.get(`${hostUrl()}/admin/promotions`)
       dispatch(requestPromotionsSuccess(promotions.data))
     } catch (error) {
       dispatch(requestPromotionsError(error))

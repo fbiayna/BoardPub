@@ -1,27 +1,22 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import style from '../styles/HomePromotionsMenu'
-import { Reducer, Promotion } from '../../utils/interfaces'
-import { View, Text, ImageBackground, FlatList } from 'react-native'
+import { Reducer } from '../../utils/interfaces'
+import { View, Text, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { meal } from '../../utils/images'
 import { connect } from 'react-redux'
 import { requestPromotions } from '../../actions/actionsFunctions'
 import Loading from '../loading/LoadingGif'
 import Navigation from './Navigation'
+import typesFood from '../../utils/functions'
+import HomePromotions from './HomePromotions'
 
 function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
-  const [typeState, setType] = useState('menu')
-
   useEffect(() => {
     if (!promotions || !promotions?.length) {
-      dispatch(requestPromotions(typeState))
+      dispatch(requestPromotions())
     }
   }, [promotions])
-
-  function handleOnPress (newTypeState: string) {
-    dispatch(requestPromotions(newTypeState)) && setType(newTypeState)
-  }
 
   return (
     <View testID={'list-promotions'} style={style.container}>
@@ -34,40 +29,14 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
           <Text style={style.nearYouText}>A 10 km de ti</Text>
         </View>
       </View>
-      <View style={style.menuContainer}>
-        <View style={style.menu}>
-          <Icon name="restaurant" style={typeState === 'menu' ? style.active : style.noActive} onPress={() => handleOnPress('menu')} />
-          <Icon name="local-bar" style={typeState === 'drink' ? style.active : style.noActive} onPress={() => handleOnPress('drink')} />
-          <Icon name="local-offer" style={typeState === 'pack' ? style.active : style.noActive} onPress={() => handleOnPress('pack')} />
-          <Icon name="local-activity" style={typeState === 'other' ? style.active : style.noActive} onPress={() => handleOnPress('other')} />
-        </View>
-      </View>
+      <ScrollView horizontal={true} pagingEnabled={true}>
       {!promotions
         ? <Loading />
-        : promotions.length && <View style={style.promotionsContainer}>
-        <FlatList data={promotions} keyExtractor={(item: Promotion) => item.name}
-        renderItem={({ item }) => (<View key={item.name} style={style.promotionContainer}>
-          <View style={style.promotion}>
-            <View style={style.imageContainer}>
-              <ImageBackground source={meal()} style={style.promotionImage} imageStyle={{ borderRadius: 10 }}>
-                <View style={style.priceContainer}>
-                  <Text style={style.price}>{item.price}</Text>
-                </View>
-              </ImageBackground>
-            </View>
-            <View style={style.infoContainer}>
-              <View style={style.titleContainer}>
-                <Text style={style.title}>{item.name}</Text>
-                <Text style={style.establishment}>{item.establishment}</Text>
-              </View>
-              <View style={style.otherInfoContainer}>
-                <Text style={style.otherInfo}>{item.date}</Text>
-                <Text style={style.otherInfo}>4km</Text>
-              </View>
-            </View>
-          </View>
-        </View>)} />
-      </View> }
+        : promotions.length && typesFood().map((typePromotion:string) =>
+          <HomePromotions key={typePromotion} typePromotion={typePromotion}
+          promotions={promotions.filter((promotion) => promotion.type === typePromotion)} />
+        )}
+      </ScrollView>
       <Navigation/>
     </View>
   )

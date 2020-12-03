@@ -6,9 +6,13 @@ export interface Action {
   error?: any
 }
 
+export interface PromotionsMenu {
+  promotions: Promotion[],
+  typePromotion:string
+}
+
 export interface Reducer {
     promotions?: Promotion[],
-    promotion?: Promotion,
     dispatch: Function,
   }
 

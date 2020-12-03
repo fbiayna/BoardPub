@@ -11,10 +11,9 @@ jest.mock('axios')
 
 describe('actionFunctions', () => {
   describe('requestPromotions - promise resolve', () => {
-    const promoType = 'menu'
     beforeEach(async () => {
       axios.get.mockImplementationOnce(() => Promise.resolve({ data: ['Skylab mola!'] }))
-      await store.dispatch(requestPromotions(promoType))
+      await store.dispatch(requestPromotions())
     })
 
     test('should call axios', () => {
@@ -27,9 +26,8 @@ describe('actionFunctions', () => {
 
   describe('requestPromotions - promise rejected', () => {
     beforeEach(async () => {
-      const promoType = 'menu'
       axios.get.mockImplementationOnce(() => Promise.reject(Error))
-      await store.dispatch(requestPromotions(promoType))
+      await store.dispatch(requestPromotions())
     })
 
     test('should call axios', () => {
