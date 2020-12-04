@@ -20,7 +20,7 @@ describe('actionFunctions', () => {
       expect(axios.get).toHaveBeenCalled()
     })
     test('should call axios just once', () => {
-      expect(axios.get.mock.calls[0].length).toBe(2)
+      expect(axios.get.mock.calls[0].length).toBe(1)
     })
   })
 
@@ -34,7 +34,7 @@ describe('actionFunctions', () => {
       expect(axios.get).toHaveBeenCalled()
     })
     test('should call axios just once', () => {
-      expect(axios.get.mock.calls[0].length).toBe(2)
+      expect(axios.get.mock.calls[0].length).toBe(1)
     })
   })
   describe('requestPromotion - promise resolve', () => {
@@ -48,7 +48,7 @@ describe('actionFunctions', () => {
       expect(axios.get).toHaveBeenCalled()
     })
     test('should call axios just once', () => {
-      expect(axios.get.mock.calls[0].length).toBe(2)
+      expect(axios.get.mock.calls[0].length).toBe(1)
     })
   })
 
@@ -63,7 +63,7 @@ describe('actionFunctions', () => {
       expect(axios.get).toHaveBeenCalled()
     })
     test('should call axios just once', () => {
-      expect(axios.get.mock.calls[0].length).toBe(2)
+      expect(axios.get.mock.calls[0].length).toBe(1)
     })
   })
 })
