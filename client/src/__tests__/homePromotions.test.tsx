@@ -10,6 +10,7 @@ describe('HomePromotions', () => {
   test('renders correctly - HomePromotions', () => {
     const promotions = [
       {
+        _id: '1',
         name: 'string',
         date: 'string',
         description: 'string',

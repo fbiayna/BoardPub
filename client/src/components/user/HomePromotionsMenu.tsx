@@ -11,7 +11,7 @@ import Navigation from './Navigation'
 import typesFood from '../../utils/functions'
 import HomePromotions from './HomePromotions'
 
-function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
+function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
   useEffect(() => {
     if (!promotions || !promotions?.length) {
       dispatch(requestPromotions())
@@ -34,7 +34,7 @@ function HomePromotionsMenu ({ promotions, dispatch }: Reducer) {
         ? <Loading />
         : promotions.length && typesFood().map((typePromotion:string) =>
           <HomePromotions key={typePromotion} typePromotion={typePromotion}
-          promotions={promotions.filter((promotion) => promotion.type === typePromotion)} />
+          promotions={promotions.filter((promotion) => promotion.type === typePromotion)} navigation={navigation} />
         )}
       </ScrollView>
       <Navigation/>

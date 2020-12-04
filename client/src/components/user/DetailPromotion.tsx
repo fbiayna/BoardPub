@@ -1,24 +1,25 @@
 /* eslint-disable no-use-before-define */
-import React from 'react'
-import { Reducer } from '../../utils/interfaces'
+import React, { useCallback } from 'react'
+import { DetailReducer } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView, SafeAreaView } from 'react-native'
 import { connect } from 'react-redux'
+import { useRoute, useFocusEffect } from '@react-navigation/native'
 import { meal } from '../../utils/images'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/actionsFunctions'
 import style from '../styles/DetailPromotion'
 
-function DetailPromotion ({ promotion, dispatch }: Reducer) {
-  const promotionId = '5fc76396b20116bdfc9c80df'
+function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
+  const route = useRoute()
+  const { id }:any = route.params
 
-  if (!promotion) {
-    dispatch(requestPromotion(promotionId))
-  }
+  useFocusEffect(
+    useCallback(() => { dispatch(requestPromotion(id)) }, [id]))
 
   return (
     <SafeAreaView testID={'detail'} style={style.container}>
-      {!promotion
+      {!promotion || promotion._id !== id
         ? <Loading />
         : <ScrollView>
             <View style={style.imageContainer}>
@@ -81,6 +82,7 @@ function DetailPromotion ({ promotion, dispatch }: Reducer) {
 }
 
 function mapStateToProps ({ boardPubReducer }: any) {
+  debugger
   return {
     promotion: boardPubReducer.promotion
   }
