@@ -13,7 +13,7 @@ export default function HomePromotions ({ typePromotion, promotions, navigation 
       <View testID={'homePromotions'} style={listStyle.listContent} >
       <ListMenu typePromotion={typePromotion}/>
     <FlatList data={promotions} keyExtractor={(item: Promotion) => item.name}
-    renderItem={({ item }) => (<TouchableOpacity key={item.name} style={style.promotionContainer} activeOpacity={0.9}
+    renderItem={({ item }) => (<TouchableOpacity testID={'promotion'} key={item.name} style={style.promotionContainer} activeOpacity={0.9}
      onPress={() => navigation.navigate('detail', { id: item._id })}>
         <View style={style.promotion}>
             <View style={style.imageContainer}>

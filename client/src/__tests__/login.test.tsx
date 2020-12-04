@@ -1,18 +1,12 @@
 /* eslint-disable no-use-before-define */
-import { Provider } from 'react-redux'
-import configureStore from '../store/configureStore'
 import React from 'react'
-import renderer from 'react-test-renderer'
 import Login from '../components/login/Login'
+import { render } from '@testing-library/react-native'
 
 describe('Login Component', () => {
   test('should be defined', () => {
-    const store = configureStore({})
-    store.dispatch = jest.fn()
+    const { getByTestId } = render(<Login />)
 
-    const login = renderer.create(<Provider store={store} >
-      <Login /></Provider>)
-
-    expect(login).toMatchSnapshot()
+    expect(getByTestId('login')).toBeDefined()
   })
 })

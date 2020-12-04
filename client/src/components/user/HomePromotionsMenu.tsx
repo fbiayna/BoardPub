@@ -9,7 +9,7 @@ import { requestPromotions } from '../../actions/actionsFunctions'
 import Loading from '../loading/LoadingGif'
 import Navigation from './Navigation'
 import typesFood from '../../utils/functions'
-import HomePromotions from './HomePromotions'
+import HomePromotions from './HomePromotionsList'
 
 function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
   useEffect(() => {

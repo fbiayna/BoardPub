@@ -6,15 +6,13 @@ import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 import DetailPromotion from '../components/user/DetailPromotion'
 import { render } from '@testing-library/react-native'
-import { Promotion } from '../utils/interfaces'
 
 jest.mock('../actions/actionsFunctions')
+jest.mock('@react-navigation/native')
 
 const buildStore = configureStore([thunk])
 
 describe('DetailPromotion', () => {
-  let promotion: Promotion
-
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
     store.dispatch = jest.fn()
@@ -27,14 +25,14 @@ describe('DetailPromotion', () => {
   }
 
   test('renders correctly - promotion===null', () => {
-    const initialState = { boardPubReducer: { promotion } }
+    const initialState = { boardPubReducer: { id: '1', promotion: null } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailPromotion />, { wrapper })
 
     expect(getByTestId('detail')).toBeDefined()
   })
   test('renders correctly - promotion==={}', () => {
-    const initialState = { boardPubReducer: { promotion: {} } }
+    const initialState = { boardPubReducer: { id: '1', promotion: {} } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailPromotion />, { wrapper })
 
