@@ -10,7 +10,7 @@ const { width } = Dimensions.get('window')
 
 export default function HomePromotions ({ typePromotion, promotions }: PromotionsMenu) {
   return (
-      <View style={listStyle.listContent} >
+      <View testID={'homePromotions'} style={listStyle.listContent} >
       <ListMenu typePromotion={typePromotion}/>
     <FlatList data={promotions} keyExtractor={(item: Promotion) => item.name}
     renderItem={({ item }) => (<View key={item.name} style={style.promotionContainer}>

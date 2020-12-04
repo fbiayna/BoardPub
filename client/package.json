@@ -14,6 +14,7 @@
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
     "@testing-library/dom": "^7.28.1",
+    "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-native": "^7.1.0",
     "@types/jest": "^26.0.15",
     "@types/react-native-vector-icons": "^6.4.6",
@@ -63,6 +64,9 @@
   },
   "jest": {
     "preset": "jest-expo",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "transform": {
       "\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
     }
