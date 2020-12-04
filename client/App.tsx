@@ -14,7 +14,7 @@ export default function App () {
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator initialRouteName="home" >
         <Stack.Screen name="home" component={HomePromotionsMenu}/>
         <Stack.Screen name="detail" component={DetailPromotion}/>
       </Stack.Navigator>

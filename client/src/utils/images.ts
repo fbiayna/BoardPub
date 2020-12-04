@@ -5,7 +5,7 @@ export function meal ():any {
 }
 
 export function loading ():any {
-  return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457af3dca9f5428a9f179/210x374/aba40d5ffeb52b3299e1abb01132a636/BoardPub_-_Loading.gif' })
+  return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457af3dca9f5428a9f179/210x374/af6f2fa5861288b210d552ed3448ebd2/Loading_-_0.5.gif' })
 }
 
 export function loginBackground ():any {
