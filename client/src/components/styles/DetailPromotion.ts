@@ -7,7 +7,7 @@ const style = StyleSheet.create({
     height: '100%'
   },
   imageContainer: {
-    height: 200
+    height: 275
   },
   promotionImage: {
     width: '100%',

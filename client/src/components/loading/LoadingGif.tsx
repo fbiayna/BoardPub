@@ -6,7 +6,7 @@ import { loading } from '../../utils/images'
 
 export default function Loading ():any {
   return (
-    <View style={style.loadingImageContainer}>
+    <View style={style.loadingImageContainer} testID="loading">
       <Image source={loading()} style={style.loadingImage}/>
     </View>
   )

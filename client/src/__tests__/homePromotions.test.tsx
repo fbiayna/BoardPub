@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/display-name */
 import React from 'react'
-import HomePromotions from '../components/user/HomePromotions'
+import HomePromotionsList from '../components/user/HomePromotionsList'
 import { render } from '@testing-library/react-native'
 
 jest.mock('../actions/actionsFunctions')
 
-describe('HomePromotions', () => {
-  test('renders correctly - HomePromotions', () => {
+describe('HomePromotionsList', () => {
+  test('renders correctly - HomePromotionsList', () => {
     const promotions = [
       {
         _id: '1',
@@ -19,7 +19,7 @@ describe('HomePromotions', () => {
         price: 'string',
         type: 'string'
       }]
-    const { getByTestId } = render(<HomePromotions typePromotion={'menu'} promotions={promotions} />)
+    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} promotions={promotions} />)
 
     expect(getByTestId('homePromotions')).toBeDefined()
   })
