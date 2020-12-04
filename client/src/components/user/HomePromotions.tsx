@@ -2,18 +2,19 @@
 import React from 'react'
 import style from '../styles/HomePromotionsMenu'
 import { Promotion, PromotionsMenu } from '../../utils/interfaces'
-import { View, Text, ImageBackground, FlatList, Dimensions, StyleSheet } from 'react-native'
+import { View, Text, ImageBackground, FlatList, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import { meal } from '../../utils/images'
 import ListMenu from './ListMenu'
 
 const { width } = Dimensions.get('window')
 
-export default function HomePromotions ({ typePromotion, promotions }: PromotionsMenu) {
+export default function HomePromotions ({ typePromotion, promotions, navigation }: PromotionsMenu) {
   return (
       <View testID={'homePromotions'} style={listStyle.listContent} >
       <ListMenu typePromotion={typePromotion}/>
     <FlatList data={promotions} keyExtractor={(item: Promotion) => item.name}
-    renderItem={({ item }) => (<View key={item.name} style={style.promotionContainer}>
+    renderItem={({ item }) => (<TouchableOpacity key={item.name} style={style.promotionContainer} activeOpacity={0.9}
+     onPress={() => navigation.navigate('detail', { id: item._id })}>
         <View style={style.promotion}>
             <View style={style.imageContainer}>
                 <ImageBackground source={meal()} style={style.promotionImage} imageStyle={{ borderRadius: 10 }}>
@@ -33,7 +34,7 @@ export default function HomePromotions ({ typePromotion, promotions }: Promotion
                 </View>
             </View>
         </View>
-    </View>)} />
+    </TouchableOpacity>)} />
     </View>
   )
 }

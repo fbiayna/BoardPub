@@ -8,15 +8,23 @@ export interface Action {
 
 export interface PromotionsMenu {
   promotions: Promotion[],
-  typePromotion:string
+  typePromotion: string,
+  navigation?: any
 }
 
 export interface Reducer {
     promotions?: Promotion[],
+    navigation?: any,
+    dispatch: Function,
+  }
+
+export interface DetailReducer {
+    promotion?: Promotion,
     dispatch: Function,
   }
 
 export interface Promotion {
+    _id: any,
     name: string,
     date: string,
     description: string,
