@@ -18,6 +18,15 @@ export interface Reducer {
     dispatch: Function,
   }
 
+export interface FavoritesProps {
+    navigation: any,
+  }
+
+export interface NavigationProps {
+    site: string,
+    navigation: any,
+  }
+
 export interface DetailReducer {
     promotion?: Promotion,
     dispatch: Function,

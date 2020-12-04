@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-navigationFooter: {
+  navigationFooter: {
     backgroundColor: '#fff',
     left: 0,
     right: 0,
@@ -12,26 +12,26 @@ navigationFooter: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around'
-    },
-    navigationOptions: {
+  },
+  navigationOptions: {
     alignItems: 'center'
-    },
-    iconNavigationActive: {
+  },
+  iconNavigationActive: {
     fontSize: 25,
     color: '#000'
-    },
-    iconnavigationNotActive: {
+  },
+  iconnavigationNotActive: {
     fontSize: 25,
     color: '#7C7C7C'
-    },
-    navigationFooterActive: {
+  },
+  navigationFooterActive: {
     fontWeight: 'bold',
     color: '#000'
-    },
-    navigationFooterNotActive: {
+  },
+  navigationFooterNotActive: {
     fontWeight: 'bold',
     color: '#7C7C7C'
-    }
+  }
 })
 
 export default style

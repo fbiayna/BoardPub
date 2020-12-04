@@ -37,7 +37,7 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
           promotions={promotions.filter((promotion) => promotion.type === typePromotion)} navigation={navigation} />
           )}
         </ScrollView>}
-      <Navigation/>
+      <Navigation site={'promotions'} navigation={navigation}/>
     </View>
   )
 }

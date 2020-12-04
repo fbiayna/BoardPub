@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useCallback } from 'react'
 import { DetailReducer } from '../../utils/interfaces'
-import { View, Text, ImageBackground, ScrollView, SafeAreaView } from 'react-native'
+import { View, Text, ImageBackground, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { useRoute, useFocusEffect } from '@react-navigation/native'
 import { meal } from '../../utils/images'
@@ -9,6 +9,7 @@ import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/actionsFunctions'
 import style from '../styles/DetailPromotion'
+import GoBack from './GoBack'
 
 function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
   const route = useRoute()
@@ -18,10 +19,12 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
     useCallback(() => { dispatch(requestPromotion(id)) }, [id]))
 
   return (
-    <SafeAreaView testID={'detail'} style={style.container}>
+    <View testID={'detail'} style={style.container}>
       {!promotion || promotion._id !== id
         ? <Loading />
-        : <ScrollView>
+        : <>
+        <GoBack/>
+        <ScrollView>
             <View style={style.imageContainer}>
               <ImageBackground source={meal()} style={style.promotionImage} >
                 <View style={style.priceContainer}>
@@ -76,8 +79,9 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
               </View>
             </View>
           </ScrollView>
+          </>
       }
-    </SafeAreaView>
+    </View>
   )
 }
 
