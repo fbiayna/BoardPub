@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import { ImageBackground, Text, View, Image } from 'react-native'
+import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../styles/Login'
 import { logoBoardPub, loginBackground } from '../../utils/images'
 
-export default function Login ():any {
+export default function Login ({ navigation }:any) {
   return (
     <View style={styles.container} testID="login">
       <ImageBackground source={loginBackground()} style={styles.backimage}>
@@ -18,11 +18,11 @@ export default function Login ():any {
           <View style={styles.textAction}>
             <Text style={styles.text}>¿Qué estás buscando?</Text>
           </View>
-          <View style={styles.user}>
+          <TouchableOpacity style={styles.user} activeOpacity={0.8} onPress={() => navigation.navigate('loginUser')}>
             <View style={styles.buttonUser}>
               <Text style={styles.textUser}>¡HE VENIDO A COMER/BEBER!</Text>
             </View>
-          </View>
+          </TouchableOpacity>
           <View style={styles.admin}>
             <View style={styles.buttonAdmin}>
               <Text style={styles.textAdmin}>¡QUIERO PROMOCIONAR MI LOCAL!</Text>

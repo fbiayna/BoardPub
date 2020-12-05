@@ -4,9 +4,8 @@ import { Provider } from 'react-redux'
 import configureStore from './src/store/configureStore'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import HomePromotionsMenu from './src/components/user/HomePromotionsMenu'
-import DetailPromotion from './src/components/user/DetailPromotion'
-import Favorites from './src/components/user/Favorites'
+import BoardPubNavigation from './src/components/user/navigation/BoardPubNavigation'
+import LoginNavigator from './src/components/user/navigation/LoginNavigator'
 
 const store = configureStore({})
 const Stack = createStackNavigator()
@@ -15,10 +14,9 @@ export default function App () {
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home" headerMode={'none'} >
-        <Stack.Screen name="home" component={HomePromotionsMenu}/>
-        <Stack.Screen name="detail" component={DetailPromotion}/>
-        <Stack.Screen name="favorites" component={Favorites}/>
+      <Stack.Navigator headerMode={'none'}>
+        <Stack.Screen name={'login'} component={LoginNavigator}/>
+        <Stack.Screen name={'application'} component={BoardPubNavigation}/>
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>

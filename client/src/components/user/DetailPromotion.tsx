@@ -9,7 +9,7 @@ import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/actionsFunctions'
 import style from '../styles/DetailPromotion'
-import GoBack from './GoBack'
+import GoBack from './navigation/GoBack'
 
 function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
   const route = useRoute()

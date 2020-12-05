@@ -30,16 +30,16 @@ const style = StyleSheet.create({
     height: 100
   },
   textSlogan: {
-    flex: 2,
+    flex: 2.5,
     justifyContent: 'center',
     alignItems: 'center'
   },
   textAction: {
-    flex: 1,
+    flex: 0.75,
     alignItems: 'center'
   },
   text: {
-    width: 250,
+    width: 280,
     fontWeight: 'bold',
     alignItems: 'center',
     fontSize: 20,
@@ -47,47 +47,27 @@ const style = StyleSheet.create({
     textAlign: 'center',
     color: '#fff'
   },
-  textSearch: {
-    flex: 1,
-    fontWeight: 'bold',
-    fontSize: 25,
-    lineHeight: 30,
-    textAlign: 'center',
-    color: '#fff'
-  },
   user: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
   buttonUser: {
     width: 260,
     height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: '#92000A',
     justifyContent: 'center',
     borderRadius: 50,
     elevation: 4
   },
+  googleIcon: {
+    width: 22,
+    height: 22,
+    marginRight: 10
+  },
   textUser: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    lineHeight: 22,
-    textAlign: 'center',
-    color: '#fff'
-  },
-  admin: {
-    flex: 2,
-    alignItems: 'center'
-  },
-  buttonAdmin: {
-    width: 260,
-    height: 60,
-    backgroundColor: '#1565C0',
-    justifyContent: 'center',
-    borderRadius: 50,
-    elevation: 4
-  },
-  textAdmin: {
     fontSize: 14,
     fontWeight: 'bold',
     lineHeight: 22,
