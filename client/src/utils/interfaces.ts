@@ -19,12 +19,12 @@ export interface Reducer {
   }
 
 export interface FavoritesProps {
-    navigation: any,
+    navigation?: any,
   }
 
 export interface NavigationProps {
     site: string,
-    navigation: any,
+    navigation?: any,
   }
 
 export interface DetailReducer {

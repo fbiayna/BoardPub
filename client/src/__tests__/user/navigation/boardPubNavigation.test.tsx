@@ -4,15 +4,16 @@ import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import HomePromotionsMenu from '../components/user/HomePromotionsMenu'
+import BoardPubNavigation from '../../../components/user/navigation/BoardPubNavigation'
 import { render } from '@testing-library/react-native'
-import { Reducer } from '../utils/interfaces'
+import { Reducer } from '../../../utils/interfaces'
 
-jest.mock('../actions/actionsFunctions')
+jest.mock('../../../actions/actionsFunctions')
+jest.mock('@react-navigation/bottom-tabs')
 
 const buildStore = configureStore([thunk])
 
-describe('HomePromotionsMenu', () => {
+describe('BoardPubNavigation', () => {
   let promotions: Reducer
 
   const wrapperFactory = (wrapperInitialState: any) => {
@@ -29,14 +30,7 @@ describe('HomePromotionsMenu', () => {
   test('renders correctly - promotions===null', () => {
     const initialState = { boardPubReducer: { promotions } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<HomePromotionsMenu />, { wrapper })
-
-    expect(getByTestId('list-promotions')).toBeDefined()
-  })
-  test('renders correctly - promotions==={}', () => {
-    const initialState = { boardPubReducer: { promotions: [{}] } }
-    const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<HomePromotionsMenu />, { wrapper })
+    const { getByTestId } = render(<BoardPubNavigation />, { wrapper })
 
     expect(getByTestId('list-promotions')).toBeDefined()
   })

@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import Loading from '../components/loading/LoadingGif'
+import Loading from '../../../components/loading/LoadingGif'
 import { render } from '@testing-library/react-native'
 
 describe('Loading Component', () => {

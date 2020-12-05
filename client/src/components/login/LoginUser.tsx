@@ -6,7 +6,7 @@ import { logoBoardPub, loginBackground, google } from '../../utils/images'
 
 export default function LoginUser ():any {
   return (
-    <View style={styles.container} testID="login">
+    <View style={styles.container} testID="loginUser">
       <ImageBackground source={loginBackground()} style={styles.backimage}>
         <View style={styles.shadow}>
           <View style={styles.logo}>
