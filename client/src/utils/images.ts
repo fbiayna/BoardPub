@@ -15,3 +15,7 @@ export function loginBackground ():any {
 export function logoBoardPub ():any {
   return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457ae0da99b76dcdba46b/5ec457af3dca9f5428a9f179/263e7f5a2d4e919205f4745afbf1a032/logo-boardpub.png' })
 }
+
+export function google ():any {
+  return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457ae0da99b76dcdba46b/5ec457af3dca9f5428a9f179/c7168acd463a6062175a55ba9faa3074/icons8-google-48.png' })
+}
