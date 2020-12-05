@@ -1,12 +1,12 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import Login from '../components/login/Login'
+import LoginUser from '../../components/login/LoginUser'
 import { render } from '@testing-library/react-native'
 
 describe('Login Component', () => {
   test('should be defined', () => {
-    const { getByTestId } = render(<Login />)
+    const { getByTestId } = render(<LoginUser />)
 
-    expect(getByTestId('login')).toBeDefined()
+    expect(getByTestId('loginUser')).toBeDefined()
   })
 })

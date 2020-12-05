@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/display-name */
 import React from 'react'
-import HomePromotionsList from '../components/user/HomePromotionsList'
+import HomePromotionsList from '../../../components/user/HomePromotionsList'
 import { render } from '@testing-library/react-native'
 
-jest.mock('../actions/actionsFunctions')
+jest.mock('../../../actions/actionsFunctions')
 
 describe('HomePromotionsList', () => {
   test('renders correctly - HomePromotionsList', () => {

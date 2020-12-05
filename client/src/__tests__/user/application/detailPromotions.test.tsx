@@ -4,10 +4,10 @@ import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import DetailPromotion from '../components/user/DetailPromotion'
+import DetailPromotion from '../../../components/user/DetailPromotion'
 import { render } from '@testing-library/react-native'
 
-jest.mock('../actions/actionsFunctions')
+jest.mock('../../../actions/actionsFunctions')
 jest.mock('@react-navigation/native')
 
 const buildStore = configureStore([thunk])

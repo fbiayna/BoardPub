@@ -8,7 +8,7 @@ import { CommonActions, useNavigation } from '@react-navigation/native'
 export default function GoBack ():any {
   const nav = useNavigation()
   return (
-        <View style={style.headerDetail}>
+        <View testID={'goBack'} style={style.headerDetail}>
           <TouchableOpacity onPress={() => nav.dispatch(CommonActions.goBack())} activeOpacity={0.5}>
            <Icon name="arrow-back" size={35} style={style.goBack}/>
           </TouchableOpacity>
