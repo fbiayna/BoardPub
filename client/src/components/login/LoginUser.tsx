@@ -1,10 +1,28 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import { ImageBackground, Text, View, Image } from 'react-native'
+import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../styles/LoginUser'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
+import * as Google from 'expo-google-app-auth'
 
-export default function LoginUser ():any {
+export default function LoginUser () {
+  async function signInWithGoogleAsync () {
+    try {
+      const result = await Google.logInAsync({
+        androidClientId: '38128341226-6qhn5lvgpdc984n03acqm8dgmj01dogv.apps.googleusercontent.com',
+        scopes: ['profile', 'email']
+      })
+
+      if (result.type === 'success') {
+        return result.accessToken
+      } else {
+        return { cancelled: true }
+      }
+    } catch (e) {
+      return { error: true }
+    }
+  }
+
   return (
     <View style={styles.container} testID="loginUser">
       <ImageBackground source={loginBackground()} style={styles.backimage}>
@@ -19,10 +37,10 @@ export default function LoginUser ():any {
             <Text style={styles.text}>¡Descúbrelas con BoardPub!</Text>
           </View>
           <View style={styles.user}>
-            <View style={styles.buttonUser}>
+            <TouchableOpacity style={styles.buttonUser} onPress={() => signInWithGoogleAsync()} activeOpacity={0.8}>
                 <Image source={google()} style={styles.googleIcon}/>
                 <Text style={styles.textUser}>CONTINUAR CON GOOGLE</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>

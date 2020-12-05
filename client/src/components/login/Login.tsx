@@ -18,7 +18,7 @@ export default function Login ({ navigation }:any) {
           <View style={styles.textAction}>
             <Text style={styles.text}>¿Qué estás buscando?</Text>
           </View>
-          <TouchableOpacity style={styles.user} activeOpacity={0.8} onPress={() => navigation.navigate('loginUser')}>
+          <TouchableOpacity style={styles.user} activeOpacity={0.8} onPress={() => navigation.navigate('loginLoading')}>
             <View style={styles.buttonUser}>
               <Text style={styles.textUser}>¡HE VENIDO A COMER/BEBER!</Text>
             </View>

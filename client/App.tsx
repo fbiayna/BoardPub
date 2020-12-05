@@ -6,9 +6,13 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import BoardPubNavigation from './src/components/user/navigation/BoardPubNavigation'
 import LoginNavigator from './src/components/user/navigation/LoginNavigator'
+import firebase from 'firebase'
+import { firebaseConfig } from './src/firebase/config'
 
 const store = configureStore({})
 const Stack = createStackNavigator()
+
+firebase.initializeApp(firebaseConfig)
 
 export default function App () {
   return (
