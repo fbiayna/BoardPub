@@ -1,10 +1,10 @@
-function CustomerController(Users) {
+function UserController(Users) {
   function getMethod(req, res) {
     Users.find({})
       .populate({ path: 'favorites' })
-      .exec((errorFindCustomer, customer) => (errorFindCustomer
-        ? res.send(errorFindCustomer)
-        : res.json(customer)));
+      .exec((errorFindUser, User) => (errorFindUser
+        ? res.send(errorFindUser)
+        : res.json(User)));
   }
 
   function postMethod(req, res) {
@@ -37,4 +37,4 @@ function CustomerController(Users) {
   };
 }
 
-module.exports = CustomerController;
+module.exports = UserController;
