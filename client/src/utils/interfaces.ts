@@ -20,6 +20,7 @@ export interface Reducer {
 
 export interface FavoritesProps {
     navigation?: any,
+    favorites: Favorite[]
   }
 
 export interface NavigationProps {
@@ -31,6 +32,12 @@ export interface DetailReducer {
     promotion?: Promotion,
     dispatch: Function,
   }
+
+export interface Favorite {
+  _id: any,
+  name: string,
+  establishment: string,
+}
 
 export interface Promotion {
     _id: any,

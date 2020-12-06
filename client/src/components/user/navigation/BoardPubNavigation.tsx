@@ -17,20 +17,20 @@ export default function BoardPubNavigation () {
       tabBarIcon: ({ color }:any) => {
         let iconName = null
         route.name === 'Ofertas' ? iconName = 'style'
-          : route.name === 'Buscar' ? iconName = 'explore'
+          : route.name === 'Buscador' ? iconName = 'explore'
             : route.name === 'Favoritos' ? iconName = 'bookmark'
               : iconName = 'person'
-        return <Icon name={iconName} size={28} color={color} />
+        return <Icon name={iconName} size={25} color={color} />
       }
     })}
     tabBarOptions={{
       activeTintColor: '#000',
       inactiveTintColor: '#7C7C7C',
-      style: { height: 65, paddingBottom: 5 },
+      style: { height: 60, paddingBottom: 5 },
       labelStyle: { fontWeight: 'bold', fontSize: 12 }
     }}>
       <Tab.Screen name='Ofertas' component={HomeNavigator} />
-      <Tab.Screen name='Buscar' component={MapsNavigator} />
+      <Tab.Screen name='Buscador' component={MapsNavigator} />
       <Tab.Screen name='Favoritos' component={FavoritesNavigator} />
       <Tab.Screen name='Perfil' component={UserNavigator} />
     </Tab.Navigator>
