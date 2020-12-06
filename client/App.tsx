@@ -5,7 +5,7 @@ import configureStore from './src/store/configureStore'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import BoardPubNavigation from './src/components/user/navigation/BoardPubNavigation'
-// import LoginNavigator from './src/components/user/navigation/LoginNavigator'
+import LoginNavigator from './src/components/user/navigation/LoginNavigator'
 import firebase from 'firebase'
 import { firebaseConfig } from './src/firebase/config'
 
@@ -19,7 +19,7 @@ export default function App () {
     <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator headerMode={'none'}>
-        {/* <Stack.Screen name={'login'} component={LoginNavigator}/> */}
+        <Stack.Screen name={'login'} component={LoginNavigator}/>
         <Stack.Screen name={'application'} component={BoardPubNavigation}/>
       </Stack.Navigator>
     </NavigationContainer>
