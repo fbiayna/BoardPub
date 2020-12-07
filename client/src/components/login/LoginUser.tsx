@@ -5,26 +5,30 @@ import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-nati
 import styles from '../styles/LoginUser'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
 import * as Google from 'expo-google-app-auth'
+import { connect } from 'react-redux'
 import firebase from 'firebase'
 import { useIsFocused } from '@react-navigation/native'
+import { loadUser, addAndLoadUser } from '../../actions/userFunctions'
+import { LoginReducer } from 'utils/interfaces'
 
-export default function LoginUser ({ navigation }:any) {
+function LoginUser ({ user, dispatch, navigation }:LoginReducer) {
   const isFocused = useIsFocused()
   useEffect(() => {
     checkIfLoggedIn()
   }, [isFocused])
+
   function checkIfLoggedIn () {
-    firebase.auth().onAuthStateChanged((user) => {
-      user ? navigation.navigate('application') : navigation.navigate('loginUser')
+    firebase.auth().onAuthStateChanged((firebaseUser) => {
+      firebaseUser ? navigation.navigate('application') : navigation.navigate('loginUser')
     })
   }
+
   function isUserEqual (googleUser:any, firebaseUser:any) {
     if (firebaseUser) {
       const providerData = firebaseUser.providerData
       for (let i = 0; i < providerData.length; i++) {
         if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
             providerData[i].uid === googleUser.getBasicProfile().getId()) {
-          // We don't need to reauth the Firebase connection.
           return true
         }
       }
@@ -33,29 +37,26 @@ export default function LoginUser ({ navigation }:any) {
   }
 
   function onSignIn (googleUser:any) {
-    console.log('Google Auth Response', googleUser)
-    // We need to register an Observer on Firebase Auth to make sure auth is initialized.
     const unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
       unsubscribe()
-      // Check if we are already signed-in Firebase with the correct user.
       if (!isUserEqual(googleUser, firebaseUser)) {
-        // Build Firebase credential with the Google ID token.
         const credential = firebase.auth.GoogleAuthProvider.credential(
           googleUser.idToken,
           googleUser.accessToken)
+        firebase.auth().signInWithCredential(credential).then((result) => {
+          if (result.additionalUserInfo?.isNewUser) {
+            dispatch(addAndLoadUser(result.additionalUserInfo?.profile))
+          } else {
+            const { additionalUserInfo: { profile: { sub } } }:any = result
+            dispatch(loadUser(sub))
+          }
+        }
 
-        // Sign in with credential from the Google user.
-        firebase.auth().signInWithCredential(credential).then(function () {
-          console.log('user signed in')
-        }).catch((error) => {
-          // Handle Errors here.
+        ).catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
-          // The email of the user's account used.
           const email = error.email
-          // The firebase.auth.AuthCredential type that was used.
           const credential = error.credential
-          // ...
         })
       } else {
         console.log('User already signed-in Firebase.')
@@ -105,3 +106,10 @@ export default function LoginUser ({ navigation }:any) {
     </View>
   )
 }
+
+function mapStateToProps ({ loginReducer }: any) {
+  return {
+    user: loginReducer.user
+  }
+}
+export default connect(mapStateToProps)(LoginUser)

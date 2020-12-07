@@ -1,7 +1,7 @@
 import axios from 'axios'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import { requestPromotions, requestPromotion } from '../actions/actionsFunctions'
+import { requestPromotions, requestPromotion } from '../actions/promotionsFunctions'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)

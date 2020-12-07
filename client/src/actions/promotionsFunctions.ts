@@ -9,7 +9,7 @@ function requestPromotionsSuccess (promotions: object) {
   }
 }
 
-function requestPromotionsError (error: any) {
+function requestPromotionsError (error: string) {
   return {
     type: actionTypes.LOAD_PROMOTIONS_ERROR,
     error
@@ -23,7 +23,7 @@ function requestPromotionSuccess (promotion: object) {
   }
 }
 
-function requestPromotionError (error: any) {
+function requestPromotionError (error: string) {
   return {
     type: actionTypes.LOAD_PROMOTION_ERROR,
     error

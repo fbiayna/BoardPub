@@ -7,7 +7,7 @@ import { useRoute, useFocusEffect } from '@react-navigation/native'
 import { meal } from '../../utils/images'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { requestPromotion } from '../../actions/actionsFunctions'
+import { requestPromotion } from '../../actions/promotionsFunctions'
 import style from '../styles/DetailPromotion'
 import GoBack from './navigation/GoBack'
 

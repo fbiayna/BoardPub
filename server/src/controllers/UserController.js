@@ -1,6 +1,7 @@
 function UserController(Users) {
   function getMethod(req, res) {
-    Users.find({})
+    const { query: { sub } } = req;
+    Users.find(sub)
       .populate({ path: 'favorites' })
       .exec((errorFindUser, User) => (errorFindUser
         ? res.send(errorFindUser)
@@ -8,10 +9,10 @@ function UserController(Users) {
   }
 
   function postMethod(req, res) {
-    const { user } = req.body;
-    Users.create(user, (errorNewUser, newUser) => (errorNewUser
+    const { newUser } = req.body;
+    Users.create(newUser, (errorNewUser, correctNewUser) => (errorNewUser
       ? res.send(errorNewUser)
-      : res.json(newUser)));
+      : res.json(correctNewUser)));
   }
 
   function putMethod(req, res) {
