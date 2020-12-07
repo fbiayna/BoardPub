@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 function UserController(Users) {
   function getMethod(req, res) {
-    const { query: { sub } } = req;
-    Users.find(sub)
+    const { query } = req;
+    console.log(query);
+    Users.findOne(query)
       .populate({ path: 'favorites' })
       .exec((errorFindUser, User) => (errorFindUser
         ? res.send(errorFindUser)

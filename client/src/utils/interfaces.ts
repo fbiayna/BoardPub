@@ -8,7 +8,7 @@ export interface Action {
 
 export interface ActionUser {
   type: string,
-  user?: object,
+  user?: User,
   userState?: Boolean,
   error?: any
 }
@@ -26,7 +26,7 @@ export interface Reducer {
   }
 
 export interface LoginReducer {
-    user?: object,
+    user?: User,
     userState: Boolean
     navigation?: any,
     dispatch: Function,
@@ -63,3 +63,16 @@ export interface Promotion {
     price: string
     type: string
   }
+
+export interface User {
+  _id: any,
+  admin: boolean,
+  name: string,
+  surname: string,
+  email: string,
+  photo: string,
+  sub: string,
+  favorites?: [],
+  establishment?: object,
+  promotions?: []
+}
