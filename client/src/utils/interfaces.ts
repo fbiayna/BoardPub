@@ -9,6 +9,7 @@ export interface Action {
 export interface ActionUser {
   type: string,
   user?: object,
+  userState?: Boolean,
   error?: any
 }
 
@@ -26,6 +27,7 @@ export interface Reducer {
 
 export interface LoginReducer {
     user?: object,
+    userState: Boolean
     navigation?: any,
     dispatch: Function,
   }

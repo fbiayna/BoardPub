@@ -16,20 +16,25 @@ function requestUserError (error: string) {
   }
 }
 
-export function loadUser (sub: any) {
+function requestNewUserState (userState: boolean) {
+  return {
+    type: actionTypes.LOAD_USER_ERROR,
+    userState
+  }
+}
+
+export function getUser (sub: string) {
   return async (dispatch: Function) => {
-    console.log('load')
     try {
-      const promotions = await axios.get(`${hostUrl()}/user`, { params: { sub } })
-      console.log(promotions.data)
-      dispatch(requestUserSuccess(promotions.data))
+      const user = await axios.get(`${hostUrl()}/user`, { params: { sub } })
+      dispatch(requestUserSuccess(user.data))
     } catch (error) {
       dispatch(requestUserError(error))
     }
   }
 }
 
-export function addAndLoadUser (user: any) {
+export function addAndGetUser (user: any) {
   return async (dispatch: Function) => {
     const newUser = {
       admin: false,
@@ -40,10 +45,17 @@ export function addAndLoadUser (user: any) {
       sub: user.sub
     }
     try {
-      const promotions = await axios.post(`${hostUrl()}/user`, { newUser })
-      dispatch(requestUserSuccess(promotions.data))
+      const user = await axios.post(`${hostUrl()}/user`, { newUser })
+      dispatch(requestUserSuccess(user.data))
     } catch (error) {
       dispatch(requestUserError(error))
     }
+  }
+}
+
+export function newUserState (state: boolean) {
+  return (dispatch: Function) => {
+    const userState = state
+    dispatch(requestNewUserState(userState))
   }
 }

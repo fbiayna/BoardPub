@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../styles/LoginUser'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
@@ -8,18 +8,22 @@ import * as Google from 'expo-google-app-auth'
 import { connect } from 'react-redux'
 import firebase from 'firebase'
 import { useIsFocused } from '@react-navigation/native'
-import { loadUser, addAndLoadUser } from '../../actions/userFunctions'
+import { getUser, addAndGetUser } from '../../actions/userFunctions'
 import { LoginReducer } from 'utils/interfaces'
 
-function LoginUser ({ user, dispatch, navigation }:LoginReducer) {
+function LoginUser ({ dispatch, navigation }:LoginReducer) {
   const isFocused = useIsFocused()
-  useEffect(() => {
+  if (isFocused) {
     checkIfLoggedIn()
-  }, [isFocused])
+  }
 
   function checkIfLoggedIn () {
-    firebase.auth().onAuthStateChanged((firebaseUser) => {
-      firebaseUser ? navigation.navigate('application') : navigation.navigate('loginUser')
+    firebase.auth().onAuthStateChanged((firebaseUser:any) => {
+      if (firebaseUser) {
+        navigation.navigate('application')
+      } else {
+        navigation.navigate('loginUser')
+      }
     })
   }
 
@@ -45,10 +49,10 @@ function LoginUser ({ user, dispatch, navigation }:LoginReducer) {
           googleUser.accessToken)
         firebase.auth().signInWithCredential(credential).then((result) => {
           if (result.additionalUserInfo?.isNewUser) {
-            dispatch(addAndLoadUser(result.additionalUserInfo?.profile))
+            dispatch(addAndGetUser(result.additionalUserInfo?.profile))
           } else {
             const { additionalUserInfo: { profile: { sub } } }:any = result
-            dispatch(loadUser(sub))
+            dispatch(getUser(sub))
           }
         }
 
@@ -109,7 +113,8 @@ function LoginUser ({ user, dispatch, navigation }:LoginReducer) {
 
 function mapStateToProps ({ loginReducer }: any) {
   return {
-    user: loginReducer.user
+    user: loginReducer.user,
+    userState: loginReducer.userState
   }
 }
 export default connect(mapStateToProps)(LoginUser)

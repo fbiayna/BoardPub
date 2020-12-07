@@ -6,6 +6,9 @@ const initialState = {}
 export default function loginReducer (state: object = initialState, action: ActionUser) {
   let answer = state
   switch (action.type) {
+    case actionTypes.USER_STATE:
+      answer = { ...state, userState: action.userState }
+      break
     case actionTypes.LOAD_USER:
       answer = { ...state, user: action.user }
       break

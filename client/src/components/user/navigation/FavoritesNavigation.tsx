@@ -5,7 +5,7 @@ import Favorites from '../Favorites'
 
 const Stack = createStackNavigator()
 
-export default function MapsNavigator () {
+export default function FavoritesNavigation () {
   return (
     <Stack.Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
         <Stack.Screen name="favorites" component={Favorites} />
