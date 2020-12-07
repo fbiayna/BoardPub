@@ -6,6 +6,13 @@ export interface Action {
   error?: any
 }
 
+export interface ActionUser {
+  type: string,
+  user?: object,
+  userState?: Boolean,
+  error?: any
+}
+
 export interface PromotionsMenu {
   promotions: Promotion[],
   typePromotion: string,
@@ -14,6 +21,13 @@ export interface PromotionsMenu {
 
 export interface Reducer {
     promotions?: Promotion[],
+    navigation?: any,
+    dispatch: Function,
+  }
+
+export interface LoginReducer {
+    user?: object,
+    userState: Boolean
     navigation?: any,
     dispatch: Function,
   }

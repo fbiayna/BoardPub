@@ -4,7 +4,7 @@ import style from '../styles/Favorites'
 import { Reducer } from '../../utils/interfaces'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { requestPromotions } from '../../actions/actionsFunctions'
+import { requestPromotions } from '../../actions/promotionsFunctions'
 import Loading from '../loading/LoadingGif'
 import FavoritesList from './FavoritesList'
 

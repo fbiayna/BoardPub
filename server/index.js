@@ -8,8 +8,8 @@ const cors = require('cors');
 const Users = require('./src/models/usersModel');
 const Establishments = require('./src/models/establishmentsModel');
 const Promotions = require('./src/models/promotionsModel');
-const adminRouter = require('./src/routes/adminRouter')(Users, Establishments, Promotions);
-const customerRouter = require('./src/routes/customerRouter')(Users);
+const promotionsRouter = require('./src/routes/promotionsRouter')(Users, Establishments, Promotions);
+const userRouter = require('./src/routes/userRouter')(Users);
 
 const app = express();
 app.use(cors());
@@ -22,8 +22,8 @@ app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/customer', customerRouter);
-app.use('/admin', adminRouter);
+app.use('/user', userRouter);
+app.use('/promotions', promotionsRouter);
 
 app.listen(port, () => (
   debug(`Server is running on port ${chalk.blue(port)}`)));

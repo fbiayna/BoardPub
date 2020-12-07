@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import BoardPubNavigation from '../../../components/user/navigation/BoardPubNavigation'
+import BoardPubNavigation from '../../../components/user/navigation/ApplicationNavigation'
 import { render } from '@testing-library/react-native'
 import { Reducer } from '../../../utils/interfaces'
 

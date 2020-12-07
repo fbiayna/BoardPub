@@ -1,17 +1,18 @@
-function CustomerController(Users) {
+function UserController(Users) {
   function getMethod(req, res) {
-    Users.find({})
+    const { query: { sub } } = req;
+    Users.find(sub)
       .populate({ path: 'favorites' })
-      .exec((errorFindCustomer, customer) => (errorFindCustomer
-        ? res.send(errorFindCustomer)
-        : res.json(customer)));
+      .exec((errorFindUser, User) => (errorFindUser
+        ? res.send(errorFindUser)
+        : res.json(User)));
   }
 
   function postMethod(req, res) {
-    const { user } = req.body;
-    Users.create(user, (errorNewUser, newUser) => (errorNewUser
+    const { newUser } = req.body;
+    Users.create(newUser, (errorNewUser, correctNewUser) => (errorNewUser
       ? res.send(errorNewUser)
-      : res.json(newUser)));
+      : res.json(correctNewUser)));
   }
 
   function putMethod(req, res) {
@@ -37,4 +38,4 @@ function CustomerController(Users) {
   };
 }
 
-module.exports = CustomerController;
+module.exports = UserController;
