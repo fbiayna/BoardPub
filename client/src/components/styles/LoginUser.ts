@@ -29,6 +29,11 @@ const style = StyleSheet.create({
     width: 320,
     height: 100
   },
+  textLoadingContainer: {
+    flex: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   textSlogan: {
     flex: 2.5,
     justifyContent: 'center',
@@ -40,6 +45,15 @@ const style = StyleSheet.create({
   },
   text: {
     width: 280,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    fontSize: 20,
+    lineHeight: 30,
+    textAlign: 'center',
+    color: '#fff'
+  },
+  textLoading: {
+    width: 250,
     fontWeight: 'bold',
     alignItems: 'center',
     fontSize: 20,

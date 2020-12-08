@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-import React from 'react'
+import React, { useState } from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../styles/LoginUser'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
@@ -16,6 +16,8 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
   if (isFocused) {
     checkIfLoggedIn()
   }
+
+  const [loginState, newLoginState] = useState(true)
 
   function checkIfLoggedIn () {
     firebase.auth().onAuthStateChanged((firebaseUser:any) => {
@@ -57,6 +59,7 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
         }
 
         ).catch((error) => {
+          newLoginState(true)
           const errorCode = error.code
           const errorMessage = error.message
           const email = error.email
@@ -79,6 +82,7 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
         onSignIn(result)
         return result.accessToken
       } else {
+        newLoginState(true)
         return { cancelled: true }
       }
     } catch (e) {
@@ -90,21 +94,32 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
     <View style={styles.container} testID="loginUser">
       <ImageBackground source={loginBackground()} style={styles.backimage}>
         <View style={styles.shadow}>
-          <View style={styles.logo}>
-            <Image source={logoBoardPub()} style={styles.image} />
-          </View>
-          <View style={styles.textSlogan}>
-            <Text style={styles.text}>Actualmente tenemos registradas +10.000 promociones de bares, cafeterías y otros locales hosteleros.</Text>
-          </View>
-          <View style={styles.textAction}>
-            <Text style={styles.text}>¡Descúbrelas con BoardPub!</Text>
-          </View>
-          <View style={styles.user}>
-            <TouchableOpacity style={styles.buttonUser} onPress={() => signInWithGoogleAsync()} activeOpacity={0.8}>
-                <Image source={google()} style={styles.googleIcon}/>
-                <Text style={styles.textUser}>CONTINUAR CON GOOGLE</Text>
-            </TouchableOpacity>
-          </View>
+          {!loginState
+            ? <><View style={styles.logo}>
+                  <Image source={logoBoardPub()} style={styles.image} />
+                </View>
+                <View style={styles.textLoadingContainer}>
+                  <Text style={styles.textLoading}>Espera unos segundos, estamos preparando la mesa...</Text>
+                </View>
+            </>
+            : <>
+                <View style={styles.logo}>
+                  <Image source={logoBoardPub()} style={styles.image} />
+                </View>
+                <View style={styles.textSlogan}>
+                  <Text style={styles.text}>Actualmente tenemos registradas +10.000 promociones de bares, cafeterías y otros locales hosteleros.</Text>
+                </View>
+                <View style={styles.textAction}>
+                  <Text style={styles.text}>¡Descúbrelas con BoardPub!</Text>
+                </View>
+                <View style={styles.user}>
+                  <TouchableOpacity style={styles.buttonUser} onPress={() => signInWithGoogleAsync() && newLoginState(false)} activeOpacity={0.8}>
+                      <Image source={google()} style={styles.googleIcon}/>
+                      <Text style={styles.textUser}>CONTINUAR CON GOOGLE</Text>
+                  </TouchableOpacity>
+                </View>
+              </>
+          }
         </View>
       </ImageBackground>
     </View>

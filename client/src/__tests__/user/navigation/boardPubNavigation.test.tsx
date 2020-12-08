@@ -8,7 +8,7 @@ import BoardPubNavigation from '../../../components/user/navigation/ApplicationN
 import { render } from '@testing-library/react-native'
 import { Reducer } from '../../../utils/interfaces'
 
-jest.mock('../../../actions/actionsFunctions')
+jest.mock('../../../actions/promotionsFunctions')
 jest.mock('@react-navigation/bottom-tabs')
 
 const buildStore = configureStore([thunk])

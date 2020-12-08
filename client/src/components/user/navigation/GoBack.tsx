@@ -9,7 +9,7 @@ export default function GoBack ():any {
   const nav = useNavigation()
   return (
         <View testID={'goBack'} style={style.headerDetail}>
-          <TouchableOpacity onPress={() => nav.dispatch(CommonActions.goBack())} activeOpacity={0.5}>
+          <TouchableOpacity testID={'goBackButton'} onPress={() => nav.dispatch(CommonActions.goBack())} activeOpacity={0.5}>
            <Icon name="arrow-back" size={35} style={style.goBack}/>
           </TouchableOpacity>
         </View>

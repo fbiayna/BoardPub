@@ -8,7 +8,7 @@ import HomePromotionsMenu from '../../../components/user/HomePromotionsMenu'
 import { render } from '@testing-library/react-native'
 import { Reducer } from '../../../utils/interfaces'
 
-jest.mock('../../../actions/actionsFunctions')
+jest.mock('../../../actions/promotionsFunctions')
 
 const buildStore = configureStore([thunk])
 
