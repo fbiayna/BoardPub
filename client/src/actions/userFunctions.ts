@@ -16,21 +16,12 @@ function requestUserError (error: string) {
   }
 }
 
-function requestNewUserState (userState: boolean) {
-  return {
-    type: actionTypes.LOAD_USER_ERROR,
-    userState
-  }
-}
-
 export function getUser (sub: string) {
   return async (dispatch: Function) => {
     try {
       const user = await axios.get(`${hostUrl()}/user`, { params: { sub } })
-      console.log(user.data)
       dispatch(requestUserSuccess(user.data))
     } catch (error) {
-      console.log(error)
       dispatch(requestUserError(error))
     }
   }
@@ -52,12 +43,5 @@ export function addAndGetUser (user: any) {
     } catch (error) {
       dispatch(requestUserError(error))
     }
-  }
-}
-
-export function newUserState (state: boolean) {
-  return (dispatch: Function) => {
-    const userState = state
-    dispatch(requestNewUserState(userState))
   }
 }

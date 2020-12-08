@@ -47,7 +47,7 @@ function Profile ({ user }:LoginReducer) {
         </View>
         <View style={style.signOutContainerTotal}>
           <View style={style.signOutContainer}>
-            <TouchableOpacity style={style.signOut} onPress={() => firebase.auth().signOut()} activeOpacity={0.8}>
+            <TouchableOpacity testID='signOut' style={style.signOut} onPress={() => firebase.auth().signOut()} activeOpacity={0.8}>
               <Text style={style.signOutText}>Cerrar Sesión</Text>
             </TouchableOpacity>
           </View>

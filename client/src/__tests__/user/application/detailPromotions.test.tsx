@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store'
 import DetailPromotion from '../../../components/user/DetailPromotion'
 import { render } from '@testing-library/react-native'
 
-jest.mock('../../../actions/actionsFunctions')
+jest.mock('../../../actions/promotionsFunctions')
 jest.mock('@react-navigation/native')
 
 const buildStore = configureStore([thunk])

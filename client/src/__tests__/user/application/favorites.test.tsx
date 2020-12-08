@@ -4,7 +4,7 @@ import React from 'react'
 import Favorites from '../../../components/user/Favorites'
 import { render } from '@testing-library/react-native'
 
-jest.mock('../../../actions/actionsFunctions')
+jest.mock('../../../actions/promotionsFunctions')
 
 describe('Favorites', () => {
   test('renders correctly - Favorites', () => {
