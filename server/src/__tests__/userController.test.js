@@ -1,35 +1,37 @@
-const CustomerUser = require('../models/usersModel');
-const CustomerUserController = require('../controllers/CustomerController')(CustomerUser);
+const User = require('../models/usersModel');
+const UserController = require('../controllers/UserController')(User);
 
 jest.mock('../models/usersModel');
 
-describe('CustomerUserController', () => {
+describe('UserController', () => {
   test('should call response json on getMethod', () => {
+    const req = { query: '1' };
     const res = {
       json: jest.fn(),
     };
-    CustomerUser.find = jest.fn().mockReturnValue({
+    User.findOne = jest.fn().mockReturnValue({
       populate: jest.fn().mockReturnValue({
         exec: jest.fn().mockImplementationOnce((callback) => { callback(false, 'customer'); }),
       }),
     });
 
-    CustomerUserController.getMethod({}, res);
+    UserController.getMethod(req, res);
 
     expect(res.json).toHaveBeenCalled();
   });
 
   test('should call error on getMethod', () => {
+    const req = { query: '1' };
     const res = {
       send: jest.fn(),
     };
-    CustomerUser.find = jest.fn().mockReturnValue({
+    User.findOne = jest.fn().mockReturnValue({
       populate: jest.fn().mockReturnValue({
         exec: jest.fn().mockImplementationOnce((callback) => { callback(true, 'errorFindCustomer'); }),
       }),
     });
 
-    CustomerUserController.getMethod({}, res);
+    UserController.getMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
@@ -39,11 +41,11 @@ describe('CustomerUserController', () => {
     const res = {
       json: jest.fn(),
     };
-    CustomerUser.create = jest.fn().mockImplementationOnce((query, callback) => {
+    User.create = jest.fn().mockImplementationOnce((query, callback) => {
       callback(false, 'newUser');
     });
 
-    CustomerUserController.postMethod(req, res);
+    UserController.postMethod(req, res);
 
     expect(res.json).toHaveBeenCalled();
   });
@@ -53,11 +55,11 @@ describe('CustomerUserController', () => {
     const res = {
       send: jest.fn(),
     };
-    CustomerUser.create = jest.fn().mockImplementationOnce((query, callback) => {
+    User.create = jest.fn().mockImplementationOnce((query, callback) => {
       callback(true, 'errorNewUser');
     });
 
-    CustomerUserController.postMethod(req, res);
+    UserController.postMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
@@ -67,12 +69,12 @@ describe('CustomerUserController', () => {
     const res = {
       send: jest.fn(),
     };
-    CustomerUser.findOneAndUpdate = jest.fn().mockImplementationOnce(
+    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
       (id, update, options, callback) => {
         callback(true, 'errorNewFavorite');
       },
     );
-    CustomerUserController.putMethod(req, res);
+    UserController.putMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
@@ -82,12 +84,12 @@ describe('CustomerUserController', () => {
     const res = {
       send: jest.fn(),
     };
-    CustomerUser.findOneAndUpdate = jest.fn().mockImplementationOnce(
+    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
       (id, update, options, callback) => {
         callback(true, 'NewFavorite');
       },
     );
-    CustomerUserController.putMethod(req, res);
+    UserController.putMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
@@ -97,12 +99,12 @@ describe('CustomerUserController', () => {
     const res = {
       json: jest.fn(),
     };
-    CustomerUser.findOneAndUpdate = jest.fn().mockImplementationOnce(
+    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
       (id, update, options, callback) => {
         callback(false, 'NewFavorite');
       },
     );
-    CustomerUserController.putMethod(req, res);
+    UserController.putMethod(req, res);
 
     expect(res.json).toHaveBeenCalled();
   });
@@ -112,12 +114,12 @@ describe('CustomerUserController', () => {
     const res = {
       send: jest.fn(),
     };
-    CustomerUser.findOneAndUpdate = jest.fn().mockImplementationOnce(
+    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
       (id, update, options, callback) => {
         callback(true, 'errorDeleteFavorite');
       },
     );
-    CustomerUserController.deleteMethod(req, res);
+    UserController.deleteMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
@@ -127,12 +129,12 @@ describe('CustomerUserController', () => {
     const res = {
       json: jest.fn(),
     };
-    CustomerUser.findOneAndUpdate = jest.fn().mockImplementationOnce(
+    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
       (id, update, options, callback) => {
         callback(false, 'deleteTheFavorite');
       },
     );
-    CustomerUserController.deleteMethod(req, res);
+    UserController.deleteMethod(req, res);
 
     expect(res.json).toHaveBeenCalled();
   });
