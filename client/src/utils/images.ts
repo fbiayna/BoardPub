@@ -19,3 +19,7 @@ export function logoBoardPub ():any {
 export function google ():any {
   return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457ae0da99b76dcdba46b/5ec457af3dca9f5428a9f179/c7168acd463a6062175a55ba9faa3074/icons8-google-48.png' })
 }
+
+export function skylabLogo (): any {
+  return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457af3dca9f5428a9f179/200x200/e9f9c5d24e00588b66246903d2d01415/skylab_logo.png' })
+}

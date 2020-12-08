@@ -27,8 +27,10 @@ export function getUser (sub: string) {
   return async (dispatch: Function) => {
     try {
       const user = await axios.get(`${hostUrl()}/user`, { params: { sub } })
+      console.log(user.data)
       dispatch(requestUserSuccess(user.data))
     } catch (error) {
+      console.log(error)
       dispatch(requestUserError(error))
     }
   }
