@@ -51,6 +51,56 @@ describe('loginReducer', () => {
     expect(state).toEqual({ error: testUser })
   })
 
+  test('should return user -> actionTypes = ADD_FAVORITE', () => {
+    const testFavorite = 'skylab'
+    const userAction = {
+      type: actionTypes.ADD_FAVORITE,
+      favorite: testFavorite
+    }
+    const initialState = { user: { favorites: ['1'] } }
+
+    const state = loginReducer(initialState, userAction)
+
+    expect(state.user.favorites).toEqual(['1', 'skylab'])
+  })
+
+  test('should return error -> actionTypes = ADD_FAVORITE_ERROR', () => {
+    const testUser = 'error'
+    const userAction = {
+      type: actionTypes.ADD_FAVORITE_ERROR,
+      error: testUser
+    }
+
+    const state = loginReducer({}, userAction)
+
+    expect(state).toEqual({ error: testUser })
+  })
+
+  test('should return user -> actionTypes = DELETE_FAVORITE', () => {
+    const testDeleteFavorite = 'skylab'
+    const userAction = {
+      type: actionTypes.DELETE_FAVORITE,
+      favorite: testDeleteFavorite
+    }
+    const initialState = { user: { favorites: ['1', 'skylab'] } }
+
+    const state = loginReducer(initialState, userAction)
+
+    expect(state.user.favorites).toEqual(['1'])
+  })
+
+  test('should return error -> actionTypes = DELETE_FAVORITE_ERROR', () => {
+    const testUser = 'error'
+    const userAction = {
+      type: actionTypes.DELETE_FAVORITE_ERROR,
+      error: testUser
+    }
+
+    const state = loginReducer({}, userAction)
+
+    expect(state).toEqual({ error: testUser })
+  })
+
   test('should return the default state', () => {
     const state = loginReducer({}, { type: 'skylab' })
 

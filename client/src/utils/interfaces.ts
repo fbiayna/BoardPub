@@ -9,7 +9,6 @@ export interface Action {
 export interface ActionUser {
   type: string,
   user?: User,
-  userState?: Boolean,
   error?: any
 }
 
@@ -27,14 +26,14 @@ export interface Reducer {
 
 export interface LoginReducer {
     user?: User,
-    userState: Boolean
     navigation?: any,
     dispatch: Function,
   }
 
-export interface FavoritesProps {
+export interface FavoritesReducer {
+    user?: any,
     navigation?: any,
-    favorites: Favorite[]
+    dispatch: Function,
   }
 
 export interface NavigationProps {
@@ -43,22 +42,17 @@ export interface NavigationProps {
   }
 
 export interface DetailReducer {
+    user?: any,
     promotion?: Promotion,
     dispatch: Function,
   }
-
-export interface Favorite {
-  _id: any,
-  name: string,
-  establishment: string,
-}
 
 export interface Promotion {
     _id: any,
     name: string,
     date: string,
     description: string,
-    establishment: string,
+    establishment: Establishment,
     ubication: string,
     price: string
     type: string
@@ -72,7 +66,17 @@ export interface User {
   email: string,
   photo: string,
   sub: string,
-  favorites?: [],
-  establishment?: object,
-  promotions?: []
+  favorites?: Establishment[],
+  establishment?: Establishment,
+  promotions?: any
+}
+
+export interface Establishment {
+  _id: any,
+  name: string,
+  ubication: string,
+  city: string,
+  photo: string,
+  description: string,
+  rating: number
 }

@@ -1,8 +1,6 @@
 const Promotions = require('../models/promotionsModel');
-const Users = require('../models/usersModel');
-const PromotionsController = require('../controllers/PromotionsController')(Users, Promotions);
+const PromotionsController = require('../controllers/PromotionsController')(Promotions);
 
-jest.mock('../models/usersModel');
 jest.mock('../models/promotionsModel');
 
 describe('PromotionsController', () => {
@@ -10,8 +8,10 @@ describe('PromotionsController', () => {
     const res = {
       json: jest.fn(),
     };
-    Promotions.find = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(false, 'PromotionsList');
+    Promotions.find = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(false, 'promotionsList'); }),
+      }),
     });
 
     PromotionsController.getMethod({}, res);
@@ -23,8 +23,10 @@ describe('PromotionsController', () => {
     const res = {
       send: jest.fn(),
     };
-    Promotions.find = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(true, 'errorFindPromotions');
+    Promotions.find = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(true, 'errorFindPromotions'); }),
+      }),
     });
 
     PromotionsController.getMethod({}, res);

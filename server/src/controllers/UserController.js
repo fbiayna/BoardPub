@@ -17,21 +17,25 @@ function UserController(Users) {
   }
 
   function putMethod(req, res) {
-    const { user: { _id, favorites }, establishment } = req.body;
-    Users.findOneAndUpdate(_id, { favorites: [establishment._id, ...favorites] },
-      { new: true }, (errorNewFavorite, newFavorite) => (errorNewFavorite
+    const { user: { _id, favorites }, establishmentId } = req.body;
+    Users.findByIdAndUpdate(_id, {
+      favorites: [establishmentId, ...favorites],
+    }, { new: true })
+      .populate({ path: 'favorites' })
+      .exec((errorNewFavorite, newFavorite) => (errorNewFavorite
         ? res.send(errorNewFavorite) : res.json(newFavorite)));
   }
 
   function deleteMethod(req, res) {
-    const { user: { _id, favorites }, deleteFavorite } = req.body;
-    Users.findOneAndUpdate(_id, {
+    const { user: { _id, favorites }, establishmentId } = req.body;
+    Users.findByIdAndUpdate(_id, {
       favorites: favorites.filter(
-        (establishment) => establishment._id !== deleteFavorite._id,
+        (establishment) => establishment._id.toString() !== establishmentId,
       ),
-    },
-    { new: true }, (errorDeleteFavorite, deleteTheFavorite) => (errorDeleteFavorite
-      ? res.send(errorDeleteFavorite) : res.json(deleteTheFavorite)));
+    }, { new: true })
+      .populate({ path: 'favorites' })
+      .exec((errorDeleteFavorite, deleteTheFavorite) => (errorDeleteFavorite
+        ? res.send(errorDeleteFavorite) : res.json(deleteTheFavorite)));
   }
 
   return {

@@ -1,9 +1,3 @@
-export function meal ():any {
-  return (
-    { uri: 'https://i1.wp.com/catalinacevedomejia.com/wp-content/uploads/2015/10/salmon-518032_1280.jpg' }
-  )
-}
-
 export function loading ():any {
   return ({ uri: 'https://trello-attachments.s3.amazonaws.com/5ec457af3dca9f5428a9f179/210x374/af6f2fa5861288b210d552ed3448ebd2/Loading_-_0.5.gif' })
 }

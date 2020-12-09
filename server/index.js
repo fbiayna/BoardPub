@@ -8,7 +8,7 @@ const cors = require('cors');
 const Users = require('./src/models/usersModel');
 const Establishments = require('./src/models/establishmentsModel');
 const Promotions = require('./src/models/promotionsModel');
-const promotionsRouter = require('./src/routes/promotionsRouter')(Users, Establishments, Promotions);
+const promotionsRouter = require('./src/routes/promotionsRouter')(Establishments, Promotions);
 const userRouter = require('./src/routes/userRouter')(Users);
 
 const app = express();

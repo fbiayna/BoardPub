@@ -36,12 +36,6 @@ function Profile ({ user }:LoginReducer) {
               <Text style={style.title}>Email:</Text>
               <Text style={style.description}>{user?.email}</Text>
             </View>
-            {user?.favorites?.length
-              ? <View style={style.textContainer}>
-                <Text style={style.title}>Favoritos:</Text>
-                <Text style={style.description}>{user?.favorites}</Text>
-                </View>
-              : null}
           </View>
           {user?.admin ? <View style={style.adminContainer}><Text style={style.admin}>Tu perfil es administrador</Text></View> : <View style={style.adminContainer}><Text style={style.admin}>Tu perfil no es administrador</Text></View>}
         </View>

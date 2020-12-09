@@ -1,13 +1,23 @@
-function PromotionController(Users, Promotions) {
+function PromotionController(Promotions) {
   function getMethod(req, res) {
     const { id } = req.query;
-    Promotions.findById(id, (errorFindPromotions, promotionsList) => (errorFindPromotions
-      ? res.send(errorFindPromotions)
-      : res.json(promotionsList)));
+    Promotions.findById(id)
+      .populate({ path: 'establishment' })
+      .exec((errorFindPromotions, promotionsList) => (errorFindPromotions
+        ? res.send(errorFindPromotions)
+        : res.json(promotionsList)));
+  }
+
+  function postMethod(req, res) {
+    const { newPromotion } = req.body;
+    Promotions.create(newPromotion,
+      (errorNewPromotion, correctNewPromotion) => (errorNewPromotion
+        ? res.send(errorNewPromotion)
+        : res.json(correctNewPromotion)));
   }
 
   return {
-    getMethod,
+    getMethod, postMethod,
   };
 }
 

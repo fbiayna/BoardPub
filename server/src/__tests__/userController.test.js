@@ -65,75 +65,64 @@ describe('UserController', () => {
   });
 
   test('should call response error on putMethod', () => {
-    const req = { body: { user: { _id: '1', favorites: 'Skylab' }, establishment: 'Skylab' } };
+    const req = { body: { user: { _id: '1', favorites: [{ _id: 'Skylab' }] }, establishment: 'Skylab' } };
     const res = {
       send: jest.fn(),
     };
-    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
-      (id, update, options, callback) => {
-        callback(true, 'errorNewFavorite');
-      },
-    );
-    UserController.putMethod(req, res);
+    User.findByIdAndUpdate = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(true, 'errorNewFavorite'); }),
+      }),
+    });
 
-    expect(res.send).toHaveBeenCalled();
-  });
-
-  test('should call response error on putMethod', () => {
-    const req = { body: { user: { _id: '1', favorites: 'Skylab' }, establishment: 'Skylab' } };
-    const res = {
-      send: jest.fn(),
-    };
-    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
-      (id, update, options, callback) => {
-        callback(true, 'NewFavorite');
-      },
-    );
     UserController.putMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
 
   test('should call response json on putMethod', () => {
-    const req = { body: { user: { _id: '1', favorites: 'Skylab' }, establishment: 'Skylab' } };
+    const req = { body: { user: { _id: '1', favorites: [{ _id: 'Skylab' }] }, establishment: 'Skylab' } };
     const res = {
       json: jest.fn(),
     };
-    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
-      (id, update, options, callback) => {
-        callback(false, 'NewFavorite');
-      },
-    );
+    User.findByIdAndUpdate = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(false, 'NewFavorite'); }),
+      }),
+    });
+
     UserController.putMethod(req, res);
 
     expect(res.json).toHaveBeenCalled();
   });
 
   test('should call response error on deleteMethod', () => {
-    const req = { body: { user: { _id: '1', favorites: [{ _id: '1' }] }, deleteFavorite: 'Skylab' } };
+    const req = { body: { user: { _id: '1', favorites: [{ _id: 'Skylab' }] }, establishment: 'Skylab' } };
     const res = {
       send: jest.fn(),
     };
-    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
-      (id, update, options, callback) => {
-        callback(true, 'errorDeleteFavorite');
-      },
-    );
+    User.findByIdAndUpdate = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(true, 'errorDeleteFavorite'); }),
+      }),
+    });
+
     UserController.deleteMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });
 
   test('should call response json on deleteMethod', () => {
-    const req = { body: { user: { _id: '1', favorites: [{ _id: '1' }] }, deleteFavorite: 'Skylab' } };
+    const req = { body: { user: { _id: '1', favorites: [{ _id: 'Skylab' }] }, establishment: 'Skylab' } };
     const res = {
       json: jest.fn(),
     };
-    User.findOneAndUpdate = jest.fn().mockImplementationOnce(
-      (id, update, options, callback) => {
-        callback(false, 'deleteTheFavorite');
-      },
-    );
+    User.findByIdAndUpdate = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(false, 'deleteTheFavorite'); }),
+      }),
+    });
+
     UserController.deleteMethod(req, res);
 
     expect(res.json).toHaveBeenCalled();
