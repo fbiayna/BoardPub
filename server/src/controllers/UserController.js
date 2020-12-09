@@ -17,9 +17,12 @@ function UserController(Users) {
   }
 
   function putMethod(req, res) {
-    const { user: { _id, favorites }, establishment } = req.body;
-    Users.findOneAndUpdate(_id, { favorites: [establishment._id, ...favorites] },
-      { new: true }, (errorNewFavorite, newFavorite) => (errorNewFavorite
+    const { user: { _id, favorites }, establishmentId } = req.body;
+    Users.findByIdAndUpdate(_id, {
+      favorites: [establishmentId, ...favorites],
+    }, { new: true })
+      .populate({ path: 'favorites' })
+      .exec((errorNewFavorite, newFavorite) => (errorNewFavorite
         ? res.send(errorNewFavorite) : res.json(newFavorite)));
   }
 

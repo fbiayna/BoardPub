@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { User } from 'utils/interfaces'
 import { hostUrl } from '../utils/hostUrl'
 import actionTypes from './actionTypes'
 
@@ -30,10 +31,10 @@ function requestAddAndLoadUserError (error: string) {
   }
 }
 
-function requestAddFavoritesSuccess (favorite: string) {
+function requestAddFavoritesSuccess (userUpdated: User) {
   return {
     type: actionTypes.ADD_FAVORITE,
-    favorite
+    userUpdated
   }
 }
 
@@ -44,7 +45,7 @@ function requestAddFavoritesError (error: string) {
   }
 }
 
-function requestDeleteFavoriteSuccess (favorite: string) {
+function requestDeleteFavoriteSuccess (favorite: User) {
   return {
     type: actionTypes.DELETE_FAVORITE,
     favorite
@@ -88,11 +89,12 @@ export function addAndGetUser (user: any) {
   }
 }
 
-export function addFavorite (establishmentId: string) {
+export function addFavorite (user: User, establishmentId: string) {
   return async (dispatch: Function) => {
     try {
-      const newFavorite = await axios.put(`${hostUrl()}/user`, { establishmentId })
-      dispatch(requestAddFavoritesSuccess(newFavorite.data))
+      const userUpdated = await axios.put(`${hostUrl()}/user`, { user, establishmentId })
+      console.log(userUpdated.data)
+      dispatch(requestAddFavoritesSuccess(userUpdated.data))
     } catch (error) {
       dispatch(requestAddFavoritesError(error))
     }

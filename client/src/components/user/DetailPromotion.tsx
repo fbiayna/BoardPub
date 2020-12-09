@@ -1,16 +1,17 @@
 /* eslint-disable no-use-before-define */
 import React, { useCallback } from 'react'
-import { DetailReducer } from '../../utils/interfaces'
-import { View, Text, ImageBackground, ScrollView } from 'react-native'
+import { DetailReducer, Establishment } from '../../utils/interfaces'
+import { View, Text, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { useRoute, useFocusEffect } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
+import { addFavorite } from '../../actions/userFunctions'
 import style from '../styles/DetailPromotion'
 import GoBack from './navigation/GoBack'
 
-function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
+function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   const route = useRoute()
   const { id }:any = route.params
 
@@ -36,9 +37,12 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
                 <Text style={style.title}>{promotion.name}</Text>
                 <Text style={style.establishment}>{promotion.establishment.name}</Text>
               </View>
-              <View>
-                <Icon name="star" size={35} style={style.star}/>
-              </View>
+              {user?.favorites?.find((establishment: Establishment) => establishment._id.toString() === promotion.establishment._id.toString())
+                ? null
+                : <TouchableOpacity onPress={() => dispatch(addFavorite(user, promotion.establishment._id))}>
+                    <Icon name="star" size={35} style={style.star}/>
+                  </TouchableOpacity>
+              }
             </View>
             <View style={style.otherInfoContainer}>
               <View style={style.otherContainer}>
@@ -84,9 +88,10 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
   )
 }
 
-function mapStateToProps ({ boardPubReducer }: any) {
+function mapStateToProps ({ boardPubReducer, loginReducer }: any) {
   return {
-    promotion: boardPubReducer.promotion
+    promotion: boardPubReducer.promotion,
+    user: loginReducer.user
   }
 }
 export default connect(mapStateToProps)(DetailPromotion)

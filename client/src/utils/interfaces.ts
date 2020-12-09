@@ -9,7 +9,7 @@ export interface Action {
 export interface ActionUser {
   type: string,
   user?: User,
-  userState?: Boolean,
+  userUpdated?: User,
   favorite?: string,
   error?: any
 }
@@ -38,6 +38,7 @@ export interface NavigationProps {
   }
 
 export interface DetailReducer {
+    user?: any,
     promotion?: Promotion,
     dispatch: Function,
   }

@@ -5,11 +5,10 @@ import ApplicationNavigation from './ApplicationNavigation'
 import { connect } from 'react-redux'
 import LoginNavigator from './LoginNavigation'
 import { NavigationContainer } from '@react-navigation/native'
-import { LoginReducer } from 'utils/interfaces'
 
 const Stack = createStackNavigator()
 
-function BoardPubNavigation ({ userState }:LoginReducer) {
+function BoardPubNavigation () {
   return (
       <NavigationContainer>
         <Stack.Navigator headerMode={'none'}>
