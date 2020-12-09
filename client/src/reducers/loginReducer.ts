@@ -3,7 +3,7 @@ import { ActionUser } from '../utils/interfaces'
 
 const initialState = {}
 
-export default function loginReducer (state: object = initialState, action: ActionUser) {
+export default function loginReducer (state: any = initialState, action: ActionUser) {
   let answer = state
   switch (action.type) {
     case actionTypes.LOAD_USER:
@@ -16,6 +16,18 @@ export default function loginReducer (state: object = initialState, action: Acti
       answer = { ...state, user: action.user }
       break
     case actionTypes.ADD_AND_LOAD_USER_ERROR:
+      answer = { ...state, error: action.error }
+      break
+    case actionTypes.ADD_FAVORITE:
+      answer = { ...state, user: { favorites: [...state.user?.favorites, action.favorite] } }
+      break
+    case actionTypes.ADD_FAVORITE_ERROR:
+      answer = { ...state, error: action.error }
+      break
+    case actionTypes.DELETE_FAVORITE:
+      answer = { ...state, user: { favorites: [...state.user?.favorites.filter((establishment: any) => establishment !== action.favorite)] } }
+      break
+    case actionTypes.DELETE_FAVORITE_ERROR:
       answer = { ...state, error: action.error }
       break
     default:

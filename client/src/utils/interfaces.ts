@@ -10,6 +10,7 @@ export interface ActionUser {
   type: string,
   user?: User,
   userState?: Boolean,
+  favorite?: string,
   error?: any
 }
 
@@ -27,7 +28,6 @@ export interface Reducer {
 
 export interface LoginReducer {
     user?: User,
-    userState: Boolean
     navigation?: any,
     dispatch: Function,
   }
@@ -72,7 +72,7 @@ export interface User {
   email: string,
   photo: string,
   sub: string,
-  favorites?: [],
+  favorites?: any,
   establishment?: object,
-  promotions?: []
+  promotions?: any
 }
