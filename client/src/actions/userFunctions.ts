@@ -3,7 +3,7 @@ import { User } from 'utils/interfaces'
 import { hostUrl } from '../utils/hostUrl'
 import actionTypes from './actionTypes'
 
-function requestUserSuccess (user: object) {
+function requestUserSuccess (user: User) {
   return {
     type: actionTypes.LOAD_USER,
     user
@@ -17,7 +17,7 @@ function requestUserError (error: string) {
   }
 }
 
-function requestAddAndLoadUserSuccess (user: object) {
+function requestAddAndLoadUserSuccess (user: User) {
   return {
     type: actionTypes.ADD_AND_LOAD_USER,
     user
@@ -31,10 +31,10 @@ function requestAddAndLoadUserError (error: string) {
   }
 }
 
-function requestAddFavoritesSuccess (userUpdated: User) {
+function requestAddFavoritesSuccess (user: User) {
   return {
     type: actionTypes.ADD_FAVORITE,
-    userUpdated
+    user
   }
 }
 
@@ -45,10 +45,10 @@ function requestAddFavoritesError (error: string) {
   }
 }
 
-function requestDeleteFavoriteSuccess (favorite: User) {
+function requestDeleteFavoriteSuccess (user: User) {
   return {
     type: actionTypes.DELETE_FAVORITE,
-    favorite
+    user
   }
 }
 
@@ -93,7 +93,6 @@ export function addFavorite (user: User, establishmentId: string) {
   return async (dispatch: Function) => {
     try {
       const userUpdated = await axios.put(`${hostUrl()}/user`, { user, establishmentId })
-      console.log(userUpdated.data)
       dispatch(requestAddFavoritesSuccess(userUpdated.data))
     } catch (error) {
       dispatch(requestAddFavoritesError(error))
@@ -101,11 +100,11 @@ export function addFavorite (user: User, establishmentId: string) {
   }
 }
 
-export function deleteFavorite (establishmentId: string) {
+export function deleteFavorite (user: User, establishmentId: string) {
   return async (dispatch: Function) => {
     try {
-      const deletedFavorite = await axios.delete(`${hostUrl()}/user`, { data: { establishmentId } })
-      dispatch(requestDeleteFavoriteSuccess(deletedFavorite.data))
+      const userUpdated = await axios.delete(`${hostUrl()}/user`, { data: { user, establishmentId } })
+      dispatch(requestDeleteFavoriteSuccess(userUpdated.data))
     } catch (error) {
       dispatch(requestDeleteFavoriteError(error))
     }

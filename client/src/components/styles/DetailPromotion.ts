@@ -54,8 +54,7 @@ const style = StyleSheet.create({
     marginBottom: 8
   },
   star: {
-    marginRight: 25,
-    color: '#C4C4C4'
+    color: '#E9ED2B'
   },
   otherInfoContainer: {
     height: 75,
@@ -162,6 +161,20 @@ const style = StyleSheet.create({
   },
   opinionStar: {
     color: '#C4C4C4'
+  },
+  addButton: {
+    marginRight: 25
+  },
+  addContainer: {
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+    borderColor: '#F1F1F1',
+    backgroundColor: '#fff',
+    borderWidth: 3,
+    elevation: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

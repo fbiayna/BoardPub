@@ -39,9 +39,11 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
               </View>
               {user?.favorites?.find((establishment: Establishment) => establishment._id.toString() === promotion.establishment._id.toString())
                 ? null
-                : <TouchableOpacity onPress={() => dispatch(addFavorite(user, promotion.establishment._id))}>
-                    <Icon name="star" size={35} style={style.star}/>
-                  </TouchableOpacity>
+                : <TouchableOpacity style={style.addButton} testID="addFavorite" onPress={() => dispatch(addFavorite(user, promotion.establishment._id))} activeOpacity={0.9}>
+                    <View style={style.addContainer}>
+                      <Icon name="star" size={35} style={style.star}/>
+                    </View>
+              </TouchableOpacity>
               }
             </View>
             <View style={style.otherInfoContainer}>

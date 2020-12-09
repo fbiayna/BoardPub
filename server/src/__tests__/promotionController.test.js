@@ -1,8 +1,6 @@
 const Promotions = require('../models/promotionsModel');
-const Users = require('../models/usersModel');
-const PromotionController = require('../controllers/PromotionController')(Users, Promotions);
+const PromotionController = require('../controllers/PromotionController')(Promotions);
 
-jest.mock('../models/usersModel');
 jest.mock('../models/promotionsModel');
 
 describe('PromotionController', () => {
@@ -11,8 +9,10 @@ describe('PromotionController', () => {
     const res = {
       json: jest.fn(),
     };
-    Promotions.findById = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(false, 'PromotionList');
+    Promotions.findById = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(false, 'PromotionList'); }),
+      }),
     });
 
     PromotionController.getMethod(req, res);
@@ -25,11 +25,41 @@ describe('PromotionController', () => {
     const res = {
       send: jest.fn(),
     };
-    Promotions.findById = jest.fn().mockImplementationOnce((query, callback) => {
-      callback(true, 'errorFindPromotion');
+    Promotions.findById = jest.fn().mockReturnValue({
+      populate: jest.fn().mockReturnValue({
+        exec: jest.fn().mockImplementationOnce((callback) => { callback(true, 'errorFindPromotion'); }),
+      }),
     });
 
     PromotionController.getMethod(req, res);
+
+    expect(res.send).toHaveBeenCalled();
+  });
+
+  test('should call response json on postMethod', () => {
+    const req = { body: { newPromotion: 'Skylab' } };
+    const res = {
+      json: jest.fn(),
+    };
+    Promotions.create = jest.fn().mockImplementationOnce((query, callback) => {
+      callback(false, 'correctNewPromotion');
+    });
+
+    PromotionController.postMethod(req, res);
+
+    expect(res.json).toHaveBeenCalled();
+  });
+
+  test('should call response error on postMethod', () => {
+    const req = { body: { newPromotion: 'Skylab' } };
+    const res = {
+      send: jest.fn(),
+    };
+    Promotions.create = jest.fn().mockImplementationOnce((query, callback) => {
+      callback(true, 'errorNewPromotion');
+    });
+
+    PromotionController.postMethod(req, res);
 
     expect(res.send).toHaveBeenCalled();
   });

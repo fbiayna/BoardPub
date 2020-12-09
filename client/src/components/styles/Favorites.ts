@@ -36,16 +36,20 @@ const style = StyleSheet.create({
     flex: 1,
     height: '100%'
   },
+  favoritesList: {
+    marginTop: 10
+  },
   favoriteContainer: {
     alignItems: 'center',
-    marginTop: 15
+    marginBottom: 9,
+    marginTop: 6
   },
   favorite: {
     borderRadius: 10,
     backgroundColor: '#fff',
     width: '85%',
     height: 125,
-    elevation: 10
+    elevation: 5
   },
   imageContainer: {
     flex: 1
@@ -53,7 +57,7 @@ const style = StyleSheet.create({
   favoriteImage: {
     width: '100%',
     height: '100%',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'flex-end'
   },
   infoContainer: {
@@ -66,6 +70,26 @@ const style = StyleSheet.create({
     fontSize: 15,
     color: '#000',
     marginBottom: 8
+  },
+  deleteButton: {
+    marginTop: -5,
+    marginRight: -5
+  },
+  deleteContainer: {
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+    borderColor: '#F1F1F1',
+    backgroundColor: '#fff',
+    borderWidth: 3,
+    elevation: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  deleteX: {
+    fontWeight: 'bold',
+    color: '#E00000',
+    fontSize: 25
   }
 })
 

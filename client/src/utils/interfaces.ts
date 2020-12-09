@@ -9,8 +9,6 @@ export interface Action {
 export interface ActionUser {
   type: string,
   user?: User,
-  userUpdated?: User,
-  favorite?: string,
   error?: any
 }
 
@@ -28,6 +26,12 @@ export interface Reducer {
 
 export interface LoginReducer {
     user?: User,
+    navigation?: any,
+    dispatch: Function,
+  }
+
+export interface FavoritesReducer {
+    user?: any,
     navigation?: any,
     dispatch: Function,
   }

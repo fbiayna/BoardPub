@@ -19,13 +19,13 @@ export default function loginReducer (state: any = initialState, action: ActionU
       answer = { ...state, error: action.error }
       break
     case actionTypes.ADD_FAVORITE:
-      answer = { ...state, user: action.userUpdated }
+      answer = { ...state, user: action.user }
       break
     case actionTypes.ADD_FAVORITE_ERROR:
       answer = { ...state, error: action.error }
       break
     case actionTypes.DELETE_FAVORITE:
-      answer = { ...state, user: { favorites: [...state.user?.favorites.filter((establishment: any) => establishment !== action.favorite)] } }
+      answer = { ...state, user: action.user }
       break
     case actionTypes.DELETE_FAVORITE_ERROR:
       answer = { ...state, error: action.error }
