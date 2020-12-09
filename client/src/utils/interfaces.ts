@@ -32,11 +32,6 @@ export interface LoginReducer {
     dispatch: Function,
   }
 
-export interface FavoritesProps {
-    navigation?: any,
-    favorites: Favorite[]
-  }
-
 export interface NavigationProps {
     site: string,
     navigation?: any,
@@ -47,18 +42,12 @@ export interface DetailReducer {
     dispatch: Function,
   }
 
-export interface Favorite {
-  _id: any,
-  name: string,
-  establishment: string,
-}
-
 export interface Promotion {
     _id: any,
     name: string,
     date: string,
     description: string,
-    establishment: string,
+    establishment: Establishment,
     ubication: string,
     price: string
     type: string
@@ -72,7 +61,17 @@ export interface User {
   email: string,
   photo: string,
   sub: string,
-  favorites?: any,
-  establishment?: object,
+  favorites?: Establishment[],
+  establishment?: Establishment,
   promotions?: any
+}
+
+export interface Establishment {
+  _id: any,
+  name: string,
+  ubication: string,
+  city: string,
+  photo: string,
+  description: string,
+  rating: number
 }

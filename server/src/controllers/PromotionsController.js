@@ -1,8 +1,10 @@
-function PromotionsController(Users, Promotions) {
+function PromotionsController(Promotions) {
   function getMethod(req, res) {
-    Promotions.find({}, (errorFindPromotions, promotionsList) => (errorFindPromotions
-      ? res.send(errorFindPromotions)
-      : res.json(promotionsList)));
+    Promotions.find({})
+      .populate({ path: 'establishment' })
+      .exec((errorFindPromotions, promotionsList) => (errorFindPromotions
+        ? res.send(errorFindPromotions)
+        : res.json(promotionsList)));
   }
 
   return {

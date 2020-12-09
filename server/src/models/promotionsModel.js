@@ -8,8 +8,7 @@ const promotionsSchema = new Schema({
   type: { type: String },
   description: { type: String },
   date: { type: String },
-  establishment: { type: String },
-  establishmentReference: { type: Schema.Types.ObjectId, ref: 'establishments' },
+  establishment: { type: Schema.Types.ObjectId, ref: 'establishments' },
 });
 
 module.exports = model('promotions', promotionsSchema);

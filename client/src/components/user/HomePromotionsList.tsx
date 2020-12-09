@@ -3,7 +3,6 @@ import React from 'react'
 import style from '../styles/HomePromotionsMenu'
 import { Promotion, PromotionsMenu } from '../../utils/interfaces'
 import { View, Text, ImageBackground, FlatList, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
-import { meal } from '../../utils/images'
 import ListMenu from './ListMenu'
 
 const { width } = Dimensions.get('window')
@@ -17,7 +16,7 @@ export default function HomePromotions ({ typePromotion, promotions, navigation 
      onPress={() => navigation.navigate('detail', { id: item._id })}>
         <View style={style.promotion}>
             <View style={style.imageContainer}>
-                <ImageBackground source={meal()} style={style.promotionImage} imageStyle={{ borderRadius: 10 }}>
+                <ImageBackground source={{ uri: item.establishment.photo }} style={style.promotionImage} imageStyle={{ borderRadius: 10 }}>
                 <View style={style.priceContainer}>
                     <Text style={style.price}>{item.price}</Text>
                 </View>
@@ -26,7 +25,7 @@ export default function HomePromotions ({ typePromotion, promotions, navigation 
             <View style={style.infoContainer}>
                 <View style={style.titleContainer}>
                 <Text style={style.title}>{item.name}</Text>
-                <Text style={style.establishment}>{item.establishment}</Text>
+                <Text style={style.establishment}>{item.establishment.name}</Text>
                 </View>
                 <View style={style.otherInfoContainer}>
                 <Text style={style.otherInfo}>{item.date}</Text>

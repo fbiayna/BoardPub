@@ -4,7 +4,6 @@ import { DetailReducer } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { useRoute, useFocusEffect } from '@react-navigation/native'
-import { meal } from '../../utils/images'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
@@ -26,7 +25,7 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
         <GoBack/>
         <ScrollView>
             <View style={style.imageContainer}>
-              <ImageBackground source={meal()} style={style.promotionImage} >
+              <ImageBackground source={{ uri: promotion.establishment.photo }} style={style.promotionImage} >
                 <View style={style.priceContainer}>
                   <Text style={style.price}>{promotion.price}</Text>
                 </View>
@@ -35,7 +34,7 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
             <View style={style.infoContainer}>
               <View style={style.titleContainer}>
                 <Text style={style.title}>{promotion.name}</Text>
-                <Text style={style.establishment}>{promotion.establishment}</Text>
+                <Text style={style.establishment}>{promotion.establishment.name}</Text>
               </View>
               <View>
                 <Icon name="star" size={35} style={style.star}/>
@@ -49,7 +48,7 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
                 </View>
                 <View style={style.dateContainer}>
                   <Icon name="place" size={18} style={style.schedule}/>
-                  <Text style={style.ubication}>{promotion.ubication}</Text>
+                  <Text style={style.ubication}>{promotion.establishment.ubication} - {promotion.establishment.city}</Text>
                 </View>
               </View>
             </View>
@@ -61,14 +60,14 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
               <Text style={style.infoValoration}>VALORACIONES</Text>
               <View style={style.numbersContainer}>
                 <View style={style.valContainer}>
-                  <Text style={style.numbersValoration}>4.7/5.0</Text>
+                  <Text style={style.numbersValoration}>{promotion.establishment.rating}/5.0</Text>
                 </View>
-                <Text style={style.textValoration}>Skylab Coders Academy está muy bien valorado por parte de los usuarios</Text>
+                <Text style={style.textValoration}>{promotion.establishment.name} está muy bien valorado por parte de los usuarios</Text>
               </View>
             </View>
             <View style={style.opinionContainer}>
               <View style={style.opinionTextContainer}>
-                <Text style={style.opinionText}>¿Qué opinas de Skylab Coders Academy?</Text>
+                <Text style={style.opinionText}>¿Qué opinas de {promotion.establishment.name}?</Text>
               </View>
               <View style={style.opinionStarContainer}>
                 <Icon name="star" size={35} style={style.opinionStar}/>
@@ -86,7 +85,6 @@ function DetailPromotion ({ promotion, dispatch }: DetailReducer) {
 }
 
 function mapStateToProps ({ boardPubReducer }: any) {
-  debugger
   return {
     promotion: boardPubReducer.promotion
   }
