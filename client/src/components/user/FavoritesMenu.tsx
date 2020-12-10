@@ -16,7 +16,7 @@ function FavoritesMenu ({ user, dispatch, navigation }: FavoritesReducer) {
       </View>
       <FlatList style={style.favoritesList} data={user?.favorites} keyExtractor={(item: Establishment) => item.name}
         renderItem={({ item }) => (<TouchableOpacity testID={'favorite'} key={item.name} style={style.favoriteContainer} activeOpacity={0.9}
-        onPress={() => navigation.navigate('detail', { id: item._id })}>
+        onPress={() => navigation.navigate('detail-establishment', { id: item._id })}>
         <View style={style.favorite}>
             <View style={style.imageContainer}>
                 <ImageBackground source={{ uri: item.photo }} style={style.favoriteImage} imageStyle={{ borderRadius: 10 }}>

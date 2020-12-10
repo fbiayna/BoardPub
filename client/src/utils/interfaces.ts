@@ -42,6 +42,11 @@ export interface NavigationProps {
     navigation?: any,
   }
 
+export interface DetailEstablishmentReducer {
+  establishment?: Establishment,
+  dispatch: any
+}
+
 export interface DetailReducer {
     user?: any,
     promotion?: Promotion,

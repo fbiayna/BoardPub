@@ -147,6 +147,7 @@ const style = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
     elevation: 5
   },
   opinionTextContainer: {
