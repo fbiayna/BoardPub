@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 import React, { useState } from 'react'
-import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native'
+import { ImageBackground, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import styles from '../styles/LoginUser'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
 import * as Google from 'expo-google-app-auth'
@@ -100,6 +100,7 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
                 </View>
                 <View style={styles.textLoadingContainer}>
                   <Text style={styles.textLoading}>Espera unos segundos, estamos preparando la mesa...</Text>
+                  <ActivityIndicator size="large" color="#fff"/>
                 </View>
             </>
             : <>
@@ -128,8 +129,7 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
 
 function mapStateToProps ({ loginReducer }: any) {
   return {
-    user: loginReducer.user,
-    userState: loginReducer.userState
+    user: loginReducer.user
   }
 }
 export default connect(mapStateToProps)(LoginUser)

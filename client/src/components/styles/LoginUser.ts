@@ -59,6 +59,7 @@ const style = StyleSheet.create({
     fontSize: 20,
     lineHeight: 30,
     textAlign: 'center',
+    marginBottom: 10,
     color: '#fff'
   },
   user: {
