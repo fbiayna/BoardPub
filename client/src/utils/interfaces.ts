@@ -1,8 +1,9 @@
 /* eslint-disable no-use-before-define */
 export interface Action {
   type: string,
-  promotions?: object,
-  promotion?: object,
+  promotions?: Promotion[],
+  promotion?: Promotion,
+  establishment?: Establishment,
   error?: any
 }
 

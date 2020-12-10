@@ -30,6 +30,20 @@ function requestPromotionError (error: string) {
   }
 }
 
+function getEstablishmentSuccess (establishment: object) {
+  return {
+    type: actionTypes.LOAD_ESTABLISHMENT,
+    establishment
+  }
+}
+
+function getEstablishmentError (error: string) {
+  return {
+    type: actionTypes.LOAD_ESTABLISHMENT_ERROR,
+    error
+  }
+}
+
 export function requestPromotions () {
   return async (dispatch: Function) => {
     try {
@@ -48,6 +62,17 @@ export function requestPromotion (id: string) {
       dispatch(requestPromotionSuccess(promotion.data))
     } catch (error) {
       dispatch(requestPromotionError(error))
+    }
+  }
+}
+
+export function getEstablishment (id: string) {
+  return async (dispatch: Function) => {
+    try {
+      const promotion = await axios.get(`${hostUrl()}/promotions/establishment`, { params: { id } })
+      dispatch(getEstablishmentSuccess(promotion.data))
+    } catch (error) {
+      dispatch(getEstablishmentError(error))
     }
   }
 }
