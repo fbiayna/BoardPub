@@ -5,15 +5,15 @@ import ApplicationNavigation from './ApplicationNavigation'
 import LoginNavigator from './LoginNavigation'
 import { NavigationContainer } from '@react-navigation/native'
 
-const Stack = createStackNavigator()
+const { Navigator, Screen } = createStackNavigator()
 
 export default function BoardPubNavigation () {
   return (
       <NavigationContainer>
-        <Stack.Navigator headerMode={'none'}>
-            <Stack.Screen name={'login'} component={LoginNavigator}/>
-            <Stack.Screen name={'application'} component={ApplicationNavigation}/>
-        </Stack.Navigator>
+        <Navigator headerMode={'none'}>
+            <Screen name={'login'} component={LoginNavigator}/>
+            <Screen name={'application'} component={ApplicationNavigation}/>
+        </Navigator>
       </NavigationContainer>
   )
 }
