@@ -9,11 +9,11 @@ import MapsNavigation from './MapsNavigation'
 import UserNavigation from './UserNavigation'
 import FavoritesNavigation from './FavoritesNavigation'
 
-const Tab = createBottomTabNavigator()
+const { Navigator, Screen } = createBottomTabNavigator()
 
 export default function ApplicationNavigation () {
   return (
-    <Tab.Navigator screenOptions={({ route }) => ({
+    <Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ color }:any) => {
         let iconName = null
         route.name === 'Ofertas' ? iconName = 'style'
@@ -30,10 +30,10 @@ export default function ApplicationNavigation () {
       labelStyle: { fontWeight: 'bold', fontSize: 12 }
     }}
     >
-      <Tab.Screen name='Ofertas' component={HomeNavigation} />
-      <Tab.Screen name='Buscador' component={MapsNavigation} />
-      <Tab.Screen name='Favoritos' component={FavoritesNavigation} />
-      <Tab.Screen name='Perfil' component={UserNavigation} />
-    </Tab.Navigator>
+      <Screen name='Ofertas' component={HomeNavigation} />
+      <Screen name='Buscador' component={MapsNavigation} />
+      <Screen name='Favoritos' component={FavoritesNavigation} />
+      <Screen name='Perfil' component={UserNavigation} />
+    </Navigator>
   )
 }

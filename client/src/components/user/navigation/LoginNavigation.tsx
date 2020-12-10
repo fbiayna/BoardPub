@@ -5,14 +5,14 @@ import Login from '../../login/Login'
 import LoginUser from '../../login/LoginUser'
 import Loading from '../../login/Loading'
 
-const Stack = createStackNavigator()
+const { Navigator, Screen } = createStackNavigator()
 
 export default function LoginNavigation () {
   return (
-    <Stack.Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }} >
-        <Stack.Screen name="loading" component={Loading}/>
-        <Stack.Screen name="loginStart" component={Login} />
-        <Stack.Screen name="loginUser" component={LoginUser}/>
-    </Stack.Navigator>
+    <Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }} >
+        <Screen name="loading" component={Loading}/>
+        <Screen name="loginStart" component={Login} />
+        <Screen name="loginUser" component={LoginUser}/>
+    </Navigator>
   )
 }

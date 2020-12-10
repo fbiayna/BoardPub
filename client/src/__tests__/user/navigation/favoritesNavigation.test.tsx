@@ -2,7 +2,8 @@
 /* eslint-disable no-use-before-define */
 import React, { ReactElement } from 'react'
 import { render } from '@testing-library/react-native'
-import BoardPubNavigation from '../../../components/user/navigation/BoardPubNavigation'
+import FavoritesNavigation from '../../../components/user/navigation/FavoritesNavigation'
+import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
@@ -19,7 +20,9 @@ describe('User Navigation Component', () => {
 
     return ({ children }:{children: ReactElement}): ReactElement => (
       <Provider store={store}>
-        {children}
+        <NavigationContainer>
+          {children}
+        </NavigationContainer>
       </Provider>
     )
   }
@@ -32,6 +35,7 @@ describe('User Navigation Component', () => {
       surname: 'Biayna',
       email: 'skylab@correo',
       photo: 'skylab.png',
+      favorites: [],
       sub: '123'
     }
   })
@@ -39,9 +43,9 @@ describe('User Navigation Component', () => {
   test('should be defined', async () => {
     const initialState = { loginReducer: { user } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<BoardPubNavigation />, { wrapper })
+    const { getByTestId } = render(<FavoritesNavigation />, { wrapper })
 
-    const view = getByTestId('loading')
+    const view = getByTestId('list-favorites')
 
     await act(async () => { expect(view).toBeDefined() })
   })

@@ -104,7 +104,9 @@ const style = StyleSheet.create({
   },
   description: {
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    paddingRight: 20,
+    paddingLeft: 20
   },
   valorationsContainer: {
     height: 100,

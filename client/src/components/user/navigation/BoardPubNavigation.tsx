@@ -2,26 +2,18 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import ApplicationNavigation from './ApplicationNavigation'
-import { connect } from 'react-redux'
 import LoginNavigator from './LoginNavigation'
 import { NavigationContainer } from '@react-navigation/native'
 
-const Stack = createStackNavigator()
+const { Navigator, Screen } = createStackNavigator()
 
-function BoardPubNavigation () {
+export default function BoardPubNavigation () {
   return (
       <NavigationContainer>
-        <Stack.Navigator headerMode={'none'}>
-            <Stack.Screen name={'login'} component={LoginNavigator}/>
-            <Stack.Screen name={'application'} component={ApplicationNavigation}/>
-        </Stack.Navigator>
+        <Navigator headerMode={'none'}>
+            <Screen name={'login'} component={LoginNavigator}/>
+            <Screen name={'application'} component={ApplicationNavigation}/>
+        </Navigator>
       </NavigationContainer>
   )
 }
-
-function mapStateToProps ({ loginReducer }: any) {
-  return {
-    userState: loginReducer.userState
-  }
-}
-export default connect(mapStateToProps)(BoardPubNavigation)
