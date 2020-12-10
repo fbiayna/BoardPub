@@ -2,46 +2,58 @@
 /* eslint-disable no-use-before-define */
 import React, { ReactElement } from 'react'
 import { render } from '@testing-library/react-native'
-import BoardPubNavigation from '../../../components/user/navigation/BoardPubNavigation'
+import HomeNavigation from '../../../components/user/navigation/HomeNavigation'
+import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import { User } from 'utils/interfaces'
+import { Promotion } from 'utils/interfaces'
 import { act } from 'react-test-renderer'
 
 const buildStore = configureStore([thunk])
 
 describe('User Navigation Component', () => {
-  let user: User
+  let promotions: Promotion[]
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
     store.dispatch = jest.fn()
 
     return ({ children }:{children: ReactElement}): ReactElement => (
       <Provider store={store}>
-        {children}
+        <NavigationContainer>
+          {children}
+        </NavigationContainer>
       </Provider>
     )
   }
 
   beforeEach(() => {
-    user = {
+    promotions = [{
       _id: 'Skylab',
-      admin: false,
-      name: 'Ferran',
-      surname: 'Biayna',
-      email: 'skylab@correo',
-      photo: 'skylab.png',
-      sub: '123'
-    }
+      name: 'Pizza',
+      date: 'Jue 10 Dic 2020',
+      description: 'Skylab mola',
+      establishment: {
+        _id: 'Skylab',
+        name: 'Coders',
+        ubication: 'Barcelona',
+        city: 'Barcelona',
+        photo: 'Skylab.png',
+        description: 'Skylab mola',
+        rating: '4'
+      },
+      ubication: 'Barcelona',
+      price: '123',
+      type: 'drink'
+    }]
   })
 
   test('should be defined', async () => {
-    const initialState = { loginReducer: { user } }
+    const initialState = { boardPubReducer: { promotions } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<BoardPubNavigation />, { wrapper })
+    const { getByTestId } = render(<HomeNavigation />, { wrapper })
 
-    const view = getByTestId('loading')
+    const view = getByTestId('list-promotions')
 
     await act(async () => { expect(view).toBeDefined() })
   })

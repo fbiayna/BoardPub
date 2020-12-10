@@ -78,5 +78,5 @@ export interface Establishment {
   city: string,
   photo: string,
   description: string,
-  rating: number
+  rating: string
 }

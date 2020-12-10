@@ -2,13 +2,12 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import ApplicationNavigation from './ApplicationNavigation'
-import { connect } from 'react-redux'
 import LoginNavigator from './LoginNavigation'
 import { NavigationContainer } from '@react-navigation/native'
 
 const Stack = createStackNavigator()
 
-function BoardPubNavigation () {
+export default function BoardPubNavigation () {
   return (
       <NavigationContainer>
         <Stack.Navigator headerMode={'none'}>
@@ -18,10 +17,3 @@ function BoardPubNavigation () {
       </NavigationContainer>
   )
 }
-
-function mapStateToProps ({ loginReducer }: any) {
-  return {
-    userState: loginReducer.userState
-  }
-}
-export default connect(mapStateToProps)(BoardPubNavigation)
