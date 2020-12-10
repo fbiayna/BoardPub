@@ -12,8 +12,7 @@ import style from '../styles/DetailPromotion'
 import GoBack from './navigation/GoBack'
 
 function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
-  const route = useRoute()
-  const { id }:any = route.params
+  const { params: { id } }:any = useRoute()
 
   useFocusEffect(
     useCallback(() => { dispatch(requestPromotion(id)) }, [id]))

@@ -1,0 +1,78 @@
+/* eslint-disable no-import-assign */
+/* eslint-disable no-use-before-define */
+/* eslint-disable react/display-name */
+import React, { ReactElement } from 'react'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import configureStore from 'redux-mock-store'
+import DetailPromotion from '../../../components/user/DetailPromotion'
+import { render } from '@testing-library/react-native'
+import { Promotion, User } from '../../../utils/interfaces'
+import * as Route from '@react-navigation/native'
+
+const buildStore = configureStore([thunk])
+jest.mock('@react-navigation/native')
+
+describe('DetailPromotion', () => {
+  let promotion: Promotion
+  let user: User
+
+  const wrapperFactory = (wrapperInitialState: any) => {
+    const store = buildStore(wrapperInitialState)
+    store.dispatch = jest.fn()
+
+    return ({ children }:{children: ReactElement}): ReactElement => (
+      <Provider store={store}>
+        {children}
+      </Provider>
+    )
+  }
+
+  beforeEach(() => {
+    promotion = {
+      _id: 'Skylab',
+      name: 'Pizza',
+      date: 'Jue 10 Dic 2020',
+      description: 'Skylab mola',
+      establishment: {
+        _id: 'Skylab',
+        name: 'Coders',
+        ubication: 'Barcelona',
+        city: 'Barcelona',
+        photo: 'Skylab.png',
+        description: 'Skylab mola',
+        rating: '4'
+      },
+      ubication: 'Barcelona',
+      price: '123',
+      type: 'drink'
+    }
+    user = {
+      _id: 'Skylab',
+      admin: false,
+      name: 'Ferran',
+      surname: 'Biayna',
+      email: 'skylab@correo',
+      photo: 'skylab.png',
+      sub: '123'
+    }
+  })
+
+  test('renders correctly - promotions, user - ', () => {
+    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    const initialState = { boardPubReducer: { promotion: { _id: '1', establishment: { _id: '1' } } }, loginReducer: { user: { favorites: [{ _id: '1' }] } } }
+    const wrapper = wrapperFactory(initialState)
+    const { getByTestId } = render(<DetailPromotion />, { wrapper })
+
+    expect(getByTestId('detail')).toBeDefined()
+  })
+
+  test('renders correctly - promotions, user - null', () => {
+    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    const initialState = { boardPubReducer: { promotion }, loginReducer: { user } }
+    const wrapper = wrapperFactory(initialState)
+    const { getByTestId } = render(<DetailPromotion />, { wrapper })
+
+    expect(getByTestId('detail')).toBeDefined()
+  })
+})
