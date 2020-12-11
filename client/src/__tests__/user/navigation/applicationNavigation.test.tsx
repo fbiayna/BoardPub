@@ -37,6 +37,10 @@ describe('Application Navigation Component', () => {
         _id: 'Skylab',
         name: 'Coders',
         ubication: 'Barcelona',
+        coords: {
+          latitude: 1,
+          longitude: 1
+        },
         city: 'Barcelona',
         photo: 'Skylab.png',
         description: 'Skylab mola',
@@ -49,7 +53,7 @@ describe('Application Navigation Component', () => {
   })
 
   test('should be defined', async () => {
-    const initialState = { boardPubReducer: { promotions } }
+    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude: 1, longitude: 1, city: 'Badalona' } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<ApplicationNavigation />, { wrapper })
 

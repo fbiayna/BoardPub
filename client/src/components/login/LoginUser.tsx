@@ -74,6 +74,7 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
   async function signInWithGoogleAsync () {
     try {
       const result = await Google.logInAsync({
+        webClientId: '38128341226-64e8c7jdlr55uauennihc3dr1i6ndmc6.apps.googleusercontent.com',
         androidClientId: '38128341226-6qhn5lvgpdc984n03acqm8dgmj01dogv.apps.googleusercontent.com',
         scopes: ['profile', 'email']
       })

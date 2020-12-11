@@ -13,16 +13,29 @@ export interface ActionUser {
   error?: any
 }
 
+export interface ActionLocation {
+  type: string,
+  city?: string,
+  latitude?: number,
+  longitude?: number,
+  error?: any
+}
+
 export interface PromotionsMenu {
   promotions: Promotion[],
   typePromotion: string,
+  latitude: any,
+  longitude: any,
   navigation?: any
 }
 
-export interface Reducer {
+export interface HomeReducer {
     promotions?: Promotion[],
     navigation?: any,
     dispatch: Function,
+    latitude?: number,
+    longitude?: number,
+    city?: string
   }
 
 export interface LoginReducer {
@@ -81,6 +94,10 @@ export interface Establishment {
   _id: any,
   name: string,
   ubication: string,
+  coords: {
+    latitude: number,
+    longitude: number
+  }
   city: string,
   photo: string,
   description: string,

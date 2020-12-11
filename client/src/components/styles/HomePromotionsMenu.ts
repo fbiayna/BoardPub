@@ -19,7 +19,7 @@ const style = StyleSheet.create({
   },
   ubication: {
     marginTop: 20,
-    width: 110,
+    width: 300,
     height: 48,
     justifyContent: 'center',
     alignItems: 'center'

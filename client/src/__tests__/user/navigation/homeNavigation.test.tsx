@@ -12,7 +12,7 @@ import { act } from 'react-test-renderer'
 
 const buildStore = configureStore([thunk])
 
-describe('User Navigation Component', () => {
+describe('Home Navigation Component', () => {
   let promotions: Promotion[]
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
@@ -37,6 +37,10 @@ describe('User Navigation Component', () => {
         _id: 'Skylab',
         name: 'Coders',
         ubication: 'Barcelona',
+        coords: {
+          latitude: 1,
+          longitude: 1
+        },
         city: 'Barcelona',
         photo: 'Skylab.png',
         description: 'Skylab mola',
@@ -49,7 +53,7 @@ describe('User Navigation Component', () => {
   })
 
   test('should be defined', async () => {
-    const initialState = { boardPubReducer: { promotions } }
+    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude: 1, longitude: 1, city: 'Badalona' } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<HomeNavigation />, { wrapper })
 
