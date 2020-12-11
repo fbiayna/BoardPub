@@ -4,10 +4,11 @@ import style from '../styles/HomePromotionsMenu'
 import { Promotion, PromotionsMenu } from '../../utils/interfaces'
 import { View, Text, ImageBackground, FlatList, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import ListMenu from './ListMenu'
+import { distancePoints } from '../../utils/functions'
 
 const { width } = Dimensions.get('window')
 
-export default function HomePromotions ({ typePromotion, promotions, navigation }: PromotionsMenu) {
+export default function HomePromotions ({ typePromotion, latitude, longitude, promotions, navigation }: PromotionsMenu) {
   return (
       <View testID={'homePromotions'} style={listStyle.listContent} >
       <ListMenu typePromotion={typePromotion}/>
@@ -29,7 +30,7 @@ export default function HomePromotions ({ typePromotion, promotions, navigation 
                 </View>
                 <View style={style.otherInfoContainer}>
                 <Text style={style.otherInfo}>{item.date}</Text>
-                <Text style={style.otherInfo}>4km</Text>
+                {!latitude || !longitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, item.establishment.coords.latitude, item.establishment.coords.longitude)}km</Text>}
                 </View>
             </View>
         </View>

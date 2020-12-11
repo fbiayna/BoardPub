@@ -16,6 +16,8 @@ export interface ActionUser {
 export interface PromotionsMenu {
   promotions: Promotion[],
   typePromotion: string,
+  latitude: any,
+  longitude: any,
   navigation?: any
 }
 
@@ -81,6 +83,10 @@ export interface Establishment {
   _id: any,
   name: string,
   ubication: string,
+  coords: {
+    latitude: number,
+    longitude: number
+  }
   city: string,
   photo: string,
   description: string,

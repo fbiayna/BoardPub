@@ -7,13 +7,15 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { connect } from 'react-redux'
 import { requestPromotions } from '../../actions/promotionsFunctions'
 import Loading from '../loading/LoadingGif'
-import { typesFood, distancePoints } from '../../utils/functions'
+import { typesFood } from '../../utils/functions'
 import HomePromotions from './HomePromotionsList'
 import * as Location from 'expo-location'
 
 function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
   const [location, setLocation] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
+  const [latitude, setLatitude] = useState('')
+  const [longitude, setLongitude] = useState('')
 
   useEffect(() => {
     (async () => {
@@ -26,11 +28,13 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
       console.log(geoLocation)
       const { coords: { latitude, longitude } }:any = geoLocation
       const location:any = await Location.reverseGeocodeAsync({ latitude, longitude })
+      setLatitude(latitude)
+      setLongitude(longitude)
       setLocation(location[0].city)
     })()
   }, [])
 
-  let text = 'Waiting..'
+  let text = 'No hay ubicación'
   if (errorMsg) {
     text = errorMsg
   } else if (location) {
@@ -47,18 +51,25 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
     <View testID={'list-promotions'} style={style.container}>
       <View style={style.headerTop}>
         <View style={style.ubication}>
-          <View style={style.town}>
-            <Icon name="near-me" style={style.nearIcon}/>
-            <Text style={style.ubicationText}>{text}</Text>
+          {text === 'No hay ubicación' || text === errorMsg
+            ? <View style={style.town}>
+              <Icon name="near-me" style={style.nearIcon}/>
+              <Text style={style.ubicationText}>No hay ubicación</Text>
+            </View>
+            : <>
+                <View style={style.town}>
+                  <Icon name="near-me" style={style.nearIcon}/>
+                  <Text style={style.ubicationText}>{text}</Text>
+                </View>
+                <Text style={style.nearYouText}>Tu posición actual</Text>
+              </>}
           </View>
-          <Text style={style.nearYouText}>A 10 km de ti</Text>
-        </View>
       </View>
       {!promotions
         ? <Loading/>
         : promotions.length && <ScrollView horizontal={true} pagingEnabled={true}>
           {typesFood().map((typePromotion:string) =>
-          <HomePromotions key={typePromotion} typePromotion={typePromotion}
+          <HomePromotions key={typePromotion} typePromotion={typePromotion} latitude={latitude} longitude={longitude}
           promotions={promotions.filter((promotion) => promotion.type === typePromotion)} navigation={navigation} />
           )}
         </ScrollView>}

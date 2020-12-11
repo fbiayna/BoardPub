@@ -30,7 +30,7 @@ const style = StyleSheet.create({
     height: 100
   },
   textLoadingContainer: {
-    flex: 0.5,
+    flex: 0.7,
     justifyContent: 'center',
     alignItems: 'center'
   },

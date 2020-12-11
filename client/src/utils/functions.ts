@@ -11,5 +11,5 @@ export function distancePoints (lat1: number, lon1: number, lat2: number, lon2: 
             c(lat1 * p) * c(lat2 * p) *
             (1 - c((lon2 - lon1) * p)) / 2
 
-  return 12742 * Math.asin(Math.sqrt(a))
+  return (12742 * Math.asin(Math.sqrt(a))).toFixed(1)
 }
