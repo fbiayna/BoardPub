@@ -2,13 +2,15 @@
 import React from 'react'
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 import FavoritesMenu from '../FavoritesMenu'
+import DetailEstablishment from '../DetailEstablishment'
 
-const Stack = createStackNavigator()
+const { Screen, Navigator } = createStackNavigator()
 
 export default function FavoritesNavigation () {
   return (
-    <Stack.Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
-      <Stack.Screen name="favoritos" component={FavoritesMenu} />
-    </Stack.Navigator>
+    <Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
+      <Screen name="favoritos" component={FavoritesMenu} />
+      <Screen name="detail-establishment" component={DetailEstablishment} />
+    </Navigator>
   )
 }

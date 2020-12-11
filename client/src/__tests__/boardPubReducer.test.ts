@@ -51,6 +51,30 @@ describe('boardPubReducer', () => {
     expect(state).toEqual({ error: testPromotion })
   })
 
+  test('should return establishment -> actionTypes = LOAD_establishment', () => {
+    const testEstablishment = { establishment: '¡pizzas para todos!' }
+    const establishmentsAction = {
+      type: actionTypes.LOAD_ESTABLISHMENT,
+      establishment: testEstablishment
+    }
+
+    const state = boardPubReducer({}, establishmentsAction)
+
+    expect(state).toEqual({ establishment: testEstablishment })
+  })
+
+  test('should return error -> actionTypes = LOAD_establishment_ERROR', () => {
+    const testEstablishment = 'error'
+    const establishmentsAction = {
+      type: actionTypes.LOAD_ESTABLISHMENT_ERROR,
+      error: testEstablishment
+    }
+
+    const state = boardPubReducer({}, establishmentsAction)
+
+    expect(state).toEqual({ error: testEstablishment })
+  })
+
   test('should return the default state', () => {
     const state = boardPubReducer({}, { type: 'boardPub' })
 

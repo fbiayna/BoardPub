@@ -2,7 +2,7 @@
 import React from 'react'
 import style from '../styles/Favorites'
 import { FavoritesReducer, Establishment } from '../../utils/interfaces'
-import { View, Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, ImageBackground, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { deleteFavorite } from '../../actions/userFunctions'
 
@@ -16,11 +16,11 @@ function FavoritesMenu ({ user, dispatch, navigation }: FavoritesReducer) {
       </View>
       <FlatList style={style.favoritesList} data={user?.favorites} keyExtractor={(item: Establishment) => item.name}
         renderItem={({ item }) => (<TouchableOpacity testID={'favorite'} key={item.name} style={style.favoriteContainer} activeOpacity={0.9}
-        onPress={() => navigation.navigate('detail', { id: item._id })}>
+        onPress={() => navigation.navigate('detail-establishment', { id: item._id })}>
         <View style={style.favorite}>
             <View style={style.imageContainer}>
                 <ImageBackground source={{ uri: item.photo }} style={style.favoriteImage} imageStyle={{ borderRadius: 10 }}>
-                  <TouchableOpacity style={style.deleteButton} testID="deleteFavorite" onPress={() => dispatch(deleteFavorite(user, item._id))} activeOpacity={0.9}>
+                  <TouchableOpacity style={style.deleteButton} testID="deleteFavorite" onPress={() => dispatch(deleteFavorite(user, item._id)) && Alert.alert('¡Favorito eliminado!', `Has eliminado a ${item.name} de tu red de 'Favoritos'`, [{ text: 'Volver' }])} activeOpacity={0.9}>
                     <View style={style.deleteContainer}>
                       <Text style={style.deleteX}>X</Text>
                     </View>

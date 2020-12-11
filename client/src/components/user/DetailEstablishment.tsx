@@ -1,12 +1,12 @@
 /* eslint-disable no-use-before-define */
 import React, { useCallback } from 'react'
-import { DetailEstablishmentReducer, Establishment } from '../../utils/interfaces'
-import { View, Text, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
+import { DetailEstablishmentReducer } from '../../utils/interfaces'
+import { View, Text, ImageBackground, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { useRoute, useFocusEffect } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { getEstablishment } from '../../actions/establishmentsFunctions'
+import { getEstablishment } from '../../actions/promotionsFunctions'
 import style from '../styles/DetailEstablishment'
 import GoBack from './navigation/GoBack'
 
@@ -14,35 +14,22 @@ function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentRe
   const { params: { id } }:any = useRoute()
 
   useFocusEffect(
-    useCallback(() => { dispatch(requestestablishment(id)) }, [id]))
+    useCallback(() => { dispatch(getEstablishment(id)) }, [id]))
 
   return (
-    <View testID={'detail'} style={style.container}>
+    <View testID={'detail-establishment'} style={style.container}>
       {!establishment || establishment._id !== id
         ? <Loading />
         : <>
         <GoBack/>
         <ScrollView>
             <View style={style.imageContainer}>
-              <ImageBackground source={{ uri: establishment.photo }} style={style.establishmentImage} >
-                <View style={style.priceContainer}>
-                  <Text style={style.price}>{establishment.price}</Text>
-                </View>
-              </ImageBackground>
+              <ImageBackground source={{ uri: establishment.photo }} style={style.establishmentImage} ></ImageBackground>
             </View>
             <View style={style.infoContainer}>
               <View style={style.titleContainer}>
                 <Text style={style.title}>{establishment.name}</Text>
-                <Text style={style.establishment}>{establishment.name}</Text>
-              </View>
-            </View>
-            <View style={style.otherInfoContainer}>
-              <View style={style.otherContainer}>
-                <View style={style.dateContainer}>
-                  <Icon name="schedule" size={18} style={style.schedule}/>
-                  <Text style={style.date}>{establishment.date}</Text>
-                </View>
-                <View style={style.dateContainer}>
+                <View style={style.ubiContainer}>
                   <Icon name="place" size={18} style={style.schedule}/>
                   <Text style={style.ubication}>{establishment.ubication} - {establishment.city}</Text>
                 </View>
@@ -80,7 +67,7 @@ function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentRe
   )
 }
 
-function mapStateToProps ({ boardPubReducer, loginReducer }: any) {
+function mapStateToProps ({ boardPubReducer }: any) {
   return {
     establishment: boardPubReducer.establishment
   }

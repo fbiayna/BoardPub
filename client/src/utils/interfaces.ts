@@ -1,8 +1,9 @@
 /* eslint-disable no-use-before-define */
 export interface Action {
   type: string,
-  promotions?: object,
-  promotion?: object,
+  promotions?: Promotion[],
+  promotion?: Promotion,
+  establishment?: Establishment,
   error?: any
 }
 
@@ -40,6 +41,11 @@ export interface NavigationProps {
     site: string,
     navigation?: any,
   }
+
+export interface DetailEstablishmentReducer {
+  establishment?: Establishment,
+  dispatch: any
+}
 
 export interface DetailReducer {
     user?: any,

@@ -1,22 +1,28 @@
 import { StyleSheet } from 'react-native'
 
 const style = StyleSheet.create({
-  headerDetail: {
-    zIndex: 1,
+  addButton: {
     position: 'absolute',
-    width: '100%',
-    height: 70,
-    top: 0,
+    zIndex: 1,
     left: 0,
+    top: 0,
     right: 0,
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    justifyContent: 'flex-end'
+    marginLeft: 25,
+    marginTop: 40
+  },
+  addContainer: {
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+    borderColor: '#F1F1F1',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    borderWidth: 3,
+    elevation: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   goBack: {
-    color: '#fff',
-    opacity: 2,
-    marginLeft: 20,
-    marginBottom: 10
+    color: '#fff'
   }
 })
 
