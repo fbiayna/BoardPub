@@ -13,6 +13,14 @@ export interface ActionUser {
   error?: any
 }
 
+export interface ActionLocation {
+  type: string,
+  city?: string,
+  latitude?: number,
+  longitude?: number,
+  error?: any
+}
+
 export interface PromotionsMenu {
   promotions: Promotion[],
   typePromotion: string,
@@ -21,10 +29,13 @@ export interface PromotionsMenu {
   navigation?: any
 }
 
-export interface Reducer {
+export interface HomeReducer {
     promotions?: Promotion[],
     navigation?: any,
     dispatch: Function,
+    latitude?: number,
+    longitude?: number,
+    city?: string
   }
 
 export interface LoginReducer {

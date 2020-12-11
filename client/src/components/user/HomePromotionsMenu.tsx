@@ -1,45 +1,22 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import style from '../styles/HomePromotionsMenu'
-import { Reducer } from '../../utils/interfaces'
+import { HomeReducer } from '../../utils/interfaces'
 import { View, Text, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { connect } from 'react-redux'
 import { requestPromotions } from '../../actions/promotionsFunctions'
+import { getPermissionsUbication } from '../../actions/locationFunctions'
 import Loading from '../loading/LoadingGif'
 import { typesFood } from '../../utils/functions'
 import HomePromotions from './HomePromotionsList'
-import * as Location from 'expo-location'
 
-function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
-  const [location, setLocation] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
-  const [latitude, setLatitude] = useState('')
-  const [longitude, setLongitude] = useState('')
-
+function HomePromotionsMenu ({ promotions, dispatch, navigation, latitude, longitude, city }:HomeReducer) {
   useEffect(() => {
-    (async () => {
-      const { status } = await Location.requestPermissionsAsync()
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied')
-        return
-      }
-      const geoLocation = await Location.getCurrentPositionAsync({})
-      console.log(geoLocation)
-      const { coords: { latitude, longitude } }:any = geoLocation
-      const location:any = await Location.reverseGeocodeAsync({ latitude, longitude })
-      setLatitude(latitude)
-      setLongitude(longitude)
-      setLocation(location[0].city)
-    })()
-  }, [])
-
-  let text = 'No hay ubicación'
-  if (errorMsg) {
-    text = errorMsg
-  } else if (location) {
-    text = location
-  }
+    if (!city) {
+      dispatch(getPermissionsUbication())
+    }
+  }, [city])
 
   useEffect(() => {
     if (!promotions || !promotions?.length) {
@@ -51,7 +28,7 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
     <View testID={'list-promotions'} style={style.container}>
       <View style={style.headerTop}>
         <View style={style.ubication}>
-          {text === 'No hay ubicación' || text === errorMsg
+          {!city
             ? <View style={style.town}>
               <Icon name="near-me" style={style.nearIcon}/>
               <Text style={style.ubicationText}>No hay ubicación</Text>
@@ -59,7 +36,7 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
             : <>
                 <View style={style.town}>
                   <Icon name="near-me" style={style.nearIcon}/>
-                  <Text style={style.ubicationText}>{text}</Text>
+                  <Text style={style.ubicationText}>{city}</Text>
                 </View>
                 <Text style={style.nearYouText}>Tu posición actual</Text>
               </>}
@@ -77,9 +54,12 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation }: Reducer) {
   )
 }
 
-function mapStateToProps ({ boardPubReducer }: any) {
+function mapStateToProps ({ boardPubReducer, locationReducer }: any) {
   return {
-    promotions: boardPubReducer.promotions
+    promotions: boardPubReducer.promotions,
+    city: locationReducer.city,
+    latitude: locationReducer.latitude,
+    longitude: locationReducer.longitude
   }
 }
 export default connect(mapStateToProps)(HomePromotionsMenu)
