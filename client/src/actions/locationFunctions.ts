@@ -46,8 +46,8 @@ function getCityError (error: string) {
 export function getPermissionsUbication () {
   return async (dispatch: Function) => {
     try {
-      const { status } = await Location.requestPermissionsAsync()
-      console.log(status)
+      const permission = await Location.requestPermissionsAsync()
+      const { status }:any = permission
       status !== 'granted'
         ? dispatch(getPermissionsNoAccepted('Sin permiso'))
         : dispatch(getLocation())
