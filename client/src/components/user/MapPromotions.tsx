@@ -9,9 +9,9 @@ import { distancePoints } from '../../utils/functions'
 import MapView, { Callout, Circle, Marker } from 'react-native-maps'
 import { Promotion } from 'utils/interfaces'
 
-function HomePromotionsMenu ({ navigation, promotions, latitude, longitude, city }:any) {
+function MapPromotions ({ navigation, promotions, latitude, longitude, city }:any) {
   return (
-    <View style={style.container}>
+    <View testID={'map-promotions'} style={style.container}>
         <View style={style.headerTop}>
             <View style={style.ubication}>
             {!city
@@ -28,7 +28,7 @@ function HomePromotionsMenu ({ navigation, promotions, latitude, longitude, city
               </>}
             </View>
         </View>
-        {!latitude || !longitude
+        {!latitude
           ? <Loading/>
           : <MapView style={style.map} initialRegion={{ latitude: latitude, longitude: longitude, latitudeDelta: 0.03, longitudeDelta: 0.03 }}>
               <Marker
@@ -37,7 +37,7 @@ function HomePromotionsMenu ({ navigation, promotions, latitude, longitude, city
                 longitude: longitude
               }}
               title={'Tu posición'}
-              description={'En un radio de 500 m'}
+              description={'Radio de 500 m'}
               />
                 <Circle center={{ latitude: latitude, longitude: longitude }} radius={1000} zIndex={-1} fillColor={'rgba(100, 100, 100, 0.3)'}>
                 </Circle>
@@ -46,7 +46,7 @@ function HomePromotionsMenu ({ navigation, promotions, latitude, longitude, city
                     latitude: promotion.establishment.coords.latitude,
                     longitude: promotion.establishment.coords.longitude
                   }}>
-                    <Callout onPress={() => navigation.navigate('detailMap', { id: promotion._id })}>
+                    <Callout testID={'detailMap'} onPress={() => navigation.navigate('detailMap', { id: promotion._id })}>
                       <View style={style.promotionContainer}>
                         <View style={style.titleContainer}>
                           <Text style={style.title}>{promotion.name}</Text>
@@ -54,7 +54,7 @@ function HomePromotionsMenu ({ navigation, promotions, latitude, longitude, city
                         </View>
                         <View style={style.otherInfoContainer}>
                           <Text style={style.otherInfo}>{promotion.date}</Text>
-                          {!latitude || !longitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, promotion.establishment.coords.latitude, promotion.establishment.coords.longitude)} km</Text>}
+                          <Text style={style.otherInfo}>{distancePoints(latitude, longitude, promotion.establishment.coords.latitude, promotion.establishment.coords.longitude)} km</Text>
                         </View>
                       </View>
                     </Callout>
@@ -74,4 +74,4 @@ function mapStateToProps ({ boardPubReducer, locationReducer }: any) {
     longitude: locationReducer.longitude
   }
 }
-export default connect(mapStateToProps)(HomePromotionsMenu)
+export default connect(mapStateToProps)(MapPromotions)

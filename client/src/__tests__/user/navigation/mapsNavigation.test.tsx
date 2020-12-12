@@ -7,13 +7,17 @@ import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import { User } from 'utils/interfaces'
+import { Promotion } from 'utils/interfaces'
 import { act } from 'react-test-renderer'
 
 const buildStore = configureStore([thunk])
 
-describe('User Navigation Component', () => {
-  let user: User
+describe('Maps Navigation Component', () => {
+  let promotions: Promotion[]
+  let latitude: Number
+  let longitude: Number
+  let city: String
+
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
     store.dispatch = jest.fn()
@@ -28,23 +32,39 @@ describe('User Navigation Component', () => {
   }
 
   beforeEach(() => {
-    user = {
+    promotions = [{
       _id: 'Skylab',
-      admin: false,
-      name: 'Ferran',
-      surname: 'Biayna',
-      email: 'skylab@correo',
-      photo: 'skylab.png',
-      sub: '123'
-    }
+      name: 'Pizza',
+      date: 'Jue 10 Dic 2020',
+      description: 'Skylab mola',
+      establishment: {
+        _id: 'Skylab',
+        name: 'Coders',
+        ubication: 'Barcelona',
+        coords: {
+          latitude: 1,
+          longitude: 1
+        },
+        city: 'Barcelona',
+        photo: 'Skylab.png',
+        description: 'Skylab mola',
+        rating: '4'
+      },
+      ubication: 'Barcelona',
+      price: '123',
+      type: 'drink'
+    }]
+    latitude = 1
+    longitude = 1
+    city = 'Barcelona'
   })
 
   test('should be defined', async () => {
-    const initialState = { userReducer: { user } }
+    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<MapsNavigation />, { wrapper })
 
-    const view = getByTestId('list-profile')
+    const view = getByTestId('map-promotions')
 
     await act(async () => { expect(view).toBeDefined() })
   })
