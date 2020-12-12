@@ -9,9 +9,9 @@ import { connect } from 'react-redux'
 import firebase from 'firebase'
 import { useIsFocused } from '@react-navigation/native'
 import { getUser, addAndGetUser } from '../../actions/userFunctions'
-import { LoginReducer } from 'utils/interfaces'
+import { userReducer } from 'utils/interfaces'
 
-function LoginUser ({ dispatch, navigation }:LoginReducer) {
+function LoginUser ({ dispatch, navigation }:userReducer) {
   const isFocused = useIsFocused()
   if (isFocused) {
     checkIfLoggedIn()
@@ -128,9 +128,9 @@ function LoginUser ({ dispatch, navigation }:LoginReducer) {
   )
 }
 
-function mapStateToProps ({ loginReducer }: any) {
+function mapStateToProps ({ userReducer }: any) {
   return {
-    user: loginReducer.user
+    user: userReducer.user
   }
 }
 export default connect(mapStateToProps)(LoginUser)

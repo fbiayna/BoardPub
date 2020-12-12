@@ -40,7 +40,7 @@ describe('User Navigation Component', () => {
   })
 
   test('should be defined', async () => {
-    const initialState = { loginReducer: { user } }
+    const initialState = { userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<MapsNavigation />, { wrapper })
 

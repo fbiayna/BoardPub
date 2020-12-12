@@ -3,7 +3,7 @@ import { ActionUser } from '../utils/interfaces'
 
 const initialState = {}
 
-export default function loginReducer (state: any = initialState, action: ActionUser) {
+export default function userReducer (state: any = initialState, action: ActionUser) {
   let answer = state
   switch (action.type) {
     case actionTypes.LOAD_USER:

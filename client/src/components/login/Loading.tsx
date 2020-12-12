@@ -38,9 +38,9 @@ function Loading ({ dispatch, navigation }:any) {
   )
 }
 
-function mapStateToProps ({ loginReducer }: any) {
+function mapStateToProps ({ userReducer }: any) {
   return {
-    user: loginReducer.user
+    user: userReducer.user
   }
 }
 export default connect(mapStateToProps)(Loading)

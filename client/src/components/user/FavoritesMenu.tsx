@@ -36,9 +36,9 @@ function FavoritesMenu ({ user, dispatch, navigation }: FavoritesReducer) {
   )
 }
 
-function mapStateToProps ({ loginReducer }: any) {
+function mapStateToProps ({ userReducer }: any) {
   return {
-    user: loginReducer.user
+    user: userReducer.user
   }
 }
 export default connect(mapStateToProps)(FavoritesMenu)

@@ -89,10 +89,10 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   )
 }
 
-function mapStateToProps ({ boardPubReducer, loginReducer }: any) {
+function mapStateToProps ({ boardPubReducer, userReducer }: any) {
   return {
     promotion: boardPubReducer.promotion,
-    user: loginReducer.user
+    user: userReducer.user
   }
 }
 export default connect(mapStateToProps)(DetailPromotion)

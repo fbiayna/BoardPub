@@ -43,7 +43,7 @@ describe('Loading', () => {
   test('renders correctly - establishment in favorites list - isFocused false ', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(false)
 
-    const initialState = { loginReducer: { user } }
+    const initialState = { userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<Loading />, { wrapper })
 
@@ -53,7 +53,7 @@ describe('Loading', () => {
   test('renders correctly - establishment in favorites list - isFocused true ', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(true)
 
-    const initialState = { loginReducer: { user } }
+    const initialState = { userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<Loading />, { wrapper })
 

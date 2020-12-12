@@ -43,7 +43,7 @@ describe('LoginUser should be', () => {
   test('isFocused - false', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(false)
 
-    const initialState = { loginReducer: { user } }
+    const initialState = { userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<LoginUser />, { wrapper })
 
@@ -54,7 +54,7 @@ describe('LoginUser should be', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(true)
     Firebase.auth = jest.fn().mockReturnValue({ onAuthStateChanged: jest.fn().mockReturnValue({}) })
 
-    const initialState = { loginReducer: { user } }
+    const initialState = { userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<LoginUser />, { wrapper })
 

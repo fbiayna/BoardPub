@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import boardPubReducer from './boardPubReducer'
-import loginReducer from './loginReducer'
+import userReducer from './userReducer'
 import locationReducer from './locationReducer'
 
 const rootReducer = combineReducers({
   boardPubReducer,
-  loginReducer,
+  userReducer,
   locationReducer
 })
 
