@@ -25,7 +25,7 @@ describe('FavoritesMenu', () => {
   }
 
   test('renders - user - null', () => {
-    const initialState = { loginReducer: { user: null } }
+    const initialState = { userReducer: { user: null } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<FavoritesMenu />, { wrapper })
 
@@ -33,7 +33,7 @@ describe('FavoritesMenu', () => {
   })
 
   test('renders - user', () => {
-    const initialState = { loginReducer: { user: { admin: true, favorites: ['1', '2'] } } }
+    const initialState = { userReducer: { user: { admin: true, favorites: ['1', '2'] } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<FavoritesMenu />, { wrapper })
 
@@ -41,7 +41,7 @@ describe('FavoritesMenu', () => {
   })
 
   test('Detail button should be defined', async () => {
-    const initialState = { loginReducer: { user: { favorites: ['1'] } } }
+    const initialState = { userReducer: { user: { favorites: ['1'] } } }
     const wrapper = wrapperFactory(initialState)
     const navigation = { navigate: jest.fn() }
 
@@ -53,7 +53,7 @@ describe('FavoritesMenu', () => {
     expect(button).toBeDefined()
   })
   test('Delete button should be defined', async () => {
-    const initialState = { loginReducer: { user: { favorites: ['1'] } } }
+    const initialState = { userReducer: { user: { favorites: ['1'] } } }
     const wrapper = wrapperFactory(initialState)
 
     const { getByTestId } = render(<FavoritesMenu />, { wrapper })

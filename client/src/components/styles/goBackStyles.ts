@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const style = StyleSheet.create({
+const goBackStyles = StyleSheet.create({
   addButton: {
     position: 'absolute',
     zIndex: 1,
@@ -26,4 +26,4 @@ const style = StyleSheet.create({
   }
 })
 
-export default style
+export default goBackStyles

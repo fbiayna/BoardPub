@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const style = StyleSheet.create({
+const homePromotionsMenuStyles = StyleSheet.create({
   container: {
     backgroundColor: '#F5F5F5',
     width: '100%',
@@ -139,4 +139,4 @@ const style = StyleSheet.create({
   }
 })
 
-export default style
+export default homePromotionsMenuStyles

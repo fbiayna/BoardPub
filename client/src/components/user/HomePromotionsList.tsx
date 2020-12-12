@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import style from '../styles/HomePromotionsMenu'
+import style from '../styles/homePromotionsMenuStyles'
 import { Promotion, PromotionsMenu } from '../../utils/interfaces'
 import { View, Text, ImageBackground, FlatList, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import ListMenu from './ListMenu'
@@ -30,7 +30,7 @@ export default function HomePromotions ({ typePromotion, latitude, longitude, pr
                 </View>
                 <View style={style.otherInfoContainer}>
                 <Text style={style.otherInfo}>{item.date}</Text>
-                {!latitude || !longitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, item.establishment.coords.latitude, item.establishment.coords.longitude)}km</Text>}
+                {!latitude || !longitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, item.establishment.coords.latitude, item.establishment.coords.longitude)} km</Text>}
                 </View>
             </View>
         </View>

@@ -38,7 +38,7 @@ export interface HomeReducer {
     city?: string
   }
 
-export interface LoginReducer {
+export interface userReducer {
     user?: User,
     navigation?: any,
     dispatch: Function,
@@ -102,4 +102,8 @@ export interface Establishment {
   photo: string,
   description: string,
   rating: string
+}
+
+export interface imgObject {
+  uri: string
 }

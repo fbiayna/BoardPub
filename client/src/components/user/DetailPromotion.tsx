@@ -8,7 +8,7 @@ import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
 import { addFavorite } from '../../actions/userFunctions'
-import style from '../styles/DetailPromotion'
+import style from '../styles/detailPromotionStyles'
 import GoBack from './navigation/GoBack'
 
 function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
@@ -70,18 +70,6 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
                 <Text style={style.textValoration}>{promotion.establishment.name} está muy bien valorado por parte de los usuarios</Text>
               </View>
             </View>
-            <View style={style.opinionContainer}>
-              <View style={style.opinionTextContainer}>
-                <Text style={style.opinionText}>¿Qué opinas de {promotion.establishment.name}?</Text>
-              </View>
-              <View style={style.opinionStarContainer}>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-              </View>
-            </View>
           </ScrollView>
           </>
       }
@@ -89,10 +77,10 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   )
 }
 
-function mapStateToProps ({ boardPubReducer, loginReducer }: any) {
+function mapStateToProps ({ promotionsReducer, userReducer }: any) {
   return {
-    promotion: boardPubReducer.promotion,
-    user: loginReducer.user
+    promotion: promotionsReducer.promotion,
+    user: userReducer.user
   }
 }
 export default connect(mapStateToProps)(DetailPromotion)

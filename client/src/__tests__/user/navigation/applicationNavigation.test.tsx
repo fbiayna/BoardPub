@@ -53,7 +53,7 @@ describe('Application Navigation Component', () => {
   })
 
   test('should be defined', async () => {
-    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude: 1, longitude: 1, city: 'Badalona' } }
+    const initialState = { promotionsReducer: { promotions }, locationReducer: { latitude: 1, longitude: 1, city: 'Badalona' } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<ApplicationNavigation />, { wrapper })
 

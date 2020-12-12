@@ -27,7 +27,7 @@ describe('Profile', () => {
   }
 
   test('renders - user - null', () => {
-    const initialState = { loginReducer: { user: null } }
+    const initialState = { userReducer: { user: null } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<Profile />, { wrapper })
 
@@ -35,7 +35,7 @@ describe('Profile', () => {
   })
 
   test('renders null - user', () => {
-    const initialState = { loginReducer: { user: { admin: true, favorites: ['1', '2'] } } }
+    const initialState = { userReducer: { user: { admin: true, favorites: ['1', '2'] } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<Profile />, { wrapper })
 
@@ -44,7 +44,7 @@ describe('Profile', () => {
 
   test('button should be define', async () => {
     firebase.auth = jest.fn().mockImplementation(() => ({ signOut: jest.fn() }))
-    const initialState = { loginReducer: { user: '1' } }
+    const initialState = { userReducer: { user: '1' } }
     const wrapper = wrapperFactory(initialState)
 
     const { getByTestId } = render(<Profile />, { wrapper })

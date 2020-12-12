@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react'
-import style from '../styles/HomePromotionsMenu'
+import style from '../styles/homePromotionsMenuStyles'
 import { HomeReducer } from '../../utils/interfaces'
 import { View, Text, ScrollView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -38,7 +38,7 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation, latitude, longi
                   <Icon name="near-me" style={style.nearIcon}/>
                   <Text style={style.ubicationText}>{city}</Text>
                 </View>
-                <Text style={style.nearYouText}>Tu posición actual</Text>
+                <Text style={style.nearYouText}>Promociones cerca de tí</Text>
               </>}
           </View>
       </View>
@@ -54,9 +54,9 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation, latitude, longi
   )
 }
 
-function mapStateToProps ({ boardPubReducer, locationReducer }: any) {
+function mapStateToProps ({ promotionsReducer, locationReducer }: any) {
   return {
-    promotions: boardPubReducer.promotions,
+    promotions: promotionsReducer.promotions,
     city: locationReducer.city,
     latitude: locationReducer.latitude,
     longitude: locationReducer.longitude

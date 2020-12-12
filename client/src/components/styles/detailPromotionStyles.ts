@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const style = StyleSheet.create({
+const detailPromotionStyles = StyleSheet.create({
   container: {
     backgroundColor: '#F5F5F5',
     width: '100%',
@@ -112,8 +112,8 @@ const style = StyleSheet.create({
     height: 100,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    borderBottomColor: '#F1F1F1',
-    borderBottomWidth: 1
+    elevation: 5,
+    marginBottom: 10
   },
   infoValoration: {
     marginLeft: 15,
@@ -181,4 +181,4 @@ const style = StyleSheet.create({
   }
 })
 
-export default style
+export default detailPromotionStyles

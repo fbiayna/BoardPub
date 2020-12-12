@@ -38,7 +38,7 @@ describe('locationReducer', () => {
 
     const state = locationReducer({}, actionLocation)
 
-    expect(state).toEqual({latitude: 1, longitude: 2})
+    expect(state).toEqual({ latitude: 1, longitude: 2 })
   })
 
   test('should return error -> actionLocationTypes = LOCATION_ERROR', () => {
@@ -62,7 +62,7 @@ describe('locationReducer', () => {
 
     const state = locationReducer({}, actionLocation)
 
-    expect(state).toEqual({city: 'Barcelona'})
+    expect(state).toEqual({ city: 'Barcelona' })
   })
 
   test('should return error -> actionLocationTypes = CITY_ERROR', () => {

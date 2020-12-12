@@ -7,7 +7,7 @@ import { useRoute, useFocusEffect } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
-import style from '../styles/DetailEstablishment'
+import style from '../styles/detailEstablishmentStyles'
 import GoBack from './navigation/GoBack'
 
 function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentReducer) {
@@ -48,18 +48,6 @@ function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentRe
                 <Text style={style.textValoration}>{establishment.name} está muy bien valorado por parte de los usuarios</Text>
               </View>
             </View>
-            <View style={style.opinionContainer}>
-              <View style={style.opinionTextContainer}>
-                <Text style={style.opinionText}>¿Qué opinas de {establishment.name}?</Text>
-              </View>
-              <View style={style.opinionStarContainer}>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-              </View>
-            </View>
           </ScrollView>
           </>
       }
@@ -67,9 +55,9 @@ function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentRe
   )
 }
 
-function mapStateToProps ({ boardPubReducer }: any) {
+function mapStateToProps ({ promotionsReducer }: any) {
   return {
-    establishment: boardPubReducer.establishment
+    establishment: promotionsReducer.establishment
   }
 }
 export default connect(mapStateToProps)(DetailEstablishment)

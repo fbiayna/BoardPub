@@ -1,5 +1,11 @@
-export function hostUrl ():any {
+export function hostUserUrl ():string {
   return (
-    'http://192.168.1.6:5000'
+    'http://192.168.1.6:5000/user'
+  )
+}
+
+export function hostPromotionsUrl (path: string) {
+  return (
+    `http://192.168.1.6:5000/promotions/${path}`
   )
 }

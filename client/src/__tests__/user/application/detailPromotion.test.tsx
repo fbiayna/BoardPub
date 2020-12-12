@@ -62,7 +62,7 @@ describe('DetailPromotion', () => {
     Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
     Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
-    const initialState = { boardPubReducer: { promotion: { _id: '1', establishment: { _id: '1' } } }, loginReducer: { user: { favorites: [{ _id: '1' }] } } }
+    const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '1' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailPromotion />, { wrapper })
 
@@ -73,7 +73,7 @@ describe('DetailPromotion', () => {
     Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
     Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
-    const initialState = { boardPubReducer: { promotion: { _id: '1', establishment: { _id: '2' } } }, loginReducer: { user: { favorites: [{ _id: '1' }] } } }
+    const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '2' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailPromotion />, { wrapper })
 
@@ -88,7 +88,7 @@ describe('DetailPromotion', () => {
     Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
     Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
-    const initialState = { boardPubReducer: { promotion }, loginReducer: { user } }
+    const initialState = { promotionsReducer: { promotion }, userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailPromotion />, { wrapper })
 

@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import style from '../styles/Profile'
+import style from '../styles/profileStyles'
 import { View, Text, ImageBackground, TouchableOpacity, ScrollView } from 'react-native'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
-import { LoginReducer } from '../../utils/interfaces'
+import { userReducer } from '../../utils/interfaces'
 import { skylabLogo } from '../../utils/images'
 
-function Profile ({ user }:LoginReducer) {
+function Profile ({ user }:userReducer) {
   return (
     <View testID={'list-profile'} style={style.container}>
       <View style={style.headerTop}>
@@ -58,10 +58,10 @@ function Profile ({ user }:LoginReducer) {
   )
 }
 
-function mapStateToProps ({ loginReducer }: any) {
+function mapStateToProps ({ userReducer }: any) {
   return {
-    user: loginReducer.user,
-    userState: loginReducer.userState
+    user: userReducer.user,
+    userState: userReducer.userState
   }
 }
 export default connect(mapStateToProps)(Profile)

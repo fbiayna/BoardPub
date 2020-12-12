@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 import { ImageBackground, View, Image } from 'react-native'
-import styles from '../styles/LoginLoading'
+import styles from '../styles/loginLoadingStyles'
 import { logoBoardPub, loginBackground } from '../../utils/images'
 import { useIsFocused } from '@react-navigation/native'
 import firebase from 'firebase'
@@ -38,9 +38,9 @@ function Loading ({ dispatch, navigation }:any) {
   )
 }
 
-function mapStateToProps ({ loginReducer }: any) {
+function mapStateToProps ({ userReducer }: any) {
   return {
-    user: loginReducer.user
+    user: userReducer.user
   }
 }
 export default connect(mapStateToProps)(Loading)

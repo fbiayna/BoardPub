@@ -4,16 +4,15 @@ import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import HomePromotionsMenu from '../../../components/user/HomePromotionsMenu'
-import { render } from '@testing-library/react-native'
+import MapPromotions from '../../../components/user/MapPromotions'
+import { render, fireEvent } from '@testing-library/react-native'
 import { HomeReducer } from '../../../utils/interfaces'
 
-jest.mock('../../../actions/promotionsFunctions')
-jest.mock('../../../actions/locationFunctions')
+jest.mock('@react-navigation/native')
 
 const buildStore = configureStore([thunk])
 
-describe('HomePromotionsMenu', () => {
+describe('MapPromotions', () => {
   let promotions: HomeReducer
   let latitude: HomeReducer
   let longitude: HomeReducer
@@ -30,18 +29,23 @@ describe('HomePromotionsMenu', () => {
     )
   }
 
-  test('renders correctly - promotions===null', () => {
+  test('renders correctly - promotions null', () => {
     const initialState = { promotionsReducer: { promotions }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<HomePromotionsMenu />, { wrapper })
+    const { getByTestId } = render(<MapPromotions />, { wrapper })
 
-    expect(getByTestId('list-promotions')).toBeDefined()
+    expect(getByTestId('map-promotions')).toBeDefined()
   })
-  test('renders correctly - promotions==={}', () => {
-    const initialState = { promotionsReducer: { promotions: [{}] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
+  test('renders correctly - promotions no null - latitude and longitude}', async () => {
+    const initialState = { promotionsReducer: { promotions: [{ establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<HomePromotionsMenu />, { wrapper })
 
-    expect(getByTestId('list-promotions')).toBeDefined()
+    const { getByTestId } = render(<MapPromotions />, { wrapper })
+
+    const button = getByTestId('detailMap')
+
+    await fireEvent.press(button)
+
+    expect(button).toBeDefined()
   })
 })
