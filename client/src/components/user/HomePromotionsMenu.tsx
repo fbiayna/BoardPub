@@ -38,7 +38,7 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation, latitude, longi
                   <Icon name="near-me" style={style.nearIcon}/>
                   <Text style={style.ubicationText}>{city}</Text>
                 </View>
-                <Text style={style.nearYouText}>Tu posición actual</Text>
+                <Text style={style.nearYouText}>¿Qué hay cerca de tí?</Text>
               </>}
           </View>
       </View>

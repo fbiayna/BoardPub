@@ -5,10 +5,11 @@ import style from '../styles/MapPromotion'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { connect } from 'react-redux'
 import Loading from '../loading/LoadingGif'
-import MapView, { Marker } from 'react-native-maps'
+import { distancePoints } from '../../utils/functions'
+import MapView, { Callout, Circle, Marker } from 'react-native-maps'
 import { Promotion } from 'utils/interfaces'
 
-function HomePromotionsMenu ({ promotions, latitude, longitude, city }:any) {
+function HomePromotionsMenu ({ navigation, promotions, latitude, longitude, city }:any) {
   return (
     <View style={style.container}>
         <View style={style.headerTop}>
@@ -23,7 +24,7 @@ function HomePromotionsMenu ({ promotions, latitude, longitude, city }:any) {
                   <Icon name="near-me" style={style.nearIcon}/>
                   <Text style={style.ubicationText}>{city}</Text>
                 </View>
-                <Text style={style.nearYouText}>Tu posición actual</Text>
+                <Text style={style.nearYouText}>¿Qué hay cerca de tí?</Text>
               </>}
             </View>
         </View>
@@ -35,13 +36,29 @@ function HomePromotionsMenu ({ promotions, latitude, longitude, city }:any) {
                 latitude: latitude,
                 longitude: longitude
               }}
-              title={'Estás aquí'}
+              title={'Tu posición'}
+              description={'En un radio de 500 m'}
               />
+                <Circle center={{ latitude: latitude, longitude: longitude }} radius={1000} zIndex={-1} fillColor={'rgba(100, 100, 100, 0.3)'}>
+                </Circle>
               {promotions?.map((promotion:Promotion) => (
                   <Marker pinColor={'#0E4686'} key={promotion._id} coordinate={{
                     latitude: promotion.establishment.coords.latitude,
                     longitude: promotion.establishment.coords.longitude
-                  }}/>
+                  }}>
+                    <Callout onPress={() => navigation.navigate('detailMap', { id: promotion._id })}>
+                      <View style={style.promotionContainer}>
+                        <View style={style.titleContainer}>
+                          <Text style={style.title}>{promotion.name}</Text>
+                          <Text style={style.establishment}>{promotion.establishment.name}</Text>
+                        </View>
+                        <View style={style.otherInfoContainer}>
+                          <Text style={style.otherInfo}>{promotion.date}</Text>
+                          {!latitude || !longitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, promotion.establishment.coords.latitude, promotion.establishment.coords.longitude)} km</Text>}
+                        </View>
+                      </View>
+                    </Callout>
+                  </Marker>
               ))}
           </MapView>
         }
