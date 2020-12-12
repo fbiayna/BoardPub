@@ -1,10 +1,11 @@
 {
-  "name": "client",
-  "displayName": "client",
+  "name": "BoardPub",
+  "displayName": "BoardPub",
   "expo": {
     "name": "client",
     "slug": "client",
     "version": "1.0.0",
+    "icon": "https://trello-attachments.s3.amazonaws.com/5ec457af3dca9f5428a9f179/210x209/8fbd315e96e10ec842f19b1c4e2dd68f/Logo_BoardPub.png",
     "assetBundlePatterns": [
       "**/*"
     ],
