@@ -28,19 +28,22 @@ function MapPromotions ({ navigation, promotions, latitude, longitude, city }:an
               </>}
             </View>
         </View>
-        {!latitude
+        {!promotions
           ? <Loading/>
           : <MapView style={style.map} initialRegion={{ latitude: latitude, longitude: longitude, latitudeDelta: 0.03, longitudeDelta: 0.03 }}>
-              <Marker
-              coordinate={{
-                latitude: latitude,
-                longitude: longitude
-              }}
-              title={'Tu posición'}
-              description={'Radio de 500 m'}
-              />
-                <Circle center={{ latitude: latitude, longitude: longitude }} radius={1000} zIndex={-1} fillColor={'rgba(100, 100, 100, 0.3)'}>
-                </Circle>
+              {!latitude
+                ? null
+                : <>
+                  <Marker
+                coordinate={{
+                  latitude: latitude,
+                  longitude: longitude
+                }}
+                  title={'Tu posición'}
+                  description={'Radio de 500 m'}
+                  />
+                  <Circle center={{ latitude: latitude, longitude: longitude }} radius={1000} zIndex={-1} fillColor={'rgba(100, 100, 100, 0.3)'}/>
+                </>}
               {promotions?.map((promotion:Promotion) => (
                   <Marker pinColor={'#0E4686'} key={promotion._id} coordinate={{
                     latitude: promotion.establishment.coords.latitude,
@@ -54,7 +57,7 @@ function MapPromotions ({ navigation, promotions, latitude, longitude, city }:an
                         </View>
                         <View style={style.otherInfoContainer}>
                           <Text style={style.otherInfo}>{promotion.date}</Text>
-                          <Text style={style.otherInfo}>{distancePoints(latitude, longitude, promotion.establishment.coords.latitude, promotion.establishment.coords.longitude)} km</Text>
+                          {!latitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, promotion.establishment.coords.latitude, promotion.establishment.coords.longitude)} km</Text>}
                         </View>
                       </View>
                     </Callout>

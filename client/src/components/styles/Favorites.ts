@@ -90,6 +90,15 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     color: '#E00000',
     fontSize: 25
+  },
+  noFavorite: {
+    height: '90%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  logoBoard: {
+    width: 100,
+    height: 100
   }
 })
 

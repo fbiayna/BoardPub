@@ -7,7 +7,7 @@ const style = StyleSheet.create({
     height: '100%'
   },
   imageContainer: {
-    height: 125
+    height: 200
   },
   establishmentImage: {
     width: '100%',
@@ -74,8 +74,8 @@ const style = StyleSheet.create({
     height: 100,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    borderBottomColor: '#F1F1F1',
-    borderBottomWidth: 1
+    elevation: 5,
+    marginBottom: 10
   },
   infoValoration: {
     marginLeft: 15,
