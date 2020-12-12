@@ -103,3 +103,7 @@ export interface Establishment {
   description: string,
   rating: string
 }
+
+export interface imgObject {
+  uri: string
+}

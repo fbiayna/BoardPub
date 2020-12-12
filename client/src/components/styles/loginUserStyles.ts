@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const style = StyleSheet.create({
+const loginUserStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -91,4 +91,4 @@ const style = StyleSheet.create({
   }
 })
 
-export default style
+export default loginUserStyles

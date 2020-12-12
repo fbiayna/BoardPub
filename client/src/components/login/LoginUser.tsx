@@ -2,7 +2,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useState } from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
-import styles from '../styles/LoginUser'
+import styles from '../styles/loginUserStyles'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
 import * as Google from 'expo-google-app-auth'
 import { connect } from 'react-redux'

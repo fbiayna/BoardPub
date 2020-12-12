@@ -14,9 +14,9 @@ const buildStore = configureStore([thunk])
 
 describe('Maps Navigation Component', () => {
   let promotions: Promotion[]
-  let latitude: Number
-  let longitude: Number
-  let city: String
+  let latitude: number
+  let longitude: number
+  let city: string
 
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
@@ -60,7 +60,7 @@ describe('Maps Navigation Component', () => {
   })
 
   test('should be defined', async () => {
-    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude, longitude, city } }
+    const initialState = { promotionsReducer: { promotions }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<MapsNavigation />, { wrapper })
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import style from '../styles/HomePromotionsMenu'
+import style from '../styles/homePromotionsMenuStyles'
 import { View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 

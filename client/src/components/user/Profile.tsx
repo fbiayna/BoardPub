@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import style from '../styles/Profile'
+import style from '../styles/profileStyles'
 import { View, Text, ImageBackground, TouchableOpacity, ScrollView } from 'react-native'
 import firebase from 'firebase'
 import { connect } from 'react-redux'

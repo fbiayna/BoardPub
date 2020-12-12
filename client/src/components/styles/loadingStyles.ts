@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const style = StyleSheet.create({
+const loadingStyles = StyleSheet.create({
   loadingImageContainer: {
     flex: 1,
     height: '100%',
@@ -13,4 +13,4 @@ const style = StyleSheet.create({
   }
 })
 
-export default style
+export default loadingStyles

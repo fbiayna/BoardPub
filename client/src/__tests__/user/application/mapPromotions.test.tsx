@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/display-name */
 import React, { ReactElement } from 'react'
@@ -31,16 +30,15 @@ describe('MapPromotions', () => {
   }
 
   test('renders correctly - promotions null', () => {
-    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude, longitude, city } }
+    const initialState = { promotionsReducer: { promotions }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<MapPromotions />, { wrapper })
 
     expect(getByTestId('map-promotions')).toBeDefined()
   })
   test('renders correctly - promotions no null - latitude and longitude}', async () => {
-    const initialState = { boardPubReducer: { promotions: [{ establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
+    const initialState = { promotionsReducer: { promotions: [{ establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
     const wrapper = wrapperFactory(initialState)
-    const navigation = { navigate: jest.fn() }
 
     const { getByTestId } = render(<MapPromotions />, { wrapper })
 

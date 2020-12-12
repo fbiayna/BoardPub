@@ -8,7 +8,7 @@ import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
 import { addFavorite } from '../../actions/userFunctions'
-import style from '../styles/DetailPromotion'
+import style from '../styles/detailPromotionStyles'
 import GoBack from './navigation/GoBack'
 
 function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
@@ -77,9 +77,9 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   )
 }
 
-function mapStateToProps ({ boardPubReducer, userReducer }: any) {
+function mapStateToProps ({ promotionsReducer, userReducer }: any) {
   return {
-    promotion: boardPubReducer.promotion,
+    promotion: promotionsReducer.promotion,
     user: userReducer.user
   }
 }

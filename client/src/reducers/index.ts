@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import boardPubReducer from './boardPubReducer'
+import promotionsReducer from './promotionsReducer'
 import userReducer from './userReducer'
 import locationReducer from './locationReducer'
 
 const rootReducer = combineReducers({
-  boardPubReducer,
+  promotionsReducer,
   userReducer,
   locationReducer
 })

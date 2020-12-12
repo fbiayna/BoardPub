@@ -31,14 +31,14 @@ describe('HomePromotionsMenu', () => {
   }
 
   test('renders correctly - promotions===null', () => {
-    const initialState = { boardPubReducer: { promotions }, locationReducer: { latitude, longitude, city } }
+    const initialState = { promotionsReducer: { promotions }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<HomePromotionsMenu />, { wrapper })
 
     expect(getByTestId('list-promotions')).toBeDefined()
   })
   test('renders correctly - promotions==={}', () => {
-    const initialState = { boardPubReducer: { promotions: [{}] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
+    const initialState = { promotionsReducer: { promotions: [{}] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<HomePromotionsMenu />, { wrapper })
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import style from '../styles/HomePromotionsMenu'
+import style from '../styles/homePromotionsMenuStyles'
 import { Promotion, PromotionsMenu } from '../../utils/interfaces'
 import { View, Text, ImageBackground, FlatList, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
 import ListMenu from './ListMenu'

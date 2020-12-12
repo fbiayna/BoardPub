@@ -7,7 +7,7 @@ import { useRoute, useFocusEffect } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
-import style from '../styles/DetailEstablishment'
+import style from '../styles/detailEstablishmentStyles'
 import GoBack from './navigation/GoBack'
 
 function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentReducer) {
@@ -55,9 +55,9 @@ function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentRe
   )
 }
 
-function mapStateToProps ({ boardPubReducer }: any) {
+function mapStateToProps ({ promotionsReducer }: any) {
   return {
-    establishment: boardPubReducer.establishment
+    establishment: promotionsReducer.establishment
   }
 }
 export default connect(mapStateToProps)(DetailEstablishment)

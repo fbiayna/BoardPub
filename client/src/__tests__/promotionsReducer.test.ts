@@ -1,8 +1,8 @@
 
 import actionTypes from '../actions/actionTypes'
-import boardPubReducer from '../reducers/boardPubReducer'
+import promotionsReducer from '../reducers/promotionsReducer'
 
-describe('boardPubReducer', () => {
+describe('promotionsReducer', () => {
   test('should return promotions -> actionTypes = LOAD_PROMOTIONS', () => {
     const testPromotions = { promotion: '¡pizzas para todos!' }
     const promotionsAction = {
@@ -10,7 +10,7 @@ describe('boardPubReducer', () => {
       promotions: testPromotions
     }
 
-    const state = boardPubReducer({}, promotionsAction)
+    const state = promotionsReducer({}, promotionsAction)
 
     expect(state).toEqual({ promotions: testPromotions })
   })
@@ -22,7 +22,7 @@ describe('boardPubReducer', () => {
       error: testPromotions
     }
 
-    const state = boardPubReducer({}, promotionsAction)
+    const state = promotionsReducer({}, promotionsAction)
 
     expect(state).toEqual({ error: testPromotions })
   })
@@ -34,7 +34,7 @@ describe('boardPubReducer', () => {
       promotion: testPromotion
     }
 
-    const state = boardPubReducer({}, promotionsAction)
+    const state = promotionsReducer({}, promotionsAction)
 
     expect(state).toEqual({ promotion: testPromotion })
   })
@@ -46,7 +46,7 @@ describe('boardPubReducer', () => {
       error: testPromotion
     }
 
-    const state = boardPubReducer({}, promotionsAction)
+    const state = promotionsReducer({}, promotionsAction)
 
     expect(state).toEqual({ error: testPromotion })
   })
@@ -58,7 +58,7 @@ describe('boardPubReducer', () => {
       establishment: testEstablishment
     }
 
-    const state = boardPubReducer({}, establishmentsAction)
+    const state = promotionsReducer({}, establishmentsAction)
 
     expect(state).toEqual({ establishment: testEstablishment })
   })
@@ -70,13 +70,13 @@ describe('boardPubReducer', () => {
       error: testEstablishment
     }
 
-    const state = boardPubReducer({}, establishmentsAction)
+    const state = promotionsReducer({}, establishmentsAction)
 
     expect(state).toEqual({ error: testEstablishment })
   })
 
   test('should return the default state', () => {
-    const state = boardPubReducer({}, { type: 'boardPub' })
+    const state = promotionsReducer({}, { type: 'boardPub' })
 
     expect(state).toEqual({})
   })

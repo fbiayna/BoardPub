@@ -3,31 +3,31 @@ import { Action } from '../utils/interfaces'
 
 const initialState = {}
 
-export default function boardPubReducer (state: object = initialState, action: Action) {
-  let answer = state
+export default function promotionsReducer (state: object = initialState, action: Action) {
+  let newState = null
   switch (action.type) {
     case actionTypes.LOAD_PROMOTIONS:
-      answer = { ...state, promotions: action.promotions }
+      newState = { ...state, promotions: action.promotions }
       break
     case actionTypes.LOAD_PROMOTIONS_ERROR:
-      answer = { ...state, error: action.error }
+      newState = { ...state, error: action.error }
       break
     case actionTypes.LOAD_PROMOTION:
-      answer = { ...state, promotion: action.promotion }
+      newState = { ...state, promotion: action.promotion }
       break
     case actionTypes.LOAD_PROMOTION_ERROR:
-      answer = { ...state, error: action.error }
+      newState = { ...state, error: action.error }
       break
     case actionTypes.LOAD_ESTABLISHMENT:
-      answer = { ...state, establishment: action.establishment }
+      newState = { ...state, establishment: action.establishment }
       break
     case actionTypes.LOAD_ESTABLISHMENT_ERROR:
-      answer = { ...state, error: action.error }
+      newState = { ...state, error: action.error }
       break
     default:
-      answer = state
+      newState = state
       break
   }
 
-  return answer
+  return newState
 }

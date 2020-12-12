@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import style from '../styles/Favorites'
+import style from '../styles/favoritesStyles'
 import { FavoritesReducer, Establishment } from '../../utils/interfaces'
 import { View, Text, FlatList, TouchableOpacity, ImageBackground, Alert, Image } from 'react-native'
 import { connect } from 'react-redux'

@@ -2,7 +2,7 @@
 import React from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import style from '../../styles/GoBack'
+import style from '../../styles/goBackStyles'
 import { CommonActions, useNavigation } from '@react-navigation/native'
 
 export default function GoBack ():any {

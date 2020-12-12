@@ -1,10 +1,10 @@
-export function typesFood ():any {
+export function typesFood ():string[] {
   return (
     ['menu', 'drink', 'pack', 'other']
   )
 }
 
-export function distancePoints (lat1: number, lon1: number, lat2: number, lon2: number) {
+export function distancePoints (lat1: number, lon1: number, lat2: number, lon2: number):string {
   const p = 0.017453292519943295
   const c = Math.cos
   const a = 0.5 - c((lat2 - lat1) * p) / 2 +

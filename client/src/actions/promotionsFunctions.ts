@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { hostUrl } from '../utils/hostUrl'
+import { hostPromotionsUrl } from '../utils/hostUrl'
 import actionTypes from './actionTypes'
 
 function requestPromotionsSuccess (promotions: object) {
@@ -47,7 +47,7 @@ function getEstablishmentError (error: string) {
 export function requestPromotions () {
   return async (dispatch: Function) => {
     try {
-      const promotions = await axios.get(`${hostUrl()}/promotions`)
+      const promotions = await axios.get(hostPromotionsUrl(''))
       dispatch(requestPromotionsSuccess(promotions.data))
     } catch (error) {
       dispatch(requestPromotionsError(error))
@@ -58,7 +58,7 @@ export function requestPromotions () {
 export function requestPromotion (id: string) {
   return async (dispatch: Function) => {
     try {
-      const promotion = await axios.get(`${hostUrl()}/promotions/promotion`, { params: { id } })
+      const promotion = await axios.get(hostPromotionsUrl('promotion'), { params: { id } })
       dispatch(requestPromotionSuccess(promotion.data))
     } catch (error) {
       dispatch(requestPromotionError(error))
@@ -69,7 +69,7 @@ export function requestPromotion (id: string) {
 export function getEstablishment (id: string) {
   return async (dispatch: Function) => {
     try {
-      const promotion = await axios.get(`${hostUrl()}/promotions/establishment`, { params: { id } })
+      const promotion = await axios.get(hostPromotionsUrl('establishment'), { params: { id } })
       dispatch(getEstablishmentSuccess(promotion.data))
     } catch (error) {
       dispatch(getEstablishmentError(error))

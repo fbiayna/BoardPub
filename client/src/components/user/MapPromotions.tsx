@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 import { View, Text } from 'react-native'
-import style from '../styles/MapPromotion'
+import style from '../styles/mapPromotionStyles'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { connect } from 'react-redux'
 import Loading from '../loading/LoadingGif'
@@ -24,7 +24,7 @@ function MapPromotions ({ navigation, promotions, latitude, longitude, city }:an
                   <Icon name="near-me" style={style.nearIcon}/>
                   <Text style={style.ubicationText}>{city}</Text>
                 </View>
-                <Text style={style.nearYouText}>¿Qué hay cerca de tí?</Text>
+                <Text style={style.nearYouText}>Promociones cerca de tí</Text>
               </>}
             </View>
         </View>
@@ -69,9 +69,9 @@ function MapPromotions ({ navigation, promotions, latitude, longitude, city }:an
   )
 }
 
-function mapStateToProps ({ boardPubReducer, locationReducer }: any) {
+function mapStateToProps ({ promotionsReducer, locationReducer }: any) {
   return {
-    promotions: boardPubReducer.promotions,
+    promotions: promotionsReducer.promotions,
     city: locationReducer.city,
     latitude: locationReducer.latitude,
     longitude: locationReducer.longitude
