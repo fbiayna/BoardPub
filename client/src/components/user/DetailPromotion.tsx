@@ -70,18 +70,6 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
                 <Text style={style.textValoration}>{promotion.establishment.name} está muy bien valorado por parte de los usuarios</Text>
               </View>
             </View>
-            <View style={style.opinionContainer}>
-              <View style={style.opinionTextContainer}>
-                <Text style={style.opinionText}>¿Qué opinas de {promotion.establishment.name}?</Text>
-              </View>
-              <View style={style.opinionStarContainer}>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-                <Icon name="star" size={35} style={style.opinionStar}/>
-              </View>
-            </View>
           </ScrollView>
           </>
       }
