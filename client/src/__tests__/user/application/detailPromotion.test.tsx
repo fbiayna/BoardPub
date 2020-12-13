@@ -8,7 +8,7 @@ import configureStore from 'redux-mock-store'
 import DetailPromotion from '../../../components/user/DetailPromotion'
 import { render, fireEvent } from '@testing-library/react-native'
 import { Promotion, User } from '../../../utils/interfaces'
-import * as Route from '@react-navigation/native'
+import * as Nav from '@react-navigation/native'
 
 const buildStore = configureStore([thunk])
 jest.mock('@react-navigation/native')
@@ -59,8 +59,9 @@ describe('DetailPromotion', () => {
   })
 
   test('renders correctly - establishment in favorites list ', () => {
-    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+    Nav.useIsFocused = jest.fn().mockReturnValue(false)
+    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
     const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '1' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
@@ -70,8 +71,9 @@ describe('DetailPromotion', () => {
   })
 
   test('renders correctly - establishment not in favorites list - should press button add and call the function inside', async () => {
-    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+    Nav.useIsFocused = jest.fn().mockReturnValue(true)
+    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
     const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '2' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
@@ -85,8 +87,8 @@ describe('DetailPromotion', () => {
   })
 
   test('renders correctly - promotions, user - null', () => {
-    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
     const initialState = { promotionsReducer: { promotion }, userReducer: { user } }
     const wrapper = wrapperFactory(initialState)

@@ -8,7 +8,7 @@ import configureStore from 'redux-mock-store'
 import DetailEstablishment from '../../../components/user/DetailEstablishment'
 import { render } from '@testing-library/react-native'
 import { Establishment } from '../../../utils/interfaces'
-import * as Route from '@react-navigation/native'
+import * as Nav from '@react-navigation/native'
 
 const buildStore = configureStore([thunk])
 jest.mock('@react-navigation/native')
@@ -40,8 +40,9 @@ describe('DetailEstablishment', () => {
   })
 
   test('renders correctly - establishment in favorites list ', () => {
-    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+    Nav.useIsFocused = jest.fn().mockReturnValue(false)
+    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
     const initialState = { promotionsReducer: { establishment: { _id: 1 } } }
     const wrapper = wrapperFactory(initialState)
@@ -51,8 +52,9 @@ describe('DetailEstablishment', () => {
   })
 
   test('renders correctly - establishment, user - null', () => {
-    Route.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Route.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+    Nav.useIsFocused = jest.fn().mockReturnValue(true)
+    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
+    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
     const initialState = { promotionsReducer: { establishment } }
     const wrapper = wrapperFactory(initialState)
