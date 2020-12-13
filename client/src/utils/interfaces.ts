@@ -21,6 +21,13 @@ export interface ActionLocation {
   error?: any
 }
 
+export interface ActionAuth {
+  type: string,
+  logInNoExists?: string,
+  logInExists?: string,
+  error?: any
+}
+
 export interface PromotionsMenu {
   promotions: Promotion[],
   typePromotion: string,
@@ -43,6 +50,13 @@ export interface userReducer {
     navigation?: any,
     dispatch: Function,
   }
+
+export interface authReducer {
+  dispatch: Function,
+  logInExists?: boolean,
+
+  navigation?: any
+}
 
 export interface FavoritesReducer {
     user?: any,

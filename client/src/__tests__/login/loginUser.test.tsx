@@ -16,6 +16,7 @@ jest.mock('@react-navigation/native')
 
 describe('LoginUser should be', () => {
   let user: User
+  let logInExists: boolean
 
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
@@ -38,12 +39,13 @@ describe('LoginUser should be', () => {
       photo: 'skylab.png',
       sub: '123'
     }
+    logInExists = true
   })
 
   test('isFocused - false', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(false)
 
-    const initialState = { userReducer: { user } }
+    const initialState = { userReducer: { user }, authReducer: { logInExists } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<LoginUser />, { wrapper })
 
@@ -54,7 +56,7 @@ describe('LoginUser should be', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(true)
     Firebase.auth = jest.fn().mockReturnValue({ onAuthStateChanged: jest.fn().mockReturnValue({}) })
 
-    const initialState = { userReducer: { user } }
+    const initialState = { userReducer: { user }, authReducer: { logInExists } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<LoginUser />, { wrapper })
 

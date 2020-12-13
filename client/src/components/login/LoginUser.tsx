@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import styles from '../styles/loginUserStyles'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
@@ -9,25 +10,27 @@ import { connect } from 'react-redux'
 import firebase from 'firebase'
 import { useIsFocused } from '@react-navigation/native'
 import { getUser, addAndGetUser } from '../../actions/userFunctions'
-import { userReducer } from 'utils/interfaces'
+import { authReducer } from 'utils/interfaces'
+import { checkIfLoggedIn } from '../../actions/authFunctions'
 
-function LoginUser ({ dispatch, navigation }:userReducer) {
+function LoginUser ({ dispatch, logInExists, navigation }: authReducer) {
   const isFocused = useIsFocused()
   if (isFocused) {
-    checkIfLoggedIn()
+    dispatch(checkIfLoggedIn())
   }
+
+  useEffect(() => {
+    logInExists !== undefined
+      ? logInExists
+          ? navigation.reset({
+              index: 0,
+              routes: [{ name: 'application' }]
+            })
+          : navigation.navigate('loginUser')
+      : null
+  }, [logInExists])
 
   const [loginState, newLoginState] = useState(true)
-
-  function checkIfLoggedIn () {
-    firebase.auth().onAuthStateChanged((firebaseUser:any) => {
-      if (firebaseUser) {
-        navigation.navigate('application')
-      } else {
-        navigation.navigate('loginUser')
-      }
-    })
-  }
 
   function isUserEqual (googleUser:any, firebaseUser:any) {
     if (firebaseUser) {
@@ -74,7 +77,6 @@ function LoginUser ({ dispatch, navigation }:userReducer) {
   async function signInWithGoogleAsync () {
     try {
       const result = await Google.logInAsync({
-        webClientId: '38128341226-64e8c7jdlr55uauennihc3dr1i6ndmc6.apps.googleusercontent.com',
         androidClientId: '38128341226-6qhn5lvgpdc984n03acqm8dgmj01dogv.apps.googleusercontent.com',
         scopes: ['profile', 'email']
       })
@@ -128,9 +130,10 @@ function LoginUser ({ dispatch, navigation }:userReducer) {
   )
 }
 
-function mapStateToProps ({ userReducer }: any) {
+function mapStateToProps ({ userReducer, authReducer }: any) {
   return {
-    user: userReducer.user
+    user: userReducer.user,
+    logInExists: authReducer.logInExists
   }
 }
 export default connect(mapStateToProps)(LoginUser)
