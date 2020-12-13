@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { DetailReducer, Establishment } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { connect } from 'react-redux'
@@ -13,11 +13,11 @@ import GoBack from './navigation/GoBack'
 
 function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   const { params: { id } }:any = useRoute()
-
   const isFocused = useIsFocused()
-  if (isFocused) {
+
+  useEffect(() => {
     dispatch(requestPromotion(id))
-  }
+  }, [isFocused])
 
   return (
     <View testID={'detail'} style={style.container}>

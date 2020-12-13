@@ -26,6 +26,19 @@ describe('authReducer', () => {
     expect(state).toEqual({ logInExists: testAuth })
   })
 
+  test('should return error -> actionAuthTypes = SIGN_IN_ERROR', () => {
+    const testAuth = 'error'
+    const Action = {
+      type: actionAuthTypes.SIGN_IN_ERROR,
+      error: testAuth,
+      logInState: true
+    }
+
+    const state = authReducer({}, Action)
+
+    expect(state).toEqual({ error: testAuth, logInState: true })
+  })
+
   test('should return the default state', () => {
     const state = authReducer({}, { type: 'skylab' })
 

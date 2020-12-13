@@ -23,8 +23,8 @@ export interface ActionLocation {
 
 export interface ActionAuth {
   type: string,
-  logInNoExists?: string,
-  logInExists?: string,
+  logInState?: boolean,
+  logInExists?: boolean,
   error?: any
 }
 
@@ -54,7 +54,7 @@ export interface userReducer {
 export interface authReducer {
   dispatch: Function,
   logInExists?: boolean,
-
+  logInState?: boolean,
   navigation?: any
 }
 

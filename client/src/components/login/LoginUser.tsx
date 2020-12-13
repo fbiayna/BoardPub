@@ -5,19 +5,20 @@ import React, { useState, useEffect } from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import styles from '../styles/loginUserStyles'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
-import * as Google from 'expo-google-app-auth'
 import { connect } from 'react-redux'
-import firebase from 'firebase'
 import { useIsFocused } from '@react-navigation/native'
-import { getUser, addAndGetUser } from '../../actions/userFunctions'
 import { authReducer } from 'utils/interfaces'
-import { checkIfLoggedIn } from '../../actions/authFunctions'
+import { checkIfLoggedIn, signInWithGoogleAsync } from '../../actions/authFunctions'
 
-function LoginUser ({ dispatch, logInExists, navigation }: authReducer) {
+function LoginUser ({ dispatch, logInExists, logInState, navigation }: authReducer) {
+  const [isLogging, newisLoggingState] = useState(logInState)
   const isFocused = useIsFocused()
-  if (isFocused) {
-    dispatch(checkIfLoggedIn())
-  }
+
+  useEffect(() => {
+    if (isFocused) {
+      dispatch(checkIfLoggedIn())
+    }
+  }, [isFocused])
 
   useEffect(() => {
     logInExists !== undefined
@@ -30,74 +31,11 @@ function LoginUser ({ dispatch, logInExists, navigation }: authReducer) {
       : null
   }, [logInExists])
 
-  const [loginState, newLoginState] = useState(true)
-
-  function isUserEqual (googleUser:any, firebaseUser:any) {
-    if (firebaseUser) {
-      const providerData = firebaseUser.providerData
-      for (let i = 0; i < providerData.length; i++) {
-        if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
-            providerData[i].uid === googleUser.getBasicProfile().getId()) {
-          return true
-        }
-      }
-    }
-    return false
-  }
-
-  function onSignIn (googleUser:any) {
-    const unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
-      unsubscribe()
-      if (!isUserEqual(googleUser, firebaseUser)) {
-        const credential = firebase.auth.GoogleAuthProvider.credential(
-          googleUser.idToken,
-          googleUser.accessToken)
-        firebase.auth().signInWithCredential(credential).then((result) => {
-          if (result.additionalUserInfo?.isNewUser) {
-            dispatch(addAndGetUser(result.additionalUserInfo?.profile))
-          } else {
-            const { additionalUserInfo: { profile: { sub } } }:any = result
-            dispatch(getUser(sub))
-          }
-        }
-
-        ).catch((error) => {
-          newLoginState(true)
-          const errorCode = error.code
-          const errorMessage = error.message
-          const email = error.email
-          const credential = error.credential
-        })
-      } else {
-        console.log('User already signed-in Firebase.')
-      }
-    })
-  }
-
-  async function signInWithGoogleAsync () {
-    try {
-      const result = await Google.logInAsync({
-        androidClientId: '38128341226-6qhn5lvgpdc984n03acqm8dgmj01dogv.apps.googleusercontent.com',
-        scopes: ['profile', 'email']
-      })
-
-      if (result.type === 'success') {
-        onSignIn(result)
-        return result.accessToken
-      } else {
-        newLoginState(true)
-        return { cancelled: true }
-      }
-    } catch (e) {
-      return { error: true }
-    }
-  }
-
   return (
     <View style={styles.container} testID="loginUser">
       <ImageBackground source={loginBackground()} style={styles.backimage}>
         <View style={styles.shadow}>
-          {!loginState
+          {isLogging
             ? <><View style={styles.logo}>
                   <Image source={logoBoardPub()} style={styles.image} />
                 </View>
@@ -117,7 +55,7 @@ function LoginUser ({ dispatch, logInExists, navigation }: authReducer) {
                   <Text style={styles.text}>¡Descúbrelas con BoardPub!</Text>
                 </View>
                 <View style={styles.user}>
-                  <TouchableOpacity style={styles.buttonUser} onPress={() => signInWithGoogleAsync() && newLoginState(false)} activeOpacity={0.8}>
+                  <TouchableOpacity testID={'signIn-button'} style={styles.buttonUser} onPress={() => dispatch(signInWithGoogleAsync()) && newisLoggingState(true)} activeOpacity={0.8}>
                       <Image source={google()} style={styles.googleIcon}/>
                       <Text style={styles.textUser}>CONTINUAR CON GOOGLE</Text>
                   </TouchableOpacity>
@@ -133,7 +71,8 @@ function LoginUser ({ dispatch, logInExists, navigation }: authReducer) {
 function mapStateToProps ({ userReducer, authReducer }: any) {
   return {
     user: userReducer.user,
-    logInExists: authReducer.logInExists
+    logInExists: authReducer.logInExists,
+    logInState: authReducer.logInState
   }
 }
 export default connect(mapStateToProps)(LoginUser)

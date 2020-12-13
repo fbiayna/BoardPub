@@ -11,11 +11,13 @@ import { authReducer } from 'utils/interfaces'
 
 function Loading ({ dispatch, logInExists, navigation }: authReducer) {
   const isFocused = useIsFocused()
-  if (isFocused) {
-    setTimeout(function () {
-      dispatch(checkIfLoggedIn())
-    }, 2500)
-  }
+  useEffect(() => {
+    if (isFocused) {
+      setTimeout(function () {
+        dispatch(checkIfLoggedIn())
+      }, 2500)
+    }
+  }, [isFocused])
 
   useEffect(() => {
     logInExists !== undefined
