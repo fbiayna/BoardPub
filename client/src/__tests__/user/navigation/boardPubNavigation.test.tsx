@@ -13,6 +13,7 @@ const buildStore = configureStore([thunk])
 
 describe('User Navigation Component', () => {
   let user: User
+  let logInExists: boolean
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
     store.dispatch = jest.fn()
@@ -34,10 +35,11 @@ describe('User Navigation Component', () => {
       photo: 'skylab.png',
       sub: '123'
     }
+    logInExists = true
   })
 
   test('should be defined', async () => {
-    const initialState = { userReducer: { user } }
+    const initialState = { userReducer: { user }, authReducer: { logInExists } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<BoardPubNavigation />, { wrapper })
 

@@ -13,7 +13,7 @@ const { Navigator, Screen } = createBottomTabNavigator()
 
 export default function ApplicationNavigation () {
   return (
-    <Navigator screenOptions={({ route }) => ({
+    <Navigator backBehavior={'none'} screenOptions={({ route }) => ({
       tabBarIcon: ({ color }:any) => {
         let iconName = null
         route.name === 'Ofertas' ? iconName = 'style'

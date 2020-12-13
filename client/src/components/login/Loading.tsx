@@ -1,30 +1,36 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ImageBackground, View, Image } from 'react-native'
 import styles from '../styles/loginLoadingStyles'
 import { logoBoardPub, loginBackground } from '../../utils/images'
 import { useIsFocused } from '@react-navigation/native'
-import firebase from 'firebase'
 import { connect } from 'react-redux'
-import { getUser } from '../../actions/userFunctions'
+import { checkIfLoggedIn } from '../../actions/authFunctions'
+import { authReducer } from 'utils/interfaces'
 
-function Loading ({ dispatch, navigation }:any) {
+function Loading ({ dispatch, logInExists, navigation }: authReducer) {
   const isFocused = useIsFocused()
   if (isFocused) {
-    setTimeout(checkIfLoggedIn, 2500)
+    setTimeout(function () {
+      dispatch(checkIfLoggedIn())
+    }, 2500)
   }
 
-  function checkIfLoggedIn () {
-    firebase.auth().onAuthStateChanged((firebaseUser:any) => {
-      if (firebaseUser) {
-        const { providerData } = firebaseUser
-        dispatch(getUser(providerData[0].uid))
-        navigation.navigate('application')
-      } else {
-        navigation.navigate('loginStart')
-      }
-    })
-  }
+  useEffect(() => {
+    logInExists !== undefined
+      ? logInExists
+          ? navigation.reset({
+              index: 0,
+              routes: [{ name: 'application' }]
+            })
+          : navigation.reset({
+            index: 0,
+            routes: [{ name: 'loginStart' }]
+          })
+      : null
+  }, [logInExists])
+
   return (
     <View style={styles.container} testID="loading">
       <ImageBackground source={loginBackground()} style={styles.backimage}>
@@ -38,9 +44,10 @@ function Loading ({ dispatch, navigation }:any) {
   )
 }
 
-function mapStateToProps ({ userReducer }: any) {
+function mapStateToProps ({ userReducer, authReducer }: any) {
   return {
-    user: userReducer.user
+    user: userReducer.user,
+    logInExists: authReducer.logInExists
   }
 }
 export default connect(mapStateToProps)(Loading)
