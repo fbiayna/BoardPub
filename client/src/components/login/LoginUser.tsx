@@ -21,14 +21,16 @@ function LoginUser ({ dispatch, logInExists, logInState, navigation }: authReduc
   }, [isFocused])
 
   useEffect(() => {
-    logInExists !== undefined
-      ? logInExists
-          ? navigation.reset({
-              index: 0,
-              routes: [{ name: 'application' }]
-            })
-          : navigation.navigate('loginUser')
-      : null
+    if (logInExists !== undefined) {
+      if (logInExists) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'application' }]
+        })
+      } else {
+        navigation.navigate('loginUser')
+      }
+    }
   }, [logInExists])
 
   return (

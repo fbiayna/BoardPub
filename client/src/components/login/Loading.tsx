@@ -20,17 +20,19 @@ function Loading ({ dispatch, logInExists, navigation }: authReducer) {
   }, [isFocused])
 
   useEffect(() => {
-    logInExists !== undefined
-      ? logInExists
-          ? navigation.reset({
-              index: 0,
-              routes: [{ name: 'application' }]
-            })
-          : navigation.reset({
-            index: 0,
-            routes: [{ name: 'loginStart' }]
-          })
-      : null
+    if (logInExists !== undefined) {
+      if (logInExists) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'application' }]
+        })
+      } else {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'loginStart' }]
+        })
+      }
+    }
   }, [logInExists])
 
   return (
