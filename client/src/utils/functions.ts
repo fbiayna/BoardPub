@@ -1,15 +1,16 @@
+
 export function typesFood ():string[] {
   return (
     ['menu', 'drink', 'pack', 'other']
   )
 }
 
-export function distancePoints (lat1: number, lon1: number, lat2: number, lon2: number):string {
-  const p = 0.017453292519943295
-  const c = Math.cos
-  const a = 0.5 - c((lat2 - lat1) * p) / 2 +
-            c(lat1 * p) * c(lat2 * p) *
-            (1 - c((lon2 - lon1) * p)) / 2
+export function distancePoints (latitudeUser: number, longitudeUser: number, latitudePromotion: number, longitudePromotion: number):string {
+  const piDivide = Math.PI / 180
+  const cosCalculate = Math.cos
+  const distance = 0.5 - cosCalculate((latitudePromotion - latitudeUser) * piDivide) / 2 +
+            cosCalculate(latitudeUser * piDivide) * cosCalculate(latitudePromotion * piDivide) *
+            (1 - cosCalculate((longitudePromotion - longitudeUser) * piDivide)) / 2
 
-  return (12742 * Math.asin(Math.sqrt(a))).toFixed(1)
+  return (12742 * Math.asin(Math.sqrt(distance))).toFixed(1)
 }

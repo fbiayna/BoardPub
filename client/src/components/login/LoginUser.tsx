@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import styles from '../styles/loginUserStyles'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
 import { connect } from 'react-redux'
-import { useIsFocused } from '@react-navigation/native'
+import { useIsFocused, useFocusEffect } from '@react-navigation/native'
 import { authReducer } from 'utils/interfaces'
 import { checkIfLoggedIn, signInWithGoogleAsync } from '../../actions/authFunctions'
 
@@ -14,11 +14,10 @@ function LoginUser ({ dispatch, logInExists, logInState, navigation }: authReduc
   const [isLogging, newisLoggingState] = useState(logInState)
   const isFocused = useIsFocused()
 
-  useEffect(() => {
-    if (isFocused) {
+  useFocusEffect(
+    useCallback(() => {
       dispatch(checkIfLoggedIn())
-    }
-  }, [isFocused])
+    }, [isFocused]))
 
   useEffect(() => {
     if (logInExists !== undefined) {
@@ -57,7 +56,7 @@ function LoginUser ({ dispatch, logInExists, logInState, navigation }: authReduc
                   <Text style={styles.text}>¡Descúbrelas con BoardPub!</Text>
                 </View>
                 <View style={styles.user}>
-                  <TouchableOpacity testID={'signIn-button'} style={styles.buttonUser} onPress={() => dispatch(signInWithGoogleAsync()) && newisLoggingState(true)} activeOpacity={0.8}>
+                  <TouchableOpacity testID={'signIn-button'} style={styles.buttonUser} onPress={() => { dispatch(signInWithGoogleAsync()); newisLoggingState(true) }} activeOpacity={0.8}>
                       <Image source={google()} style={styles.googleIcon}/>
                       <Text style={styles.textUser}>CONTINUAR CON GOOGLE</Text>
                   </TouchableOpacity>

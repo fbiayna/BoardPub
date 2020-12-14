@@ -40,7 +40,7 @@ function MapPromotions ({ navigation, promotions, latitude, longitude, city }:an
                   longitude: longitude
                 }}
                   title={'Tu posición'}
-                  description={'Radio de 500 m'}
+                  description={'Radio de 1 km'}
                   />
                   <Circle center={{ latitude: latitude, longitude: longitude }} radius={1000} zIndex={-1} fillColor={'rgba(100, 100, 100, 0.3)'}/>
                 </>}

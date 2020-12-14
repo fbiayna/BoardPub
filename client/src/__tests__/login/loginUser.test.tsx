@@ -53,6 +53,16 @@ describe('LoginUser should be', () => {
     expect(getByTestId('loginUser')).toBeDefined()
   })
 
+  test('isFocused - false - logInExists null', () => {
+    Focus.useIsFocused = jest.fn().mockReturnValue(false)
+
+    const initialState = { userReducer: { user }, authReducer: { logInExists: null } }
+    const wrapper = wrapperFactory(initialState)
+    const { getByTestId } = render(<LoginUser />, { wrapper })
+
+    expect(getByTestId('loginUser')).toBeDefined()
+  })
+
   test('isFocused - true - logInExists undefined, isLogging true', () => {
     Focus.useIsFocused = jest.fn().mockReturnValue(true)
 
