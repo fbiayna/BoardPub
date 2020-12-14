@@ -1,6 +1,6 @@
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import { checkIfLoggedIn, signInWithGoogleAsync } from '../../actions/authFunctions'
+import { isUserEqual, signInWithGoogleAsync, checkIfLoggedIn, onSignIn } from '../../actions/authFunctions'
 import * as Google from 'expo-google-app-auth'
 import firebase from 'firebase'
 
@@ -22,6 +22,10 @@ describe('AuthFunctions', () => {
     })
 
     test('should call firebase.auth', () => {
+      firebase.auth = jest.fn().mockReturnValue({
+        onAuthStateChanged: jest.fn().mockImplementationOnce(
+          (firebaseUser) => { firebaseUser(undefined) })
+      })
       expect(firebase.auth).toHaveBeenCalled()
     })
   })
@@ -29,7 +33,8 @@ describe('AuthFunctions', () => {
   describe('checkIfLoggedIn - !firebaseUser', () => {
     beforeEach(() => {
       firebase.auth = jest.fn().mockReturnValue({
-        onAuthStateChanged: jest.fn()
+        onAuthStateChanged: jest.fn().mockImplementationOnce(
+          (firebaseUser) => { firebaseUser(undefined) })
       })
       store.dispatch(checkIfLoggedIn())
     })
@@ -45,7 +50,7 @@ describe('AuthFunctions', () => {
       await store.dispatch(signInWithGoogleAsync())
     })
 
-    test('should call firebase.auth', () => {
+    test('should call Google.logInAsync', () => {
       expect(Google.logInAsync).toHaveBeenCalled()
     })
   })
@@ -56,7 +61,7 @@ describe('AuthFunctions', () => {
       await store.dispatch(signInWithGoogleAsync())
     })
 
-    test('should call firebase.auth', () => {
+    test('should call Google.logInAsync', () => {
       expect(Google.logInAsync).toHaveBeenCalled()
     })
   })
@@ -67,8 +72,50 @@ describe('AuthFunctions', () => {
       await store.dispatch(signInWithGoogleAsync())
     })
 
-    test('should call firebase.auth', () => {
+    test('should call Google.logInAsync', () => {
       expect(Google.logInAsync).toHaveBeenCalled()
+    })
+  })
+
+  describe('isUserEqual - firebaseUser', () => {
+    beforeEach(() => {
+      firebase.auth = jest.fn().mockReturnValue({
+        onAuthStateChanged: jest.fn().mockImplementationOnce(
+          (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
+      })
+      store.dispatch(isUserEqual({}, { providerData: [{ providerId: '1' }] }))
+    })
+
+    test('should call Google.logInAsync', () => {
+      expect(isUserEqual).toHaveBeenCalled()
+    })
+  })
+
+  describe('isUserEqual - firebaseUser null', () => {
+    beforeEach(() => {
+      firebase.auth = jest.fn().mockReturnValue({
+        onAuthStateChanged: jest.fn().mockImplementationOnce(
+          (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
+      })
+      store.dispatch(isUserEqual({}, null))
+    })
+
+    test('should call firebase.auth', () => {
+      expect(isUserEqual).toHaveBeenCalled()
+    })
+  })
+
+  describe('onSignIn - googleUser', () => {
+    beforeEach(() => {
+      firebase.auth = jest.fn().mockReturnValue({
+        onAuthStateChanged: jest.fn().mockImplementationOnce(
+          (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
+      })
+      store.dispatch(onSignIn({}))
+    })
+
+    test('should call Google.logInAsync', () => {
+      expect(onSignIn).toHaveBeenCalled()
     })
   })
 })

@@ -2,10 +2,10 @@
 import React from 'react'
 import style from '../styles/profileStyles'
 import { View, Text, ImageBackground, TouchableOpacity, ScrollView } from 'react-native'
-import firebase from 'firebase'
 import { connect } from 'react-redux'
 import { userReducer } from '../../utils/interfaces'
 import { skylabLogo } from '../../utils/images'
+import firebase from 'firebase'
 
 function Profile ({ user, navigation }:userReducer) {
   return (
@@ -41,7 +41,7 @@ function Profile ({ user, navigation }:userReducer) {
         </View>
         <View style={style.signOutContainerTotal}>
           <View style={style.signOutContainer}>
-            <TouchableOpacity testID='signOut' style={style.signOut} onPress={async () => await firebase.auth().signOut() && navigation.navigate('login') } activeOpacity={0.8}>
+            <TouchableOpacity testID='signOut' style={style.signOut} onPress={async () => { await firebase.auth().signOut(); navigation.navigate('login') } } activeOpacity={0.8}>
               <Text style={style.signOutText}>Cerrar Sesión</Text>
             </TouchableOpacity>
           </View>

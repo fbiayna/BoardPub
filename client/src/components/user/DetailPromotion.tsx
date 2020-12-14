@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { DetailReducer, Establishment } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { connect } from 'react-redux'
-import { useRoute, useIsFocused } from '@react-navigation/native'
+import { useRoute, useFocusEffect } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
@@ -13,11 +13,9 @@ import GoBack from './navigation/GoBack'
 
 function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   const { params: { id } }:any = useRoute()
-  const isFocused = useIsFocused()
 
-  useEffect(() => {
-    dispatch(requestPromotion(id))
-  }, [isFocused])
+  useFocusEffect(
+    useCallback(() => { dispatch(requestPromotion(id)) }, [id]))
 
   return (
     <View testID={'detail'} style={style.container}>
@@ -40,7 +38,7 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
               </View>
               {user?.favorites?.find((establishment: Establishment) => establishment._id.toString() === promotion.establishment._id.toString())
                 ? null
-                : <TouchableOpacity style={style.addButton} testID="addFavorite" onPress={() => dispatch(addFavorite(user, promotion.establishment._id)) && Alert.alert('¡Favorito añadido!', `Has añadido a ${promotion.establishment.name} a tu red de 'Favoritos'`, [{ text: 'Volver' }])} activeOpacity={0.9}>
+                : <TouchableOpacity style={style.addButton} testID="addFavorite" onPress={() => { dispatch(addFavorite(user, promotion.establishment._id)); Alert.alert('¡Favorito añadido!', `Has añadido a ${promotion.establishment.name} a tu red de 'Favoritos'`, [{ text: 'Volver' }]) }} activeOpacity={0.9}>
                     <View style={style.addContainer}>
                       <Icon name="star" size={35} style={style.star}/>
                     </View>
