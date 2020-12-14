@@ -80,6 +80,10 @@ const mapPromotionStyles = StyleSheet.create({
   calloutContainer: {
     borderRadius: 10,
     elevation: 10
+  },
+  markerIcons: {
+    width: 50,
+    height: 50
   }
 })
 

@@ -14,3 +14,9 @@ export function distancePoints (latitudeUser: number, longitudeUser: number, lat
 
   return (12742 * Math.asin(Math.sqrt(distance))).toFixed(1)
 }
+
+export function colorMarkerType (type: string) {
+  return (
+    type === 'menu' ? 'blue' : type === 'drink' ? 'gold' : type === 'pack' ? 'purple' : 'orange'
+  )
+}

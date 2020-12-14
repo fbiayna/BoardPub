@@ -52,7 +52,7 @@ const homePromotionsMenuStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFD7DB',
     borderRadius: 10,
-    width: '85%',
+    width: 300,
     height: 55,
     marginTop: 15,
     marginBottom: 15,
