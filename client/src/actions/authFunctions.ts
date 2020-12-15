@@ -25,6 +25,20 @@ function signInError (error: any) {
   }
 }
 
+function isLogging () {
+  return {
+    type: actionAuthTypes.IS_LOGGING,
+    logInState: true
+  }
+}
+
+export function isNotLogging () {
+  return {
+    type: actionAuthTypes.IS_NOT_LOGGING,
+    logInState: false
+  }
+}
+
 export function checkIfLoggedIn () {
   return (dispatch: Function) => {
     firebase.auth().onAuthStateChanged((firebaseUser:any) => {
@@ -69,6 +83,7 @@ export function onSignIn (googleUser:any) {
           }
         }
         ).catch((error) => {
+          dispatch(isNotLogging())
           dispatch(signInError(error))
         })
       }
@@ -78,6 +93,7 @@ export function onSignIn (googleUser:any) {
 
 export function signInWithGoogleAsync () {
   return async (dispatch: Function) => {
+    dispatch(isLogging())
     try {
       const result = await Google.logInAsync({
         androidClientId: '38128341226-6qhn5lvgpdc984n03acqm8dgmj01dogv.apps.googleusercontent.com',
@@ -86,9 +102,11 @@ export function signInWithGoogleAsync () {
       if (result.type === 'success') {
         dispatch(onSignIn(result))
       } else {
+        dispatch(isNotLogging())
         dispatch(signInError('error'))
       }
     } catch (error) {
+      dispatch(isNotLogging())
       dispatch(signInError(error))
     }
   }

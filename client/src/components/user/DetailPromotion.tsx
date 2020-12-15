@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-import React, { useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { DetailReducer, Establishment } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { connect } from 'react-redux'
-import { useRoute, useFocusEffect } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
@@ -14,8 +14,7 @@ import GoBack from './navigation/GoBack'
 function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
   const { params: { id } }:any = useRoute()
 
-  useFocusEffect(
-    useCallback(() => { dispatch(requestPromotion(id)) }, [id]))
+  useEffect(() => { dispatch(requestPromotion(id)) }, [])
 
   return (
     <View testID={'detail'} style={style.container}>

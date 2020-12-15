@@ -12,8 +12,14 @@ export default function AuthReducer (state: any = initialState, action: ActionAu
     case actionAuthTypes.CHECK_LOGIN_ERROR:
       newState = { ...state, logInExists: action.logInExists }
       break
+    case actionAuthTypes.IS_LOGGING:
+      newState = { ...state, logInState: action.logInState }
+      break
+    case actionAuthTypes.IS_NOT_LOGGING:
+      newState = { ...state, logInState: action.logInState }
+      break
     case actionAuthTypes.SIGN_IN_ERROR:
-      newState = { ...state, error: action.error, logInState: action.logInState }
+      newState = { ...state, error: action.error }
       break
     default:
       newState = state

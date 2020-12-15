@@ -1,7 +1,7 @@
 /* eslint-disable no-import-assign */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/display-name */
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useCallback } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
@@ -40,7 +40,7 @@ describe('DetailEstablishment', () => {
   })
 
   test('renders correctly - establishment in favorites list ', () => {
-    Nav.useIsFocused = jest.fn().mockReturnValue(false)
+    Nav.useFocusEffect = jest.fn().mockReturnValue(false)
     Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
     Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
@@ -52,7 +52,7 @@ describe('DetailEstablishment', () => {
   })
 
   test('renders correctly - establishment, user - null', () => {
-    Nav.useIsFocused = jest.fn().mockReturnValue(true)
+    Nav.useFocusEffect = jest.fn().mockReturnValue(false)
     Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
     Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
 
