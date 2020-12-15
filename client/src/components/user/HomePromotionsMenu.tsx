@@ -30,9 +30,9 @@ function HomePromotionsMenu ({ promotions, dispatch, navigation, latitude, longi
         <View style={style.ubication}>
           {!city
             ? <View style={style.town}>
-              <Icon name="near-me" style={style.nearIcon}/>
-              <Text style={style.ubicationText}>No hay ubicación</Text>
-            </View>
+                <Icon name="near-me" style={style.nearIcon}/>
+                <Text style={style.ubicationText}>No hay ubicación</Text>
+              </View>
             : <>
                 <View style={style.town}>
                   <Icon name="near-me" style={style.nearIcon}/>
