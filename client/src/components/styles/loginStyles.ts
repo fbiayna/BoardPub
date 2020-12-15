@@ -80,18 +80,26 @@ const loginStyles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonAdmin: {
+    flexDirection: 'row',
     width: 260,
     height: 60,
     backgroundColor: '#1565C0',
+    alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
     elevation: 4
   },
   textAdmin: {
     fontSize: 14,
+    paddingRight: 5,
+    paddingLeft: 5,
     fontWeight: 'bold',
     lineHeight: 22,
     textAlign: 'center',
+    color: '#fff'
+  },
+  construction: {
+    fontSize: 20,
     color: '#fff'
   }
 })
