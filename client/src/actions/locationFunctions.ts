@@ -48,7 +48,6 @@ export function getPermissionsUbication () {
     try {
       const permission = await Location.requestPermissionsAsync()
       const { status }:any = permission
-      console.log(status)
       status !== 'granted'
         ? dispatch(getPermissionsNoAccepted('Sin permiso'))
         : dispatch(getLocation())
