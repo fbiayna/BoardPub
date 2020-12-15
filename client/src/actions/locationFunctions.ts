@@ -30,12 +30,13 @@ function getLocationError (error: string) {
   }
 }
 
-function getCitySuccess (city: any) {
+function getCitySuccess (location: any) {
   return {
     type: actionPermissionsTypes.CITY_SUCCESS,
-    city
+    city: location[0].city
   }
 }
+
 function getCityError (error: string) {
   return {
     type: actionPermissionsTypes.CITY_ERROR,
@@ -74,7 +75,7 @@ export function getCity (latitude: number, longitude: number) {
   return async (dispatch: Function) => {
     try {
       const location = await Location.reverseGeocodeAsync({ latitude, longitude })
-      dispatch(getCitySuccess(location[0].city))
+      dispatch(getCitySuccess(location))
     } catch (error) {
       dispatch(getCityError(error))
     }
