@@ -30,7 +30,7 @@ export default function HomePromotions ({ typePromotion, latitude, longitude, pr
                 </View>
                 <View style={style.otherInfoContainer}>
                 <Text style={style.otherInfo}>{item.date}</Text>
-                {!latitude || !longitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, item.establishment.coords.latitude, item.establishment.coords.longitude)} km</Text>}
+                {!latitude ? null : <Text style={style.otherInfo}>{distancePoints(latitude, longitude, item.establishment.coords.latitude, item.establishment.coords.longitude)} km</Text>}
                 </View>
             </View>
         </View>

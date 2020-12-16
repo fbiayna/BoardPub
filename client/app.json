@@ -4,7 +4,7 @@
   "expo": {
     "name": "BoardPub",
     "slug": "BoardPub",
-    "version": "0.6.0",
+    "version": "1.0.0",
     "icon": "https://trello-attachments.s3.amazonaws.com/5ec457af3dca9f5428a9f179/180x180/8856fd747f0ee819a20752fb32c83b37/Logo_v2.png",
     "assetBundlePatterns": [
       "**/*"

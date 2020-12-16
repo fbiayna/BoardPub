@@ -27,7 +27,7 @@ export default function Login ({ navigation }:any) {
           <View style={styles.admin}>
             <View style={styles.buttonAdmin}>
               <Icon name="report" style={styles.construction}/>
-              <Text style={styles.textAdmin}>PANEL NO DISPONIBLE...</Text>
+              <Text style={styles.textAdmin}>EN CONSTRUCCIÓN...</Text>
               <Icon name="report" style={styles.construction}/>
             </View>
           </View>
