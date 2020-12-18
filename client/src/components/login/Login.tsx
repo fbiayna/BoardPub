@@ -2,7 +2,6 @@
 import React from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../styles/loginStyles'
-import Icon from 'react-native-vector-icons/MaterialIcons'
 import { logoBoardPub, loginBackground } from '../../utils/images'
 
 export default function Login ({ navigation }:any) {
@@ -26,9 +25,7 @@ export default function Login ({ navigation }:any) {
           </TouchableOpacity>
           <View style={styles.admin}>
             <View style={styles.buttonAdmin}>
-              <Icon name="report" style={styles.construction}/>
-              <Text style={styles.textAdmin}>EN CONSTRUCCIÓN...</Text>
-              <Icon name="report" style={styles.construction}/>
+              <Text style={styles.textAdmin}>¡QUIERO PROMOCIONAR MI LOCAL!</Text>
             </View>
           </View>
         </View>
