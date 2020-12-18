@@ -328,3 +328,6 @@ temp/
 
 # Firebase
 .firebase/
+
+# Mongo DB - DataBase URL
+server/src/utils/dbUrl.js
