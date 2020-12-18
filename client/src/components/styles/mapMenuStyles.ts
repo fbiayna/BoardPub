@@ -21,19 +21,19 @@ const mapMenuStyles = StyleSheet.create({
   },
   restaurant: {
     color: 'blue',
-    fontSize: 18
+    fontSize: 20
   },
   localBar: {
     color: 'gold',
-    fontSize: 18
+    fontSize: 20
   },
   localOffer: {
     color: 'violet',
-    fontSize: 18
+    fontSize: 20
   },
   localActivity: {
     color: 'orange',
-    fontSize: 18
+    fontSize: 20
   }
 })
 

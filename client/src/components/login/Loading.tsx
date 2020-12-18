@@ -1,23 +1,19 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { ImageBackground, View, Image } from 'react-native'
 import styles from '../styles/loginLoadingStyles'
 import { logoBoardPub, loginBackground } from '../../utils/images'
-import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { connect } from 'react-redux'
 import { checkIfLoggedIn } from '../../actions/authFunctions'
 import { authReducer } from 'utils/interfaces'
 
 function Loading ({ dispatch, logInExists, navigation }: authReducer) {
-  const isFocused = useIsFocused()
-
-  useFocusEffect(
-    useCallback(() => {
-      setTimeout(function () {
-        dispatch(checkIfLoggedIn())
-      }, 2500)
-    }, [isFocused]))
+  useEffect(() => {
+    setTimeout(function () {
+      dispatch(checkIfLoggedIn())
+    }, 2500)
+  }, [])
 
   useEffect(() => {
     if (logInExists !== undefined) {

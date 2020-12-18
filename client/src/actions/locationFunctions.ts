@@ -36,6 +36,7 @@ function getCitySuccess (location: any) {
     city: location[0].city
   }
 }
+
 function getCityError (error: string) {
   return {
     type: actionPermissionsTypes.CITY_ERROR,

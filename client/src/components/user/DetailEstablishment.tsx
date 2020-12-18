@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-import React, { useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { DetailEstablishmentReducer } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { useRoute, useFocusEffect } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
@@ -13,8 +13,7 @@ import GoBack from './navigation/GoBack'
 function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentReducer) {
   const { params: { id } }:any = useRoute()
 
-  useFocusEffect(
-    useCallback(() => { dispatch(getEstablishment(id)) }, [id]))
+  useEffect(() => { dispatch(getEstablishment(id)) }, [])
 
   return (
     <View testID={'detail-establishment'} style={style.container}>

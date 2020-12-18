@@ -6,8 +6,9 @@ import { connect } from 'react-redux'
 import { userReducer } from '../../utils/interfaces'
 import { skylabLogo } from '../../utils/images'
 import firebase from 'firebase'
+import { isNotLogging } from '../../actions/authFunctions'
 
-function Profile ({ user, navigation }:userReducer) {
+function Profile ({ user, navigation, dispatch }:userReducer) {
   return (
     <View testID={'list-profile'} style={style.container}>
       <View style={style.headerTop}>
@@ -41,7 +42,7 @@ function Profile ({ user, navigation }:userReducer) {
         </View>
         <View style={style.signOutContainerTotal}>
           <View style={style.signOutContainer}>
-            <TouchableOpacity testID='signOut' style={style.signOut} onPress={async () => { await firebase.auth().signOut(); navigation.navigate('login') } } activeOpacity={0.8}>
+            <TouchableOpacity testID='signOut' style={style.signOut} onPress={async () => { dispatch(isNotLogging()); await firebase.auth().signOut(); navigation.navigate('login') } } activeOpacity={0.8}>
               <Text style={style.signOutText}>Cerrar Sesión</Text>
             </TouchableOpacity>
           </View>
