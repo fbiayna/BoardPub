@@ -8,13 +8,14 @@ const cors = require('cors');
 const Users = require('./src/models/usersModel');
 const Establishments = require('./src/models/establishmentsModel');
 const Promotions = require('./src/models/promotionsModel');
+const mongoUrl = require('./src/utils/dbUrl');
 const promotionsRouter = require('./src/routes/promotionsRouter')(Establishments, Promotions);
 const userRouter = require('./src/routes/userRouter')(Users);
 
 const app = express();
 app.use(cors());
 const port = process.env.PORT || 5000;
-const dataBaseURL = 'mongodb+srv://fbiayna:Board_59!73@cluster0.bsyq9.mongodb.net/productDBv1?retryWrites=true&w=majority';
+const dataBaseURL = mongoUrl();
 mongoose.connect(dataBaseURL,
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
