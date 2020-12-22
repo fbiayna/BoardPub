@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dbUrl = require('./src/utils/dbUrl');
 const Users = require('./src/models/usersModel');
 const Establishments = require('./src/models/establishmentsModel');
 const Promotions = require('./src/models/promotionsModel');
@@ -14,7 +15,7 @@ const userRouter = require('./src/routes/userRouter')(Users);
 const app = express();
 app.use(cors());
 const port = process.env.PORT || 5000;
-const dataBaseURL = 'mongodb+srv://fbiayna:ZhLh6FMCgWdvYJSD@cluster0.bsyq9.mongodb.net/productDBv1?retryWrites=true&w=majority';
+const dataBaseURL = dbUrl();
 
 mongoose.connect(dataBaseURL,
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
