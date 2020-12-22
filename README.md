@@ -28,7 +28,7 @@ BoardPub is not deployed yet but if you want to start the app, take a look to th
 
 ## Client
 
-1. You can start the app with - ### `expo start`
+1. You can start the app with - `expo start`
 2. You are able to simulate the app with Android Studio or Expo app
 3. Make sure your localhost is the same as 'hostUrls' file, in 'utils' folder
 
@@ -36,7 +36,7 @@ BoardPub is not deployed yet but if you want to start the app, take a look to th
 
 1. Contact me - ferranbiaynacosta@gmail.com - to invite to you to MongoDB Atlas Cluster
 2. Add a cluster URL connection from MongoDB Atlas in index.js, adding your credentials
-3. Start express.js with - ### `npm start`
+3. Start express.js with - `npm start`
 
 ... Enjoy it! :)
 (and if you have any doubt, don't hesitate to contact me!)
