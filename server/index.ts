@@ -8,14 +8,14 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const cors = require('cors')
-const dbUrl = require('./src/utils/dbUrl')
+const dbMongoUrl = require('./src/utils/dbUrl')
 const promotionsRouter = require('./src/routes/promotionsRouter')(establishmentsModel, promotionsModel)
 const userRouter = require('./src/routes/userRouter')(usersModel)
 
 const app = express()
 app.use(cors())
 const port = process.env.PORT || 5000
-const dataBaseURL = dbUrl()
+const dataBaseURL = dbMongoUrl()
 
 mongoose.connect(dataBaseURL,
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
