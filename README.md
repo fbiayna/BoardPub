@@ -30,7 +30,7 @@ BoardPub is not deployed yet but if you want to start the app, take a look to th
 
 ## Server
 
-1. Contact me - ferranbiaynacosta@gmail.com - to invite to you to MongoDB Atlas Cluster
+1. Contact me - ferranbiaynacosta@gmail.com / https://www.linkedin.com/in/fbiayna/ - to invite to you to MongoDB Atlas Cluster
 2. Add a cluster URL connection from MongoDB Atlas in index.js, adding your credentials
 3. Start express.js with - `npm start`
 
