@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const { Schema, model } = mongoose;
+const { Schema, model } = mongoose
 
 const establishmentsSchema = new Schema({
   name: { type: String },
@@ -9,7 +9,7 @@ const establishmentsSchema = new Schema({
   city: { type: String },
   photo: { type: String },
   description: { type: String },
-  rating: { type: String },
-});
+  rating: { type: String }
+})
 
-module.exports = model('establishments', establishmentsSchema);
+export default model('establishments', establishmentsSchema)

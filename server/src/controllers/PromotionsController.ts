@@ -1,15 +1,15 @@
-function PromotionsController(Promotions) {
-  function getMethod(req, res) {
+function PromotionsController (Promotions) {
+  function getMethod (req, res) {
     Promotions.find({})
       .populate({ path: 'establishment' })
       .exec((errorFindPromotions, promotionsList) => (errorFindPromotions
         ? res.send(errorFindPromotions)
-        : res.json(promotionsList)));
+        : res.json(promotionsList)))
   }
 
   return {
-    getMethod,
-  };
+    getMethod
+  }
 }
 
-module.exports = PromotionsController;
+module.exports = PromotionsController
