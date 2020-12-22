@@ -330,4 +330,4 @@ temp/
 .firebase/
 
 # Mongo DB - DataBase URL
-server/src/utils/dbUrl.js
+server/src/utils/dbUrl.ts
