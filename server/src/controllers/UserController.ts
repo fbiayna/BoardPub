@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import { Request, Response } from 'express'
 interface UserFunctions {
   getMethod: Function,
   postMethod: Function,
@@ -8,7 +7,7 @@ interface UserFunctions {
 }
 
 function UserController (Users):UserFunctions {
-  function getMethod (req:Request, res:Response) {
+  function getMethod (req, res) {
     const { query } = req
     Users.findOne(query)
       .populate({ path: 'favorites' })
