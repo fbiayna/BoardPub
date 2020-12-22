@@ -1,10 +1,10 @@
 export {}
 const { Router } = require('express')
-const userController = require('../controllers/UserController')
+const UserController = require('../controllers/UserController')
 
-function userRouter (Users) {
+function userRouter (usersModel) {
   const router = Router()
-  const user = userController(Users)
+  const user = UserController(usersModel)
 
   router.route('/')
     .get(user.getMethod)

@@ -4,11 +4,11 @@ const PromotionsController = require('../controllers/PromotionsController')
 const PromotionController = require('../controllers/PromotionController')
 const EstablishmentController = require('../controllers/EstablishmentController')
 
-function promotionsRouter (Establishments, Promotions) {
+function promotionsRouter (establishmentsModel, promotionsModel) {
   const router = Router()
-  const promotions = PromotionsController(Promotions)
-  const promotion = PromotionController(Promotions)
-  const establishment = EstablishmentController(Establishments)
+  const promotions = PromotionsController(promotionsModel)
+  const promotion = PromotionController(promotionsModel)
+  const establishment = EstablishmentController(establishmentsModel)
 
   router.route('/')
     .get(promotions.getMethod)

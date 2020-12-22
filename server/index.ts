@@ -1,3 +1,6 @@
+import usersModel from './src/models/usersModel'
+import promotionsModel from './src/models/promotionsModel'
+import establishmentsModel from './src/models/establishmentsModel'
 const express = require('express')
 const chalk = require('chalk')
 const debug = require('debug')('app')
@@ -6,11 +9,8 @@ const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const cors = require('cors')
 const dbUrl = require('./src/utils/dbUrl')
-const Users = require('./src/models/usersModel')
-const Establishments = require('./src/models/establishmentsModel')
-const Promotions = require('./src/models/promotionsModel')
-const promotionsRouter = require('./src/routes/promotionsRouter')(Establishments, Promotions)
-const userRouter = require('./src/routes/userRouter')(Users)
+const promotionsRouter = require('./src/routes/promotionsRouter')(establishmentsModel, promotionsModel)
+const userRouter = require('./src/routes/userRouter')(usersModel)
 
 const app = express()
 app.use(cors())

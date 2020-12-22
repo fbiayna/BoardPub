@@ -2,7 +2,21 @@ const mongoose = require('mongoose')
 
 const { Schema, model } = mongoose
 
-const usersSchema = new Schema({
+interface Users {
+  admin: boolean,
+  username: string,
+  password: string,
+  name: string,
+  surname: string,
+  email: string,
+  photo: string,
+  sub: string,
+  favorites: string,
+  establishment: string,
+  promotions: string
+}
+
+const usersSchema: Users = new Schema({
   admin: { type: Boolean },
   username: { type: String },
   password: { type: String },

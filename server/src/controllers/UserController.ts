@@ -1,6 +1,14 @@
 /* eslint-disable no-console */
-function UserController (Users) {
-  function getMethod (req, res) {
+import { Request, Response } from 'express'
+interface UserFunctions {
+  getMethod: Function,
+  postMethod: Function,
+  putMethod: Function,
+  deleteMethod: Function,
+}
+
+function UserController (Users):UserFunctions {
+  function getMethod (req:Request, res:Response) {
     const { query } = req
     Users.findOne(query)
       .populate({ path: 'favorites' })

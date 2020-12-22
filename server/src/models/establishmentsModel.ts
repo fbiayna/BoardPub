@@ -2,7 +2,17 @@ const mongoose = require('mongoose')
 
 const { Schema, model } = mongoose
 
-const establishmentsSchema = new Schema({
+interface Establishments {
+  name: string,
+  ubication: string,
+  coords: object,
+  city: string,
+  photo: string,
+  description: string,
+  rating: string
+}
+
+const establishmentsSchema: Establishments = new Schema({
   name: { type: String },
   ubication: { type: String },
   coords: { latitude: { type: Number }, longitude: { type: Number } },

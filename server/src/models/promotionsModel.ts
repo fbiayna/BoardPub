@@ -2,7 +2,16 @@ const mongoose = require('mongoose')
 
 const { Schema, model } = mongoose
 
-const promotionsSchema = new Schema({
+interface Promotions {
+  name: string,
+  price: string,
+  type: string,
+  description: string,
+  date: string,
+  establishment: string,
+}
+
+const promotionsSchema: Promotions = new Schema({
   name: { type: String },
   price: { type: String },
   type: { type: String },
