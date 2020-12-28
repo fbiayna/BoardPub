@@ -35,7 +35,7 @@ describe('HomePromotionsList', () => {
 
     expect(getByTestId('homePromotions')).toBeDefined()
   })
-  test('Login button should be press', async () => {
+  test('Login button should be press - !latitude', async () => {
     const promotions = [{
       _id: 'Skylab',
       name: 'Pizza',
@@ -60,7 +60,7 @@ describe('HomePromotionsList', () => {
     }]
     const navigation = { navigate: jest.fn() }
 
-    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} latitude={1} longitude={1} promotions={promotions} navigation={navigation}/>)
+    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} latitude={null} longitude={null} promotions={promotions} navigation={navigation}/>)
     const button = getByTestId('promotion')
 
     await fireEvent.press(button)
