@@ -3,16 +3,14 @@ import React, { useEffect } from 'react'
 import { DetailReducer, Establishment } from '../../utils/interfaces'
 import { View, Text, ImageBackground, ScrollView, TouchableOpacity, Alert } from 'react-native'
 import { connect } from 'react-redux'
-import { useRoute } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { requestPromotion } from '../../actions/promotionsFunctions'
 import { addFavorite } from '../../actions/userFunctions'
 import style from '../styles/detailPromotionStyles'
-import GoBack from './navigation/GoBack'
 
-function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
-  const { params: { id } }:any = useRoute()
+function DetailPromotion ({ user, promotion, dispatch, route, navigation }: DetailReducer) {
+  const { params: { id } } = route
 
   useEffect(() => { dispatch(requestPromotion(id)) }, [])
 
@@ -21,7 +19,11 @@ function DetailPromotion ({ user, promotion, dispatch }: DetailReducer) {
       {!promotion || promotion._id !== id
         ? <Loading />
         : <>
-        <GoBack/>
+        <TouchableOpacity style={style.backButton} testID="goBackButton" onPress={() => navigation.goBack()} activeOpacity={0.8}>
+          <View style={style.backContainer}>
+            <Icon name="arrow-back" size={35} style={style.goBack}/>
+          </View>
+        </TouchableOpacity>
         <ScrollView>
             <View style={style.imageContainer}>
               <ImageBackground source={{ uri: promotion.establishment.photo }} style={style.promotionImage} >

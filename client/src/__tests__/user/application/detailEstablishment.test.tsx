@@ -1,14 +1,13 @@
 /* eslint-disable no-import-assign */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/display-name */
-import React, { ReactElement, useCallback } from 'react'
+import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 import DetailEstablishment from '../../../components/user/DetailEstablishment'
-import { render } from '@testing-library/react-native'
+import { render, fireEvent } from '@testing-library/react-native'
 import { Establishment } from '../../../utils/interfaces'
-import * as Nav from '@react-navigation/native'
 
 const buildStore = configureStore([thunk])
 jest.mock('@react-navigation/native')
@@ -33,32 +32,49 @@ describe('DetailEstablishment', () => {
       name: 'Coders',
       ubication: 'Barcelona',
       city: 'Barcelona',
+      coords: {
+        latitude: 1,
+        longitude: 1
+      },
       photo: 'skylab.png',
       description: 'Skylab mola molt!',
       rating: '4.8'
     }
   })
 
-  test('renders correctly - establishment in favorites list ', () => {
-    Nav.useFocusEffect = jest.fn().mockReturnValue(false)
-    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+  test('renders correctly - establishment in favorites list ', async () => {
+    const route = { params: { id: '1' } }
+    const navigation = { goBack: jest.fn() }
 
-    const initialState = { promotionsReducer: { establishment: { _id: 1 } } }
+    const initialState = { promotionsReducer: { establishment: { _id: '1' } } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<DetailEstablishment />, { wrapper })
+    const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
 
     expect(getByTestId('detail-establishment')).toBeDefined()
   })
 
-  test('renders correctly - establishment, user - null', () => {
-    Nav.useFocusEffect = jest.fn().mockReturnValue(false)
-    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+  test('renders correctly - should press button back and return on stack ', async () => {
+    const route = { params: { id: '1' } }
+    const navigation = { goBack: jest.fn() }
+
+    const initialState = { promotionsReducer: { establishment: { _id: '1' } } }
+    const wrapper = wrapperFactory(initialState)
+    const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
+
+    const button = getByTestId('goBackButton')
+
+    await fireEvent.press(button)
+
+    expect(button).toBeDefined()
+  })
+
+  test('renders correctly - establishment, user - null', async () => {
+    const route = { params: { id: '1' } }
+    const navigation = { goBack: jest.fn() }
 
     const initialState = { promotionsReducer: { establishment } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<DetailEstablishment />, { wrapper })
+    const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
 
     expect(getByTestId('detail-establishment')).toBeDefined()
   })
