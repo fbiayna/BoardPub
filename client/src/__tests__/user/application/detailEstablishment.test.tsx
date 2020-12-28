@@ -42,11 +42,11 @@ describe('DetailEstablishment', () => {
     }
   })
 
-  test('renders correctly - establishment in favorites list ', async () => {
+  test('renders correctly - establishment id change - need to dispatch new one', async () => {
     const route = { params: { id: '1' } }
     const navigation = { goBack: jest.fn() }
 
-    const initialState = { promotionsReducer: { establishment: { _id: '1' } } }
+    const initialState = { promotionsReducer: { establishment: { _id: '2' } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
 

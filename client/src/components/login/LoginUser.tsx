@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { ImageBackground, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import styles from '../styles/loginUserStyles'
 import { logoBoardPub, loginBackground, google } from '../../utils/images'
@@ -60,9 +60,8 @@ function LoginUser ({ dispatch, logInExists, logInState, navigation }: authReduc
   )
 }
 
-function mapStateToProps ({ userReducer, authReducer }: any) {
+function mapStateToProps ({ authReducer }: any) {
   return {
-    user: userReducer.user,
     logInExists: authReducer.logInExists,
     logInState: authReducer.logInState
   }
