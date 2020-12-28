@@ -10,6 +10,7 @@ import { render } from '@testing-library/react-native'
 
 const buildStore = configureStore([thunk])
 jest.mock('@react-navigation/native')
+jest.useFakeTimers()
 
 describe('Loading', () => {
   const wrapperFactory = (wrapperInitialState: any) => {
@@ -30,6 +31,18 @@ describe('Loading', () => {
     const { getByTestId } = render(<Loading navigation={navigation}/>, { wrapper })
 
     expect(getByTestId('loading')).toBeDefined()
+  })
+
+  test('logInExists true - setTimeout', () => {
+    const navigation = { reset: jest.fn() }
+    const initialState = { authReducer: { logInExists: true } }
+    const wrapper = wrapperFactory(initialState)
+    const { getByTestId } = render(<Loading navigation={navigation}/>, { wrapper })
+
+    expect(getByTestId('loading')).toBeDefined()
+    expect(setTimeout).toHaveBeenCalledTimes(3)
+
+    jest.runAllTimers()
   })
 
   test('logInExists undefined - first render', () => {

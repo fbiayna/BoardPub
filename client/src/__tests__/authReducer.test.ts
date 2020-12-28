@@ -26,17 +26,40 @@ describe('authReducer', () => {
     expect(state).toEqual({ logInExists: testAuth })
   })
 
-  test('should return error -> actionAuthTypes = SIGN_IN_ERROR', () => {
-    const testAuth = 'error'
+  test('should return -> actionAuthTypes = IS_LOGGING', () => {
+    const testAuth = true
     const Action = {
-      type: actionAuthTypes.SIGN_IN_ERROR,
-      error: testAuth,
-      logInState: true
+      type: actionAuthTypes.IS_LOGGING,
+      logInState: testAuth
     }
 
     const state = authReducer({}, Action)
 
-    expect(state).toEqual({ error: testAuth, logInState: true })
+    expect(state).toEqual({ logInState: testAuth })
+  })
+
+  test('should return -> actionAuthTypes = IS_NOT_LOGGING', () => {
+    const testAuth = false
+    const Action = {
+      type: actionAuthTypes.IS_NOT_LOGGING,
+      logInState: testAuth
+    }
+
+    const state = authReducer({}, Action)
+
+    expect(state).toEqual({ logInState: testAuth })
+  })
+
+  test('should return error -> actionAuthTypes = SIGN_IN_ERROR', () => {
+    const testAuth = 'error'
+    const Action = {
+      type: actionAuthTypes.SIGN_IN_ERROR,
+      error: testAuth
+    }
+
+    const state = authReducer({}, Action)
+
+    expect(state).toEqual({ error: testAuth })
   })
 
   test('should return the default state', () => {
