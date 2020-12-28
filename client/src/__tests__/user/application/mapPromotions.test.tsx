@@ -36,7 +36,7 @@ describe('MapPromotions', () => {
 
     expect(getByTestId('map-promotions')).toBeDefined()
   })
-  test('renders correctly - promotions - no null/undefined / latitude, longitude, city - null', () => {
+  test('renders correctly - promotions - no null/undefined / latitude, longitude, city - null', async () => {
     const initialState = { promotionsReducer: { promotions: [{ _id: 'Skylab', establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
     const navigation = { navigate: jest.fn() }
