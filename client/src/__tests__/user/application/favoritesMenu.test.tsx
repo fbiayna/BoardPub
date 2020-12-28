@@ -24,7 +24,7 @@ describe('FavoritesMenu', () => {
     )
   }
 
-  test('renders - user - null', () => {
+  test('renders - user - null', async () => {
     const initialState = { userReducer: { user: null } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<FavoritesMenu />, { wrapper })
@@ -32,7 +32,7 @@ describe('FavoritesMenu', () => {
     expect(getByTestId('list-favorites')).toBeDefined()
   })
 
-  test('renders - user', () => {
+  test('renders - user', async () => {
     const initialState = { userReducer: { user: { admin: true, favorites: [{ name: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<FavoritesMenu />, { wrapper })

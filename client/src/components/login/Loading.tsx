@@ -44,9 +44,8 @@ function Loading ({ dispatch, logInExists, navigation }: authReducer) {
   )
 }
 
-function mapStateToProps ({ userReducer, authReducer }: any) {
+function mapStateToProps ({ authReducer }: any) {
   return {
-    user: userReducer.user,
     logInExists: authReducer.logInExists
   }
 }
