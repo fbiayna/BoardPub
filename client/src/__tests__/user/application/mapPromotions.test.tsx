@@ -29,7 +29,7 @@ describe('MapPromotions', () => {
     )
   }
 
-  test('renders correctly - promotions, location, longitude and city - null/undefined', () => {
+  test('renders correctly - promotions, location, longitude and city - null/undefined', async () => {
     const initialState = { promotionsReducer: { promotions }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<MapPromotions />, { wrapper })
@@ -37,17 +37,20 @@ describe('MapPromotions', () => {
     expect(getByTestId('map-promotions')).toBeDefined()
   })
   test('renders correctly - promotions - no null/undefined / latitude, longitude, city - null', () => {
-    const initialState = { promotionsReducer: { promotions: [{ establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude, longitude, city } }
+    const initialState = { promotionsReducer: { promotions: [{ _id: 'Skylab', establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude, longitude, city } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<MapPromotions />, { wrapper })
+    const navigation = { navigate: jest.fn() }
+
+    const { getByTestId } = render(<MapPromotions navigation={navigation}/>, { wrapper })
 
     expect(getByTestId('map-promotions')).toBeDefined()
   })
   test('renders correctly - promotions, latitude, longitude and city - no null/undefined}', async () => {
-    const initialState = { promotionsReducer: { promotions: [{ establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
+    const initialState = { promotionsReducer: { promotions: [{ _id: 'Skylab', establishment: { coords: { latitude: 1, longitude: 1 } } }] }, locationReducer: { latitude: 1, longitude: 1, city: 'Barcelona' } }
     const wrapper = wrapperFactory(initialState)
+    const navigation = { navigate: jest.fn() }
 
-    const { getByTestId } = render(<MapPromotions />, { wrapper })
+    const { getByTestId } = render(<MapPromotions navigation={navigation}/>, { wrapper })
 
     const button = getByTestId('detailMap')
 
