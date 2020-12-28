@@ -8,7 +8,6 @@ import configureStore from 'redux-mock-store'
 import DetailPromotion from '../../../components/user/DetailPromotion'
 import { render, fireEvent } from '@testing-library/react-native'
 import { Promotion, User } from '../../../utils/interfaces'
-import * as Nav from '@react-navigation/native'
 
 const buildStore = configureStore([thunk])
 jest.mock('@react-navigation/native')
@@ -38,6 +37,10 @@ describe('DetailPromotion', () => {
         _id: 'Skylab',
         name: 'Coders',
         ubication: 'Barcelona',
+        coords: {
+          latitude: 1,
+          longitude: 1
+        },
         city: 'Barcelona',
         photo: 'Skylab.png',
         description: 'Skylab mola',
@@ -58,26 +61,24 @@ describe('DetailPromotion', () => {
     }
   })
 
-  test('renders correctly - establishment in favorites list ', () => {
-    Nav.useIsFocused = jest.fn().mockReturnValue(false)
-    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+  test('renders correctly - establishment in favorites list ', async () => {
+    const route = { params: { id: '1' } }
+    const navigation = { goBack: jest.fn() }
 
     const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '1' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<DetailPromotion />, { wrapper })
+    const { getByTestId } = render(<DetailPromotion navigation={navigation} route={route}/>, { wrapper })
 
     expect(getByTestId('detail')).toBeDefined()
   })
 
   test('renders correctly - establishment not in favorites list - should press button add and call the function inside', async () => {
-    Nav.useIsFocused = jest.fn().mockReturnValue(true)
-    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+    const route = { params: { id: '1' } }
+    const navigation = { goBack: jest.fn() }
 
     const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '2' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<DetailPromotion />, { wrapper })
+    const { getByTestId } = render(<DetailPromotion navigation={navigation} route={route}/>, { wrapper })
 
     const button = getByTestId('addFavorite')
 
@@ -86,13 +87,28 @@ describe('DetailPromotion', () => {
     expect(button).toBeDefined()
   })
 
-  test('renders correctly - promotions, user - null', () => {
-    Nav.useRoute = jest.fn().mockReturnValue({ params: { id: '1' } })
-    Nav.useNavigation = jest.fn().mockReturnValue({ dispatch: jest.fn() })
+  test('renders correctly - should press button back and return on stack', async () => {
+    const route = { params: { id: '1' } }
+    const navigation = { goBack: jest.fn() }
+
+    const initialState = { promotionsReducer: { promotion: { _id: '1', establishment: { _id: '2' } } }, userReducer: { user: { favorites: [{ _id: '1' }] } } }
+    const wrapper = wrapperFactory(initialState)
+    const { getByTestId } = render(<DetailPromotion navigation={navigation} route={route}/>, { wrapper })
+
+    const button = getByTestId('goBackButton')
+
+    await fireEvent.press(button)
+
+    expect(button).toBeDefined()
+  })
+
+  test('renders correctly - promotions, user - null', async () => {
+    const route = { params: { id: 1 } }
+    const navigation = { goBack: jest.fn() }
 
     const initialState = { promotionsReducer: { promotion }, userReducer: { user } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<DetailPromotion />, { wrapper })
+    const { getByTestId } = render(<DetailPromotion navigation={navigation} route={route}/>, { wrapper })
 
     expect(getByTestId('detail')).toBeDefined()
   })
