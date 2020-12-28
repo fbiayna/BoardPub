@@ -26,7 +26,7 @@ describe('Profile', () => {
     )
   }
 
-  test('renders - user - null', () => {
+  test('renders - user - null', async () => {
     const initialState = { userReducer: { user: null } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<Profile />, { wrapper })
@@ -34,7 +34,7 @@ describe('Profile', () => {
     expect(getByTestId('list-profile')).toBeDefined()
   })
 
-  test('renders null - user', () => {
+  test('renders null - user', async () => {
     const initialState = { userReducer: { user: { admin: true, favorites: ['1', '2'] } } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<Profile />, { wrapper })
@@ -43,11 +43,12 @@ describe('Profile', () => {
   })
 
   test('button should be define', async () => {
-    firebase.auth = jest.fn().mockImplementation(() => ({ signOut: jest.fn() }))
+    (firebase.auth as jest.Mocked<any>).mockImplementation(() => ({ signOut: jest.fn() }))
+    const navigation = { navigate: jest.fn() }
     const initialState = { userReducer: { user: '1' } }
     const wrapper = wrapperFactory(initialState)
 
-    const { getByTestId } = render(<Profile />, { wrapper })
+    const { getByTestId } = render(<Profile navigation={navigation}/>, { wrapper })
 
     const button = getByTestId('signOut')
 

@@ -7,17 +7,11 @@ import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 import LoginUser from '../../components/login/LoginUser'
 import { render, fireEvent } from '@testing-library/react-native'
-import { User } from '../../utils/interfaces'
-import * as Focus from '@react-navigation/native'
 
 const buildStore = configureStore([thunk])
 jest.mock('@react-navigation/native')
 
 describe('LoginUser should be', () => {
-  let user: User
-  let logInExists: boolean
-  let logInState: boolean
-
   const wrapperFactory = (wrapperInitialState: any) => {
     const store = buildStore(wrapperInitialState)
     store.dispatch = jest.fn()
@@ -29,56 +23,29 @@ describe('LoginUser should be', () => {
     )
   }
 
-  beforeEach(() => {
-    user = {
-      _id: 'Skylab',
-      admin: false,
-      name: 'Ferran',
-      surname: 'Biayna',
-      email: 'skylab@correo',
-      photo: 'skylab.png',
-      sub: '123'
-    }
-    logInExists = true
-    logInState = true
-  })
-
-  test('isFocused - false - logInExists', () => {
-    Focus.useIsFocused = jest.fn().mockReturnValue(false)
-
-    const initialState = { userReducer: { user }, authReducer: { logInExists } }
+  test('logInExists, logInState', async () => {
+    const navigation = { reset: jest.fn() }
+    const initialState = { authReducer: { logInExists: true, logInState: true } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<LoginUser />, { wrapper })
+    const { getByTestId } = render(<LoginUser navigation={navigation}/>, { wrapper })
 
     expect(getByTestId('loginUser')).toBeDefined()
   })
 
-  test('isFocused - false - logInExists null', () => {
-    Focus.useIsFocused = jest.fn().mockReturnValue(false)
-
-    const initialState = { userReducer: { user }, authReducer: { logInExists: null } }
+  test('!logInExists, !logInState', async () => {
+    const navigation = { navigate: jest.fn() }
+    const initialState = { authReducer: { logInExists: null, logInState: true } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<LoginUser />, { wrapper })
-
-    expect(getByTestId('loginUser')).toBeDefined()
-  })
-
-  test('isFocused - true - logInExists undefined, isLogging true', () => {
-    Focus.useIsFocused = jest.fn().mockReturnValue(true)
-
-    const initialState = { userReducer: { user }, authReducer: { logInExists: undefined, logInState: true } }
-    const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<LoginUser />, { wrapper })
+    const { getByTestId } = render(<LoginUser navigation={navigation}/>, { wrapper })
 
     expect(getByTestId('loginUser')).toBeDefined()
   })
 
   test('Sign In button - is Press', async () => {
-    Focus.useIsFocused = jest.fn().mockReturnValue(true)
-
-    const initialState = { userReducer: { user }, authReducer: { logInExists: undefined } }
+    const navigation = { navigate: jest.fn() }
+    const initialState = { authReducer: { logInExists: null, logInState: false } }
     const wrapper = wrapperFactory(initialState)
-    const { getByTestId } = render(<LoginUser />, { wrapper })
+    const { getByTestId } = render(<LoginUser navigation={navigation}/>, { wrapper })
 
     const button = getByTestId('signIn-button')
 

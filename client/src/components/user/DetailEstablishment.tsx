@@ -1,17 +1,15 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react'
 import { DetailEstablishmentReducer } from '../../utils/interfaces'
-import { View, Text, ImageBackground, ScrollView } from 'react-native'
+import { View, Text, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { useRoute } from '@react-navigation/native'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
 import style from '../styles/detailEstablishmentStyles'
-import GoBack from './navigation/GoBack'
 
-function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentReducer) {
-  const { params: { id } }:any = useRoute()
+function DetailEstablishment ({ establishment, dispatch, route, navigation }: DetailEstablishmentReducer) {
+  const { params: { id } } = route
 
   useEffect(() => { dispatch(getEstablishment(id)) }, [])
 
@@ -20,7 +18,11 @@ function DetailEstablishment ({ establishment, dispatch }: DetailEstablishmentRe
       {!establishment || establishment._id !== id
         ? <Loading />
         : <>
-        <GoBack/>
+        <TouchableOpacity style={style.backButton} testID="goBackButton" onPress={() => navigation.goBack()} activeOpacity={0.8}>
+          <View style={style.backContainer}>
+            <Icon name="arrow-back" size={35} style={style.goBack}/>
+          </View>
+        </TouchableOpacity>
         <ScrollView>
             <View style={style.imageContainer}>
               <ImageBackground source={{ uri: establishment.photo }} style={style.establishmentImage} ></ImageBackground>

@@ -71,13 +71,17 @@ export interface NavigationProps {
 
 export interface DetailEstablishmentReducer {
   establishment?: Establishment,
-  dispatch: any
+  dispatch: any,
+  route: any,
+  navigation: any
 }
 
 export interface DetailReducer {
     user?: any,
     promotion?: Promotion,
     dispatch: Function,
+    route: any,
+    navigation: any
   }
 
 export interface Promotion {

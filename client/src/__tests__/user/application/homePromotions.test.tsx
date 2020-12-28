@@ -8,37 +8,59 @@ jest.mock('../../../actions/promotionsFunctions')
 jest.mock('@react-navigation/native')
 
 describe('HomePromotionsList', () => {
-  test('renders correctly - HomePromotionsList', () => {
-    const promotions = [
-      {
-        _id: '1',
-        name: 'string',
-        date: 'string',
-        description: 'string',
-        establishment: 'string',
-        ubication: 'string',
-        price: 'string',
-        type: 'string'
-      }]
-    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} promotions={promotions} />)
+  test('renders correctly - HomePromotionsList', async () => {
+    const promotions = [{
+      _id: 'Skylab',
+      name: 'Pizza',
+      date: 'Jue 10 Dic 2020',
+      description: 'Skylab mola',
+      establishment: {
+        _id: 'Skylab',
+        name: 'Coders',
+        ubication: 'Barcelona',
+        coords: {
+          latitude: 1,
+          longitude: 1
+        },
+        city: 'Barcelona',
+        photo: 'Skylab.png',
+        description: 'Skylab mola',
+        rating: '4'
+      },
+      ubication: 'Barcelona',
+      price: '123',
+      type: 'drink'
+    }]
+    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} latitude={1} longitude={1} promotions={promotions} />)
 
     expect(getByTestId('homePromotions')).toBeDefined()
   })
-  test('Login button should be press', async () => {
-    const promotions = [
-      {
-        _id: '1',
-        name: 'string',
-        date: 'string',
-        description: 'string',
-        establishment: 'string',
-        ubication: 'string',
-        price: 'string',
-        type: 'string'
-      }]
+  test('Login button should be press - !latitude', async () => {
+    const promotions = [{
+      _id: 'Skylab',
+      name: 'Pizza',
+      date: 'Jue 10 Dic 2020',
+      description: 'Skylab mola',
+      establishment: {
+        _id: 'Skylab',
+        name: 'Coders',
+        ubication: 'Barcelona',
+        coords: {
+          latitude: 1,
+          longitude: 1
+        },
+        city: 'Barcelona',
+        photo: 'Skylab.png',
+        description: 'Skylab mola',
+        rating: '4'
+      },
+      ubication: 'Barcelona',
+      price: '123',
+      type: 'drink'
+    }]
     const navigation = { navigate: jest.fn() }
 
-    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} promotions={promotions} navigation={navigation}/>)
+    const { getByTestId } = render(<HomePromotionsList typePromotion={'menu'} latitude={null} longitude={null} promotions={promotions} navigation={navigation}/>)
     const button = getByTestId('promotion')
 
     await fireEvent.press(button)
