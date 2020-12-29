@@ -14,7 +14,7 @@ jest.mock('expo-google-app-auth')
 describe('AuthFunctions', () => {
   describe('checkIfLoggedIn - firebaseUser', () => {
     beforeEach(() => {
-      firebase.auth = jest.fn().mockReturnValue({
+      (firebase.auth as jest.Mocked<any>).mockReturnValue({
         onAuthStateChanged: jest.fn().mockImplementationOnce(
           (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
       })
@@ -22,7 +22,7 @@ describe('AuthFunctions', () => {
     })
 
     test('should call firebase.auth', () => {
-      firebase.auth = jest.fn().mockReturnValue({
+      (firebase.auth as jest.Mocked<any>).mockReturnValue({
         onAuthStateChanged: jest.fn().mockImplementationOnce(
           (firebaseUser) => { firebaseUser(undefined) })
       })
@@ -32,7 +32,7 @@ describe('AuthFunctions', () => {
 
   describe('checkIfLoggedIn - !firebaseUser', () => {
     beforeEach(() => {
-      firebase.auth = jest.fn().mockReturnValue({
+      (firebase.auth as jest.Mocked<any>).mockReturnValue({
         onAuthStateChanged: jest.fn().mockImplementationOnce(
           (firebaseUser) => { firebaseUser(undefined) })
       })
@@ -79,11 +79,11 @@ describe('AuthFunctions', () => {
 
   describe('isUserEqual - firebaseUser', () => {
     beforeEach(() => {
-      firebase.auth = jest.fn().mockReturnValue({
+      (firebase.auth as jest.Mocked<any>).mockReturnValue({
         onAuthStateChanged: jest.fn().mockImplementationOnce(
-          (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
+          (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1, providerId: 1 }] }) })
       })
-      store.dispatch(isUserEqual({}, { providerData: [{ providerId: '1' }] }))
+      store.dispatch(isUserEqual({}, { providerData: [{ providerId: 1 }] }))
     })
 
     test('should call Google.logInAsync', () => {
@@ -93,7 +93,7 @@ describe('AuthFunctions', () => {
 
   describe('isUserEqual - firebaseUser null', () => {
     beforeEach(() => {
-      firebase.auth = jest.fn().mockReturnValue({
+      (firebase.auth as jest.Mocked<any>).mockReturnValue({
         onAuthStateChanged: jest.fn().mockImplementationOnce(
           (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
       })
@@ -107,9 +107,9 @@ describe('AuthFunctions', () => {
 
   describe('onSignIn - googleUser', () => {
     beforeEach(() => {
-      firebase.auth = jest.fn().mockReturnValue({
+      (firebase.auth as jest.Mocked<any>).mockReturnValue({
         onAuthStateChanged: jest.fn().mockImplementationOnce(
-          (firebaseUser) => { firebaseUser({ providerData: [{ uid: 1 }] }) })
+          (firebaseUser) => { firebaseUser({ unsubscribe: jest.fn() }) })
       })
       store.dispatch(onSignIn({}))
     })
