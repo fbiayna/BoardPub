@@ -25,7 +25,7 @@ function Loading ({ dispatch, logInExists, navigation }: authReducer) {
       } else {
         navigation.reset({
           index: 0,
-          routes: [{ name: 'loginStart' }]
+          routes: [{ name: 'login' }]
         })
       }
     }

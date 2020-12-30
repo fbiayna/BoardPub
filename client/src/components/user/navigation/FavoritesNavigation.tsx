@@ -8,9 +8,9 @@ const { Screen, Navigator } = createStackNavigator()
 
 export default function FavoritesNavigation () {
   return (
-    <Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
-      <Screen name="favoritos" component={FavoritesMenu} />
-      <Screen name="detail-establishment" component={DetailEstablishment} />
+    <Navigator headerMode={'none'} initialRouteName={'favoritos'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
+      <Screen name='favoritos' component={FavoritesMenu} />
+      <Screen name='detail-establishment' component={DetailEstablishment} />
     </Navigator>
   )
 }

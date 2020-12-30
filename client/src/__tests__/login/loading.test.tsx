@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import configureStore from 'redux-mock-store'
-import Loading from '../../components/login/Loading'
+import Loading from '../../components/loading/Loading'
 import { render } from '@testing-library/react-native'
 
 const buildStore = configureStore([thunk])

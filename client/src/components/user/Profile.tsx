@@ -42,7 +42,13 @@ function Profile ({ user, navigation, dispatch }:userReducer) {
         </View>
         <View style={style.signOutContainerTotal}>
           <View style={style.signOutContainer}>
-            <TouchableOpacity testID='signOut' style={style.signOut} onPress={async () => { dispatch(isNotLogging()); await firebase.auth().signOut(); navigation.navigate('login') } } activeOpacity={0.8}>
+            <TouchableOpacity testID='signOut' style={style.signOut} onPress={async () => {
+              dispatch(isNotLogging()); await firebase.auth().signOut()
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'login' }]
+              })
+            } } activeOpacity={0.8}>
               <Text style={style.signOutText}>Cerrar Sesión</Text>
             </TouchableOpacity>
           </View>
