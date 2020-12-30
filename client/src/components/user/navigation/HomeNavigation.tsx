@@ -8,9 +8,9 @@ const Stack = createStackNavigator()
 
 export default function HomeNavigation () {
   return (
-    <Stack.Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
-        <Stack.Screen name="promotions" component={HomePromotionsMenu} />
-        <Stack.Screen name="detail" component={DetailPromotion}/>
+    <Stack.Navigator headerMode={'none'} initialRouteName={'promotions'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
+        <Stack.Screen name='promotions' component={HomePromotionsMenu} />
+        <Stack.Screen name='detail' component={DetailPromotion}/>
     </Stack.Navigator>
   )
 }

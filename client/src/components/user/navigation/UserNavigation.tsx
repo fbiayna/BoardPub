@@ -8,7 +8,7 @@ const { Navigator, Screen } = createStackNavigator()
 export default function UserNavigation () {
   return (
     <Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
-      <Screen name="perfil" component={Profile} />
+      <Screen name='perfil' component={Profile} />
     </Navigator>
   )
 }

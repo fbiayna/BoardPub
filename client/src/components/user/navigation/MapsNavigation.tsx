@@ -8,9 +8,9 @@ const { Navigator, Screen } = createStackNavigator()
 
 export default function MapsNavigation () {
   return (
-    <Navigator headerMode={'none'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
-      <Screen name="map" component={MapPromotions} />
-      <Screen name="detailMap" component={DetailPromotion} />
+    <Navigator headerMode={'none'} initialRouteName={'map'} screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}>
+      <Screen name='map' component={MapPromotions} />
+      <Screen name='detailMap' component={DetailPromotion} />
     </Navigator>
   )
 }
