@@ -44,7 +44,7 @@ describe('Profile', () => {
 
   test('button should be define', async () => {
     (firebase.auth as jest.Mocked<any>).mockImplementation(() => ({ signOut: jest.fn() }))
-    const navigation = { navigate: jest.fn() }
+    const navigation = { reset: jest.fn() }
     const initialState = { userReducer: { user: '1' } }
     const wrapper = wrapperFactory(initialState)
 
