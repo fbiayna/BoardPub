@@ -117,6 +117,7 @@ export interface Establishment {
     longitude: number
   }
   city: string,
+  promotions: Promotion[],
   photo: string,
   description: string,
   rating: string

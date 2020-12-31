@@ -8,6 +8,8 @@ import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
 import style from '../styles/detailEstablishmentStyles'
+import EstablishmentList from './EstablishmentList'
+import EstablishmentInfo from './EstablishmentInfo'
 
 function DetailEstablishment ({ establishment, dispatch, route, navigation }: DetailEstablishmentReducer) {
   const [filterState, setFilter] = useState('promotions')
@@ -36,6 +38,7 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
               <Icon name="info" style={filterState === 'information' ? style.active : style.noActive} onPress={() => setFilter('information')} />
             </View>
           </View>
+          {filterState === 'promotions' ? <EstablishmentList promotions={establishment.promotions}/> : <EstablishmentInfo establishment={establishment}/>}
         <ScrollView>
             <View style={style.descriptionContainer}>
               <Text style={style.infoPromo}>INFORMACIÓN DEL ESTABLECIMIENTO</Text>
