@@ -6,39 +6,25 @@ const detailEstablishmentStyles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  imageContainer: {
-    height: 200
-  },
-  establishmentImage: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end'
-  },
-  infoContainer: {
-    height: 75,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#fff',
-    elevation: 5,
-    marginBottom: 10
-  },
-  titleContainer: {
+  headerTop: {
+    backgroundColor: '#92000A',
+    height: 95.5,
     justifyContent: 'center',
-    marginLeft: 15,
-    marginRight: 15
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginBottom: 4
+    alignItems: 'center',
+    elevation: 5,
+    zIndex: 1
   },
   establishment: {
+    marginTop: 20,
+    width: 150,
+    height: 48,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  establishmentText: {
+    color: '#fff',
     fontWeight: 'bold',
-    fontSize: 15,
-    color: '#7C7C7C',
-    marginBottom: 8
+    textAlign: 'center'
   },
   schedule: {
     color: '#9E9E9E'
@@ -128,32 +114,62 @@ const detailEstablishmentStyles = StyleSheet.create({
     color: '#C4C4C4'
   },
   ubiContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 5
   },
   backButton: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 2,
     left: 0,
     top: 0,
     right: 0,
     marginLeft: 25,
-    marginTop: 40
+    marginTop: 35
   },
   backContainer: {
     height: 50,
     width: 50,
     borderRadius: 50,
-    borderColor: '#F1F1F1',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    borderWidth: 3,
-    elevation: 5,
     justifyContent: 'center',
     alignItems: 'center'
   },
   goBack: {
     color: '#fff'
+  },
+  ubicationContainer: {
+    height: 250,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+    marginBottom: 10
+  },
+  map: {
+    width: '100%',
+    height: '100%'
+  },
+  menuContainer: {
+    alignItems: 'center'
+  },
+  menu: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#FFD7DB',
+    borderRadius: 10,
+    width: 180,
+    height: 55,
+    marginTop: 15,
+    marginBottom: 15,
+    elevation: 10
+  },
+  noActive: {
+    color: '#7C7C7C',
+    fontSize: 28
+  },
+  active: {
+    color: '#000',
+    fontSize: 28
   }
 })
 

@@ -90,6 +90,7 @@ export interface Promotion {
     date: string,
     description: string,
     establishment: Establishment,
+    photo: string,
     ubication: string,
     price: string
     type: string
@@ -117,6 +118,7 @@ export interface Establishment {
     longitude: number
   }
   city: string,
+  promotions: Promotion[],
   photo: string,
   description: string,
   rating: string

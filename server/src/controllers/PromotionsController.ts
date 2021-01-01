@@ -1,9 +1,8 @@
-import { Request, Response } from 'express'
 interface PromotionsFunctions {
   getMethod: Function,
 }
 function PromotionsController (Promotions):PromotionsFunctions {
-  function getMethod (req:Request, res:Response) {
+  function getMethod (req, res) {
     Promotions.find({})
       .populate({ path: 'establishment' })
       .exec((errorFindPromotions, promotionsList) => (errorFindPromotions
