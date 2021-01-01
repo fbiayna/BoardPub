@@ -26,8 +26,7 @@ const usersSchema: Users = new Schema({
   photo: { type: String },
   sub: { type: String },
   favorites: [{ type: Schema.Types.ObjectId, ref: 'establishments' }],
-  establishment: { type: Schema.Types.ObjectId, ref: 'establishments' },
-  promotions: [{ type: Schema.Types.ObjectId, ref: 'promotions' }]
+  establishment: { type: Schema.Types.ObjectId, ref: 'establishments' }
 })
 
 export default model('users', usersSchema)

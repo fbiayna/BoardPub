@@ -8,6 +8,7 @@ interface Establishments {
   coords: object,
   city: string,
   photo: string,
+  promotions: string,
   description: string,
   rating: string
 }
@@ -18,6 +19,7 @@ const establishmentsSchema: Establishments = new Schema({
   coords: { latitude: { type: Number }, longitude: { type: Number } },
   city: { type: String },
   photo: { type: String },
+  promotions: [{ type: Schema.Types.ObjectId, ref: 'promotions' }],
   description: { type: String },
   rating: { type: String }
 })

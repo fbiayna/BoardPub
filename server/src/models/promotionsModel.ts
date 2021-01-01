@@ -6,9 +6,9 @@ interface Promotions {
   name: string,
   price: string,
   type: string,
+  photo: string,
   description: string,
   date: string,
-  establishment: string,
 }
 
 const promotionsSchema: Promotions = new Schema({
@@ -17,8 +17,7 @@ const promotionsSchema: Promotions = new Schema({
   type: { type: String },
   photo: { type: String },
   description: { type: String },
-  date: { type: String },
-  establishment: { type: Schema.Types.ObjectId, ref: 'establishments' }
+  date: { type: String }
 })
 
 export default model('promotions', promotionsSchema)
