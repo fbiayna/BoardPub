@@ -26,7 +26,7 @@ function DetailPromotion ({ user, promotion, dispatch, route, navigation }: Deta
         </TouchableOpacity>
         <ScrollView>
             <View style={style.imageContainer}>
-              <ImageBackground source={{ uri: promotion.establishment.photo }} style={style.promotionImage} >
+              <ImageBackground source={{ uri: promotion.photo }} style={style.promotionImage} >
                 <View style={style.priceContainer}>
                   <Text style={style.price}>{promotion.price}</Text>
                 </View>

@@ -90,6 +90,7 @@ export interface Promotion {
     date: string,
     description: string,
     establishment: Establishment,
+    photo: string,
     ubication: string,
     price: string
     type: string

@@ -17,7 +17,7 @@ export default function HomePromotions ({ typePromotion, latitude, longitude, pr
      onPress={() => navigation.navigate('detail', { id: item._id })}>
         <View style={style.promotion}>
             <View style={style.imageContainer}>
-                <ImageBackground source={{ uri: item.establishment.photo }} style={style.promotionImage} imageStyle={{ borderRadius: 10 }}>
+                <ImageBackground source={{ uri: item.photo }} style={style.promotionImage} imageStyle={{ borderRadius: 10 }}>
                 <View style={style.priceContainer}>
                     <Text style={style.price}>{item.price}</Text>
                 </View>
