@@ -1,8 +1,9 @@
 function EstablishmentController (Establishments) {
   function getMethod (req, res) {
     const { id } = req.query
-    Establishments.findById(id,
-      (errorFindEstablishments, EstablishmentsList) => (errorFindEstablishments
+    Establishments.findById(id)
+      .populate({ path: 'promotions' })
+      .exec((errorFindEstablishments, EstablishmentsList) => (errorFindEstablishments
         ? res.send(errorFindEstablishments)
         : res.json(EstablishmentsList)))
   }
