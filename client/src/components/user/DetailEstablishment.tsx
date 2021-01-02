@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react'
 import { DetailEstablishmentReducer } from '../../utils/interfaces'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -31,12 +31,15 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
               </View>
             </TouchableOpacity>
           </View>
-          {typesEstablishmentPages().map((page) =>
-            page === 'promotions'
-              ? <EstablishmentList filterPage={page} promotions={establishment.promotions}/>
-              : page === 'map'
-                ? <EstablishmentInfo filterPage={page} establishment={establishment}/>
-                : <EstablishmentInfo filterPage={page} establishment={establishment}/>)}
+          <ScrollView horizontal={true} pagingEnabled={true}>
+            {typesEstablishmentPages().map((page:string) =>
+              page === 'promotions'
+                ? <EstablishmentList key={page} filterPage={page} promotions={establishment.promotions}/>
+                : page === 'map'
+                  ? <EstablishmentInfo key={page} filterPage={page} establishment={establishment}/>
+                  : <EstablishmentInfo key={page} filterPage={page} establishment={establishment}/>
+            )}
+          </ScrollView>
         </>
       }
     </View>
