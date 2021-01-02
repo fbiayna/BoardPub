@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { DetailEstablishmentReducer } from '../../utils/interfaces'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
@@ -7,11 +7,11 @@ import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
 import style from '../styles/detailEstablishmentStyles'
+import { typesEstablishmentPages } from '../../utils/functions'
 import EstablishmentList from './EstablishmentList'
 import EstablishmentInfo from './EstablishmentInfo'
 
 function DetailEstablishment ({ establishment, dispatch, route, navigation }: DetailEstablishmentReducer) {
-  const [filterState, setFilter] = useState('promotions')
   const { params: { id } } = route
 
   useEffect(() => { dispatch(getEstablishment(id)) }, [])
@@ -31,13 +31,12 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
               </View>
             </TouchableOpacity>
           </View>
-          <View style={style.menuContainer}>
-            <View style={style.menu}>
-              <Icon name="assignment" style={filterState === 'promotions' ? style.active : style.noActive} onPress={() => setFilter('promotions')} />
-              <Icon name="info" style={filterState === 'information' ? style.active : style.noActive} onPress={() => setFilter('information')} />
-            </View>
-          </View>
-          {filterState === 'promotions' ? <EstablishmentList promotions={establishment.promotions}/> : <EstablishmentInfo establishment={establishment}/>}
+          {typesEstablishmentPages().map((page) =>
+            page === 'promotions'
+              ? <EstablishmentList filterPage={page} promotions={establishment.promotions}/>
+              : page === 'map'
+                ? <EstablishmentInfo filterPage={page} establishment={establishment}/>
+                : <EstablishmentInfo filterPage={page} establishment={establishment}/>)}
         </>
       }
     </View>

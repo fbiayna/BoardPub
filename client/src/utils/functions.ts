@@ -5,6 +5,12 @@ export function typesFood ():string[] {
   )
 }
 
+export function typesEstablishmentPages ():string[] {
+  return (
+    ['promotions', 'map', 'information']
+  )
+}
+
 export function distancePoints (latitudeUser: number, longitudeUser: number, latitudePromotion: number, longitudePromotion: number):string {
   const piDivide = Math.PI / 180
   const cosCalculate = Math.cos
