@@ -1,12 +1,16 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
-import { View, Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Dimensions, ImageBackground } from 'react-native'
 import { Promotion } from 'utils/interfaces'
 import style from '../styles/establishmentListStyles'
+import EstablishmentMenu from './EstablishmentMenu'
 
-export default function EstablishmentList ({ promotions, navigation }:any) {
+const { width } = Dimensions.get('window')
+
+export default function EstablishmentList ({ filterPage, promotions, navigation }:any) {
   return (
-    <View>
+    <View style={listStyle.listContent}>
+        <EstablishmentMenu filterPage={filterPage}/>
         {promotions.length
           ? <FlatList data={promotions} keyExtractor={(item: Promotion) => item.name}
                 renderItem={({ item }) => (<TouchableOpacity testID={'promotion'} key={item.name} style={style.promotionContainer} activeOpacity={0.9}
@@ -34,3 +38,12 @@ export default function EstablishmentList ({ promotions, navigation }:any) {
     </View>
   )
 }
+
+const listStyle = StyleSheet.create({
+  listContent: {
+    flex: 1,
+    width: width - 10,
+    marginHorizontal: 5,
+    position: 'relative'
+  }
+})
