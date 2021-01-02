@@ -1,9 +1,8 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect, useState } from 'react'
 import { DetailEstablishmentReducer } from '../../utils/interfaces'
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import MapView, { Callout, Marker } from 'react-native-maps'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { getEstablishment } from '../../actions/promotionsFunctions'
@@ -39,27 +38,6 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
             </View>
           </View>
           {filterState === 'promotions' ? <EstablishmentList promotions={establishment.promotions}/> : <EstablishmentInfo establishment={establishment}/>}
-        <ScrollView>
-            <View style={style.descriptionContainer}>
-              <Text style={style.infoPromo}>INFORMACIÓN DEL ESTABLECIMIENTO</Text>
-              <Text style={style.description}>{establishment.description}</Text>
-            </View>
-            <View style={style.ubicationContainer}>
-              <MapView style={style.map} initialRegion={{ latitude: establishment.coords.latitude, longitude: establishment.coords.longitude, latitudeDelta: 0.006, longitudeDelta: 0.006 }}>
-                <Marker coordinate={{
-                  latitude: establishment.coords.latitude,
-                  longitude: establishment.coords.longitude
-                }}>
-                  <Callout>
-                    <View style={style.ubiContainer}>
-                      <Text style={style.ubication}>{establishment.ubication}</Text>
-                      <Text style={style.ubication}>{establishment.city}</Text>
-                    </View>
-                  </Callout>
-                </Marker>
-              </MapView>
-            </View>
-          </ScrollView>
         </>
       }
     </View>

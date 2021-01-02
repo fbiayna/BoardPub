@@ -157,7 +157,7 @@ const detailEstablishmentStyles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFD7DB',
     borderRadius: 10,
-    width: 180,
+    width: 300,
     height: 55,
     marginTop: 15,
     marginBottom: 15,
