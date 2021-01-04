@@ -37,7 +37,7 @@ const establishmentListStyles = StyleSheet.create({
   },
   price: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   infoContainer: {
     flex: 1
@@ -49,7 +49,7 @@ const establishmentListStyles = StyleSheet.create({
     marginRight: 15
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 17,
     marginTop: 4,
     marginBottom: 3
@@ -64,7 +64,7 @@ const establishmentListStyles = StyleSheet.create({
   otherInfo: {
     color: '#9E9E9E',
     fontSize: 12,
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   }
 })
 

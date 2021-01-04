@@ -45,7 +45,7 @@ const loginUserStyles = StyleSheet.create({
   },
   text: {
     width: 280,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     alignItems: 'center',
     fontSize: 20,
     lineHeight: 30,
@@ -54,7 +54,7 @@ const loginUserStyles = StyleSheet.create({
   },
   textLoading: {
     width: 250,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     alignItems: 'center',
     fontSize: 20,
     lineHeight: 30,
@@ -84,7 +84,7 @@ const loginUserStyles = StyleSheet.create({
   },
   textUser: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     lineHeight: 22,
     textAlign: 'center',
     color: '#fff'

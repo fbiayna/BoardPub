@@ -26,7 +26,7 @@ const profileStyles = StyleSheet.create({
   },
   profileText: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   photoContainer: {
     height: 90,
@@ -64,7 +64,7 @@ const profileStyles = StyleSheet.create({
     marginBottom: 10
   },
   infoProfile: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
@@ -79,7 +79,7 @@ const profileStyles = StyleSheet.create({
   },
   description: {
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   adminContainer: {
     justifyContent: 'center',
@@ -88,7 +88,7 @@ const profileStyles = StyleSheet.create({
   },
   admin: {
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   skylabContainer: {
     height: 90,
@@ -136,7 +136,7 @@ const profileStyles = StyleSheet.create({
   },
   signOutText: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   }
 })
 

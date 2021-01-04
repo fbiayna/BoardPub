@@ -40,7 +40,7 @@ const loginStyles = StyleSheet.create({
   },
   text: {
     width: 250,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     alignItems: 'center',
     fontSize: 20,
     lineHeight: 30,
@@ -49,7 +49,7 @@ const loginStyles = StyleSheet.create({
   },
   textSearch: {
     flex: 1,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 25,
     lineHeight: 30,
     textAlign: 'center',
@@ -70,7 +70,7 @@ const loginStyles = StyleSheet.create({
   },
   textUser: {
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     lineHeight: 22,
     textAlign: 'center',
     color: '#fff'
@@ -93,7 +93,7 @@ const loginStyles = StyleSheet.create({
     fontSize: 14,
     paddingRight: 5,
     paddingLeft: 5,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     lineHeight: 22,
     textAlign: 'center',
     color: '#fff'

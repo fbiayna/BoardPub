@@ -26,7 +26,7 @@ const favoritesStyles = StyleSheet.create({
   },
   ubicationText: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   menuContainer: {
     alignItems: 'center'
@@ -66,7 +66,7 @@ const favoritesStyles = StyleSheet.create({
     justifyContent: 'center'
   },
   establishment: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 15,
     color: '#000',
     marginBottom: 8
@@ -87,7 +87,7 @@ const favoritesStyles = StyleSheet.create({
     alignItems: 'center'
   },
   deleteX: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     color: '#E00000',
     fontSize: 25
   },

@@ -26,7 +26,7 @@ const detailPromotionStyles = StyleSheet.create({
   },
   price: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   infoContainer: {
     height: 75,
@@ -43,12 +43,12 @@ const detailPromotionStyles = StyleSheet.create({
     marginRight: 15
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 20,
     marginBottom: 4
   },
   establishment: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 15,
     color: '#7C7C7C',
     marginBottom: 8
@@ -78,7 +78,7 @@ const detailPromotionStyles = StyleSheet.create({
   },
   date: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     marginLeft: 5
   },
   ubicationIcon: {
@@ -86,7 +86,7 @@ const detailPromotionStyles = StyleSheet.create({
   },
   ubication: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     marginLeft: 5
   },
   descriptionContainer: {
@@ -98,13 +98,13 @@ const detailPromotionStyles = StyleSheet.create({
     marginBottom: 10
   },
   infoPromo: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
   description: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     paddingRight: 20,
     paddingLeft: 20
   },
@@ -117,7 +117,7 @@ const detailPromotionStyles = StyleSheet.create({
   },
   infoValoration: {
     marginLeft: 15,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
@@ -132,14 +132,14 @@ const detailPromotionStyles = StyleSheet.create({
     alignItems: 'center'
   },
   numbersValoration: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     color: '#000',
     fontSize: 15
   },
   textValoration: {
     flex: 2,
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   opinionContainer: {
     height: 85,
@@ -160,7 +160,7 @@ const detailPromotionStyles = StyleSheet.create({
   },
   opinionText: {
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   opinionStar: {
     color: '#C4C4C4'
