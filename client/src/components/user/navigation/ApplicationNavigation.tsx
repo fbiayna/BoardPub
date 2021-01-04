@@ -27,7 +27,7 @@ export default function ApplicationNavigation () {
       activeTintColor: '#000',
       inactiveTintColor: '#7C7C7C',
       style: { height: 60, paddingBottom: 5 },
-      labelStyle: { fontWeight: 'bold', fontSize: 12 }
+      labelStyle: { fontFamily: 'CabinBold', fontSize: 12 }
     }}
     >
       <Screen name='Ofertas' component={HomeNavigation} />

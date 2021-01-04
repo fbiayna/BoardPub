@@ -23,7 +23,7 @@ const detailEstablishmentStyles = StyleSheet.create({
   },
   establishmentText: {
     color: '#fff',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     textAlign: 'center'
   },
   schedule: {
@@ -34,7 +34,7 @@ const detailEstablishmentStyles = StyleSheet.create({
   },
   ubication: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     marginLeft: 5
   },
   descriptionContainer: {
@@ -46,13 +46,13 @@ const detailEstablishmentStyles = StyleSheet.create({
     marginBottom: 10
   },
   infoPromo: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
   description: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     paddingRight: 20,
     paddingLeft: 20
   },
@@ -65,7 +65,7 @@ const detailEstablishmentStyles = StyleSheet.create({
   },
   infoValoration: {
     marginLeft: 15,
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
@@ -80,14 +80,14 @@ const detailEstablishmentStyles = StyleSheet.create({
     alignItems: 'center'
   },
   numbersValoration: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     color: '#000',
     fontSize: 15
   },
   textValoration: {
     flex: 2,
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   opinionContainer: {
     height: 85,
@@ -108,7 +108,7 @@ const detailEstablishmentStyles = StyleSheet.create({
   },
   opinionText: {
     color: '#9E9E9E',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   opinionStar: {
     color: '#C4C4C4'

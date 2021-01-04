@@ -10,13 +10,13 @@ const establishmentInfoStyles = StyleSheet.create({
     marginBottom: 10
   },
   infoPromo: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
   description: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     paddingRight: 20,
     paddingLeft: 20
   },
@@ -38,7 +38,7 @@ const establishmentInfoStyles = StyleSheet.create({
   },
   ubication: {
     color: '#9E9E9E',
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     marginLeft: 5
   }
 })

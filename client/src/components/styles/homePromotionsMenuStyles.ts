@@ -34,14 +34,15 @@ const homePromotionsMenuStyles = StyleSheet.create({
   },
   ubicationText: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   nearIcon: {
     fontSize: 18,
     color: '#fff'
   },
   nearYouText: {
-    color: '#fff'
+    color: '#fff',
+    fontFamily: 'CabinRegular'
   },
   menuContainer: {
     alignItems: 'center'
@@ -102,7 +103,7 @@ const homePromotionsMenuStyles = StyleSheet.create({
   },
   price: {
     color: '#fff',
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   },
   infoContainer: {
     flex: 1
@@ -114,13 +115,13 @@ const homePromotionsMenuStyles = StyleSheet.create({
     marginRight: 15
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 17,
     marginTop: 4,
     marginBottom: 3
   },
   establishment: {
-    fontWeight: 'bold',
+    fontFamily: 'CabinBold',
     fontSize: 13,
     color: '#7C7C7C',
     marginBottom: 8
@@ -135,7 +136,7 @@ const homePromotionsMenuStyles = StyleSheet.create({
   otherInfo: {
     color: '#9E9E9E',
     fontSize: 12,
-    fontWeight: 'bold'
+    fontFamily: 'CabinBold'
   }
 })
 
