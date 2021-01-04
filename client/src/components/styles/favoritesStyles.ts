@@ -12,7 +12,7 @@ const favoritesStyles = StyleSheet.create({
   },
   headerTop: {
     backgroundColor: '#92000A',
-    height: 95.5,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5
@@ -26,7 +26,8 @@ const favoritesStyles = StyleSheet.create({
   },
   ubicationText: {
     color: '#fff',
-    fontFamily: 'CabinBold'
+    fontFamily: 'CabinBold',
+    fontSize: 15
   },
   menuContainer: {
     alignItems: 'center'

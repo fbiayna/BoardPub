@@ -8,7 +8,7 @@ const mapPromotionStyles = StyleSheet.create({
   },
   headerTop: {
     backgroundColor: '#92000A',
-    height: 95.5,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5
@@ -25,6 +25,7 @@ const mapPromotionStyles = StyleSheet.create({
   },
   ubicationText: {
     color: '#fff',
+    fontSize: 15,
     fontFamily: 'CabinBold'
   },
   nearIcon: {

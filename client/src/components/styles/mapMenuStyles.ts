@@ -4,7 +4,7 @@ const mapMenuStyles = StyleSheet.create({
   menuContainer: {
     alignItems: 'center',
     position: 'absolute',
-    top: 95.5,
+    top: 100,
     right: 15
   },
   menu: {

@@ -6,25 +6,40 @@ const detailEstablishmentStyles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
-  headerTop: {
-    backgroundColor: '#92000A',
-    height: 95.5,
-    justifyContent: 'center',
+  imageContainer: {
+    height: 100
+  },
+  establishmentImage: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+  shadow: {
+    width: '100%',
+    height: '100%',
+    opacity: 0.5,
+    backgroundColor: '#000'
+  },
+  infoContainer: {
+    height: 50,
+    flexDirection: 'row',
     alignItems: 'center',
-    elevation: 5,
-    zIndex: 1
-  },
-  establishment: {
-    marginTop: 20,
-    width: 150,
-    height: 48,
     justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: '#92000A',
+    elevation: 10,
+    marginBottom: 10
   },
-  establishmentText: {
-    color: '#fff',
+  titleContainer: {
+    justifyContent: 'center',
+    marginLeft: 15,
+    marginRight: 15
+  },
+  title: {
     fontFamily: 'CabinBold',
-    textAlign: 'center'
+    color: '#fff',
+    fontSize: 15,
+    marginBottom: 4
   },
   schedule: {
     color: '#9E9E9E'
@@ -123,7 +138,7 @@ const detailEstablishmentStyles = StyleSheet.create({
     left: 0,
     top: 0,
     right: 0,
-    marginLeft: 25,
+    marginLeft: 15,
     marginTop: 35
   },
   backContainer: {
@@ -159,7 +174,7 @@ const detailEstablishmentStyles = StyleSheet.create({
     borderRadius: 10,
     width: 300,
     height: 55,
-    marginTop: 15,
+    marginTop: 5,
     marginBottom: 15,
     elevation: 10
   },
