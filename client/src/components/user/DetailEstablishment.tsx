@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect } from 'react'
 import { DetailEstablishmentReducer } from '../../utils/interfaces'
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
 import { connect } from 'react-redux'
 import Loading from '../loading/LoadingGif'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -21,15 +21,21 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
       {!establishment || establishment._id !== id
         ? <Loading />
         : <>
-          <View style={style.headerTop}>
-            <View style={style.establishment}>
-                <Text style={style.establishmentText}>{establishment.name}</Text>
-            </View>
-            <TouchableOpacity style={style.backButton} testID="goBackButton" onPress={() => navigation.goBack()} activeOpacity={0.8}>
-              <View style={style.backContainer}>
-                <Icon name="arrow-back" size={30} style={style.goBack}/>
+          <View style={style.imageContainer}>
+            <ImageBackground source={{ uri: establishment.photo }} style={style.establishmentImage} >
+              <TouchableOpacity style={style.backButton} testID="goBackButton" onPress={() => navigation.goBack()} activeOpacity={0.8}>
+                <View style={style.backContainer}>
+                  <Icon name="arrow-back" size={35} style={style.goBack}/>
+                </View>
+              </TouchableOpacity>
+              <View style={style.infoContainerSquare}></View>
+              <View style={style.infoContainer}>
+                <View style={style.titleContainer}>
+                  <Text style={style.title}>{establishment.name}</Text>
+                </View>
               </View>
-            </TouchableOpacity>
+              <View style={style.shadow}></View>
+            </ImageBackground>
           </View>
           <ScrollView horizontal={true} pagingEnabled={true}>
             {typesEstablishmentPages().map((page:string) =>

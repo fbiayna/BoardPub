@@ -12,7 +12,7 @@ const profileStyles = StyleSheet.create({
   },
   headerTop: {
     backgroundColor: '#92000A',
-    height: 95.5,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5
@@ -26,7 +26,8 @@ const profileStyles = StyleSheet.create({
   },
   profileText: {
     color: '#fff',
-    fontFamily: 'CabinBold'
+    fontFamily: 'CabinBold',
+    fontSize: 15
   },
   photoContainer: {
     height: 90,

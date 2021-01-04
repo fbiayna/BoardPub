@@ -14,7 +14,7 @@ const establishmentListStyles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     width: '85%',
-    height: 180,
+    height: 150,
     elevation: 10
   },
   imageContainer: {
@@ -40,10 +40,10 @@ const establishmentListStyles = StyleSheet.create({
     fontFamily: 'CabinBold'
   },
   infoContainer: {
-    flex: 1
+    flex: 0.75
   },
   titleContainer: {
-    flex: 2,
+    flex: 1.40,
     justifyContent: 'center',
     marginLeft: 15,
     marginRight: 15
