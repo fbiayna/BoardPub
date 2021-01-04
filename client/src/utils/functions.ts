@@ -7,7 +7,7 @@ export function typesFood ():string[] {
 
 export function typesEstablishmentPages ():string[] {
   return (
-    ['promotions', 'map', 'information']
+    ['promotions', 'information', 'map']
   )
 }
 

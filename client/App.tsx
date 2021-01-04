@@ -20,7 +20,7 @@ Font.loadAsync({
 export default function App () {
   return (
     <Provider store={store}>
-      <StatusBar barStyle='light-content' backgroundColor={'rgba(0,0,0,0.3)'} translucent={true}/>
+      <StatusBar barStyle='light-content' backgroundColor={'rgba(0,0,0,0)'} translucent={true}/>
       <BoardPubNavigation/>
     </Provider>
   )
