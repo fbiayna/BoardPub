@@ -23,18 +23,19 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
         : <>
           <View style={style.imageContainer}>
             <ImageBackground source={{ uri: establishment.photo }} style={style.establishmentImage} >
-            <TouchableOpacity style={style.backButton} testID="goBackButton" onPress={() => navigation.goBack()} activeOpacity={0.8}>
-                  <View style={style.backContainer}>
-                    <Icon name="arrow-back" size={35} style={style.goBack}/>
-                  </View>
-                </TouchableOpacity>
+              <TouchableOpacity style={style.backButton} testID="goBackButton" onPress={() => navigation.goBack()} activeOpacity={0.8}>
+                <View style={style.backContainer}>
+                  <Icon name="arrow-back" size={35} style={style.goBack}/>
+                </View>
+              </TouchableOpacity>
+              <View style={style.infoContainerSquare}></View>
+              <View style={style.infoContainer}>
+                <View style={style.titleContainer}>
+                  <Text style={style.title}>{establishment.name}</Text>
+                </View>
+              </View>
               <View style={style.shadow}></View>
             </ImageBackground>
-          </View>
-          <View style={style.infoContainer}>
-            <View style={style.titleContainer}>
-              <Text style={style.title}>{establishment.name}</Text>
-            </View>
           </View>
           <ScrollView horizontal={true} pagingEnabled={true}>
             {typesEstablishmentPages().map((page:string) =>

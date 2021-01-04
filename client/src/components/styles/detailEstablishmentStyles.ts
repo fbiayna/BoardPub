@@ -7,7 +7,9 @@ const detailEstablishmentStyles = StyleSheet.create({
     height: '100%'
   },
   imageContainer: {
-    height: 100
+    height: 125,
+    marginBottom: 10,
+    elevation: 10
   },
   establishmentImage: {
     width: '100%',
@@ -18,22 +20,35 @@ const detailEstablishmentStyles = StyleSheet.create({
   shadow: {
     width: '100%',
     height: '100%',
-    opacity: 0.5,
+    opacity: 0.7,
     backgroundColor: '#000'
   },
   infoContainer: {
-    height: 50,
+    zIndex: 2,
+    position: 'absolute',
+    top: 65,
+    right: 75,
+    left: 75,
+    height: 60,
+    borderRadius: 15,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#92000A',
-    elevation: 10,
-    marginBottom: 10
+    backgroundColor: '#92000A'
+  },
+  infoContainerSquare: {
+    zIndex: 1,
+    position: 'absolute',
+    top: 95,
+    right: 0,
+    left: 0,
+    height: 30,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    backgroundColor: '#92000A'
   },
   titleContainer: {
-    justifyContent: 'center',
-    marginLeft: 15,
-    marginRight: 15
+    justifyContent: 'center'
   },
   title: {
     fontFamily: 'CabinBold',
