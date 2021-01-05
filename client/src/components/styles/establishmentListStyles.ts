@@ -1,6 +1,20 @@
 import { StyleSheet } from 'react-native'
 
 const establishmentListStyles = StyleSheet.create({
+  descriptionContainer: {
+    height: 45,
+    width: '100%',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 2,
+    marginBottom: 15
+  },
+  infoPromo: {
+    fontFamily: 'CabinBold',
+    fontSize: 13,
+    marginBottom: 5
+  },
   promotionsContainer: {
     flexGrow: 1,
     flex: 1,
@@ -65,6 +79,22 @@ const establishmentListStyles = StyleSheet.create({
     color: '#9E9E9E',
     fontSize: 12,
     fontFamily: 'CabinBold'
+  },
+  establishment: {
+    fontFamily: 'CabinBold',
+    fontSize: 15,
+    textAlign: 'center',
+    color: '#000',
+    marginBottom: 8
+  },
+  noFavorite: {
+    height: '70%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  logoBoard: {
+    width: 100,
+    height: 100
   }
 })
 
