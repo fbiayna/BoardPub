@@ -35,7 +35,7 @@ const establishmentInfoStyles = StyleSheet.create({
     marginBottom: 5
   },
   ubicationContainer: {
-    height: 250,
+    height: 300,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
