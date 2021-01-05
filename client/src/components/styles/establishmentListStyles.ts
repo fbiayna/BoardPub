@@ -7,7 +7,7 @@ const establishmentListStyles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 5,
+    elevation: 2,
     marginBottom: 15
   },
   infoPromo: {
@@ -88,7 +88,7 @@ const establishmentListStyles = StyleSheet.create({
     marginBottom: 8
   },
   noFavorite: {
-    height: '60%',
+    height: '70%',
     justifyContent: 'center',
     alignItems: 'center'
   },

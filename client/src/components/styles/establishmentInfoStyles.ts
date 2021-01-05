@@ -2,23 +2,33 @@ import { StyleSheet } from 'react-native'
 
 const establishmentInfoStyles = StyleSheet.create({
   descriptionContainer: {
-    height: 125,
+    height: 45,
+    width: '100%',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 5,
-    marginBottom: 10
+    elevation: 2,
+    marginBottom: 15
   },
   infoPromo: {
     fontFamily: 'CabinBold',
     fontSize: 13,
     marginBottom: 5
   },
+  infoContainer: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    padding: 15,
+    elevation: 2
+  },
   description: {
     color: '#9E9E9E',
     fontFamily: 'CabinBold',
     paddingRight: 20,
-    paddingLeft: 20
+    paddingLeft: 20,
+    textAlign: 'center'
   },
   ubiContainer: {
     alignItems: 'center',

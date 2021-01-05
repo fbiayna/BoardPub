@@ -10,6 +10,7 @@ import style from '../styles/detailEstablishmentStyles'
 import { typesEstablishmentPages } from '../../utils/functions'
 import EstablishmentList from './EstablishmentList'
 import EstablishmentInfo from './EstablishmentInfo'
+import EstablishmentMap from './EstablishmentMap'
 
 function DetailEstablishment ({ establishment, dispatch, route, navigation }: DetailEstablishmentReducer) {
   const { params: { id } } = route
@@ -42,7 +43,7 @@ function DetailEstablishment ({ establishment, dispatch, route, navigation }: De
               page === 'promotions'
                 ? <EstablishmentList key={page} filterPage={page} promotions={establishment.promotions}/>
                 : page === 'map'
-                  ? <EstablishmentInfo key={page} filterPage={page} establishment={establishment}/>
+                  ? <EstablishmentMap key={page} filterPage={page} establishment={establishment}/>
                   : <EstablishmentInfo key={page} filterPage={page} establishment={establishment}/>
             )}
           </ScrollView>
