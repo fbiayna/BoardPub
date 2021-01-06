@@ -10,7 +10,7 @@ export default function EstablishmentMenu ({ filterPage }:any) {
             <View style={style.menu}>
               <Icon name='assignment' style={filterPage === 'promotions' ? style.active : style.noActive} />
               <Icon name='info' style={filterPage === 'information' ? style.active : style.noActive} />
-              <Icon name='location-on' style={filterPage === 'map' ? style.active : style.noActive}/>
+              <Icon name='map' style={filterPage === 'map' ? style.active : style.noActive}/>
             </View>
           </View>
   )
