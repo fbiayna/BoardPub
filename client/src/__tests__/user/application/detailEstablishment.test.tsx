@@ -36,6 +36,7 @@ describe('DetailEstablishment', () => {
         latitude: 1,
         longitude: 1
       },
+      promotions: [{ _id: '1' }],
       photo: 'skylab.png',
       description: 'Skylab mola molt!',
       rating: '4.8'
@@ -46,7 +47,7 @@ describe('DetailEstablishment', () => {
     const route = { params: { id: '1' } }
     const navigation = { goBack: jest.fn() }
 
-    const initialState = { promotionsReducer: { establishment: { _id: '2' } } }
+    const initialState = { promotionsReducer: { establishment } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
 
@@ -57,7 +58,7 @@ describe('DetailEstablishment', () => {
     const route = { params: { id: '1' } }
     const navigation = { goBack: jest.fn() }
 
-    const initialState = { promotionsReducer: { establishment: { _id: '1' } } }
+    const initialState = { promotionsReducer: { establishment } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
 
@@ -72,7 +73,7 @@ describe('DetailEstablishment', () => {
     const route = { params: { id: '1' } }
     const navigation = { goBack: jest.fn() }
 
-    const initialState = { promotionsReducer: { establishment } }
+    const initialState = { promotionsReducer: { establishment: null } }
     const wrapper = wrapperFactory(initialState)
     const { getByTestId } = render(<DetailEstablishment navigation={navigation} route={route} />, { wrapper })
 
