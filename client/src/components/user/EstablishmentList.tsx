@@ -10,7 +10,7 @@ const { width } = Dimensions.get('window')
 
 export default function EstablishmentList ({ filterPage, promotions, navigation }:any) {
   return (
-    <View style={listStyle.listContent}>
+    <View testID={'establishmentList'} style={listStyle.listContent}>
         <EstablishmentMenu filterPage={filterPage}/>
         <View style={style.descriptionContainer}>
           <Text style={style.infoPromo}>PROMOCIONES ACTIVAS</Text>

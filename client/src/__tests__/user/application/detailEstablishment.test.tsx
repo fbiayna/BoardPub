@@ -36,7 +36,7 @@ describe('DetailEstablishment', () => {
         latitude: 1,
         longitude: 1
       },
-      promotions: [{ _id: '1' }],
+      promotions: [],
       photo: 'skylab.png',
       description: 'Skylab mola molt!',
       rating: '4.8'
