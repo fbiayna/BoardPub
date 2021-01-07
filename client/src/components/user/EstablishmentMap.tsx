@@ -14,7 +14,7 @@ export default function EstablishmentMap ({ filterPage, establishment }:any) {
         <View style={style.descriptionContainer}>
           <Text style={style.infoPromo}>¿DÓNDE ESTÁ SITUADO?</Text>
         </View>
-          <TouchableOpacity style={style.ubicationContainer} onPress={() => Linking.openURL(`geo:0,0?q=${establishment.coords.latitude},${establishment.coords.longitude}`)} activeOpacity={1}>
+          <TouchableOpacity testID={'establishmentMap'} style={style.ubicationContainer} onPress={() => Linking.openURL(`geo:0,0?q=${establishment.coords.latitude},${establishment.coords.longitude}`)} activeOpacity={1}>
               <MapView style={style.map} initialRegion={{ latitude: establishment.coords.latitude, longitude: establishment.coords.longitude, latitudeDelta: 0.006, longitudeDelta: 0.006 }}>
                 <Marker coordinate={{
                   latitude: establishment.coords.latitude,
