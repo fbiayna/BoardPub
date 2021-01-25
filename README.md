@@ -1,4 +1,4 @@
-# BoardPub
+# BoardPub - v.1.0.2
 
 This is a three weeks Full Stack app project, made by Ferran Biayna!
 
